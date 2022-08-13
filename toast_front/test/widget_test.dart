@@ -17,7 +17,7 @@ void main(){
   group('api_test',()
   {
     test('bible_api_test',() async{
-      Map<String, dynamic> result = {};
+      var result;
       result = await Api().getLoginAuth("mook","mook");
       print(result);
     });

@@ -10,12 +10,13 @@ class Api{
   var response;
   Map<String, dynamic> result = {};
 
-  Future<Map<String, dynamic>> getLoginAuth(String id, String pw) async {
+  Future<dynamic> getLoginAuth(String id, String pw) async {
     body = {'id': id, 'pw': pw};
     try {
       response = await http
           .post(Uri.parse('$url/login'), body:convert.jsonEncode(body))
           .timeout(const Duration(seconds: 3));
+      print(response);
       result = response;
     } catch (Exception) {
       result = {'result': false, 'err': 'server error'};
