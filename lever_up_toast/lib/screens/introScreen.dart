@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:lever_up_toast/values/values.dart';
 
@@ -53,8 +55,7 @@ class _IntroScreenState extends State<IntroScreen> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.7,
                       child: OutlinedButton(
-                        onPressed: () {
-                        },
+
                         child: Text(StringConst.user, style: textTheme.bodyText1?.copyWith(
                           fontSize: Sizes.TEXT_SIZE_24,
                           fontWeight: FontWeight.w200,
@@ -63,14 +64,15 @@ class _IntroScreenState extends State<IntroScreen> {
                         style: OutlinedButton.styleFrom(
                           backgroundColor: AppColors.thirdColor,
                         ),
+                        onPressed: () {
+                          print("gd");
+                          Navigator.pushReplacementNamed(context, '/login');},
                       ),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.7,
                       child: OutlinedButton(
-                        onPressed: () {
 
-                        },
                         child: Text(StringConst.notUser, style: textTheme.bodyText1?.copyWith(
                           fontSize: Sizes.TEXT_SIZE_24,
                           fontWeight: FontWeight.w200,
@@ -80,6 +82,8 @@ class _IntroScreenState extends State<IntroScreen> {
                           side: const BorderSide(width: 1.0, color: AppColors.thirdColor),
                           backgroundColor: AppColors.white,
                         ),
+                        onPressed: () {
+                        },
                       ),
                     )
                   ],
