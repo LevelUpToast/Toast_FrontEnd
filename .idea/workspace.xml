@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="02c425ff-ae40-446b-8a5f-04273c8dcf01" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/.metadata" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/.metadata" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/android/app/src/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/android/app/src/main/kotlin/com/issacexample/level_up_toast/MainActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/android/app/src/profile/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/android/app/src/profile/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/ios/Runner/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/linux/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/linux/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_1024.png" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_1024.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_128.png" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_128.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_16.png" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_256.png" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_256.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_32.png" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_512.png" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_512.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_64.png" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_64.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/macos/Runner/Configs/AppInfo.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/macos/Runner/Configs/AppInfo.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/web/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/web/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/windows/runner/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/windows/runner/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/windows/runner/Runner.rc" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/windows/runner/Runner.rc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_up_toast/windows/runner/runner.exe.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/windows/runner/runner.exe.manifest" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2DEyArtfeXB67gsGQgQgO29icyN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/level_up_toast" />
+    <property name="project.structure.last.edited" value="SDK Location" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/level_up_toast/lib/main.dart" />
+      <option name="workingDirectory" value="$PROJECT_DIR$/level_up_toast" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="02c425ff-ae40-446b-8a5f-04273c8dcf01" name="Default Changelist" comment="" />
+      <created>1660278397897</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1660278397897</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="0" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1660278704515">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="0" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1660278704515" />
+    <state x="92" y="92" width="1736" height="848" key="AVDManager" timestamp="1660278803706">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="92" y="92" width="1736" height="848" key="AVDManager/0.0.1920.1032@0.0.1920.1032" timestamp="1660278803706" />
+    <state x="267" y="271" key="FileChooserDialogImpl" timestamp="1660278863442">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="267" y="271" key="FileChooserDialogImpl/0.0.1920.1032@0.0.1920.1032" timestamp="1660278863442" />
+    <state width="1899" height="279" key="GridCell.Tab.0.bottom" timestamp="1660278864774">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state width="1899" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1032@0.0.1920.1032" timestamp="1660278864774" />
+    <state width="1899" height="279" key="GridCell.Tab.0.center" timestamp="1660278864774">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state width="1899" height="279" key="GridCell.Tab.0.center/0.0.1920.1032@0.0.1920.1032" timestamp="1660278864774" />
+    <state width="1899" height="279" key="GridCell.Tab.0.left" timestamp="1660278864774">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state width="1899" height="279" key="GridCell.Tab.0.left/0.0.1920.1032@0.0.1920.1032" timestamp="1660278864774" />
+    <state width="1899" height="279" key="GridCell.Tab.0.right" timestamp="1660278864774">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state width="1899" height="279" key="GridCell.Tab.0.right/0.0.1920.1032@0.0.1920.1032" timestamp="1660278864774" />
+    <state x="0" y="160" key="SettingsEditor" timestamp="1660278534453">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="0" y="160" key="SettingsEditor/0.0.1920.1032@0.0.1920.1032" timestamp="1660278534453" />
+  </component>
+</project>
