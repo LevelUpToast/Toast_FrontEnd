@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lever_up_toast/screens/introscreen.dart';
 
 void main() {
   runApp(const LUP());
@@ -7,13 +8,15 @@ void main() {
 class LUP extends StatelessWidget {
   const LUP({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Level Up Toast',
       theme: ThemeData(),
-
+      initialRoute: '/intro',
+      routes: {
+        '/intro' : (context) => IntroScreen(),
+      },
     );
   }
 }
