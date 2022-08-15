@@ -41,7 +41,7 @@ flutter:
           weight: 600
         - asset: assets\fonts\Roboto\Roboto-BlackItalic.ttf
           weight: 600
-        - asset: assets\fonts\Roboto\Roboto-Boldtalic.ttf
+        - asset: assets\fonts\Roboto\Roboto-BoldItalic.ttf
           weight: 500
         - asset: assets\fonts\Roboto\Roboto-Bold.ttf
           weight: 500

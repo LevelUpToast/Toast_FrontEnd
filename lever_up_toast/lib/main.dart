@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lever_up_toast/app_theme.dart';
 import 'package:lever_up_toast/screens/introscreen.dart';
 
 void main() {
@@ -12,7 +13,7 @@ class LUP extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Level Up Toast',
-      theme: ThemeData(),
+      theme: AppTheme.lightThemeData,
       initialRoute: '/intro',
       routes: {
         '/intro' : (context) => IntroScreen(),

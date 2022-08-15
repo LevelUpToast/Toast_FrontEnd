@@ -4,7 +4,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:lever_up_toast/values/values.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static const _lightFillColor = Colors.black;
@@ -64,9 +63,16 @@ class AppTheme {
     headline1: TextStyle(
       fontFamily: StringConst.Roboto,
       fontSize: Sizes.TEXT_SIZE_96,
-      color: AppColors.black,
+      color: AppColors.grey,
       fontWeight: _bold,
       fontStyle: FontStyle.normal,
     ),
+    bodyText1: TextStyle(
+      fontFamily: StringConst.Roboto,
+      fontSize: Sizes.TEXT_SIZE_40,
+      color: AppColors.black,
+      fontWeight: _regular,
+      fontStyle: FontStyle.normal,
+    )
   );
 }
