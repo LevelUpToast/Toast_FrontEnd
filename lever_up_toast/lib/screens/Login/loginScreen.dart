@@ -1,7 +1,9 @@
-// ignore_for_file: file_names, avoid_print
+// ignore_for_file: file_names, avoid_print, unused_local_variable, import_of_legacy_library_into_null_safe
 
 import 'package:flutter/material.dart';
+import 'package:lever_up_toast/API/api.dart';
 import 'package:lever_up_toast/values/values.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -15,9 +17,11 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
   bool idAction = false;
   bool pwAction = false;
+
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
+    Api api = Provider.of<Api>(context, listen: false);
     return Scaffold(
       body: Container(
         color: AppColors.white,
@@ -52,17 +56,18 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       TextFormField(
                         controller: _idController,
-                        style:  textTheme.bodyText1?.copyWith(
+                        style: textTheme.bodyText1?.copyWith(
                           fontSize: Sizes.TEXT_SIZE_16,
                           fontWeight: FontWeight.w200,
-                          color: AppColors.grey,),
-
+                          color: AppColors.grey,
+                        ),
                         decoration: InputDecoration(
                           labelText: "아이디",
-                          labelStyle:  textTheme.bodyText1?.copyWith(
+                          labelStyle: textTheme.bodyText1?.copyWith(
                             fontSize: Sizes.TEXT_SIZE_16,
                             fontWeight: FontWeight.w600,
-                            color: AppColors.grey,),
+                            color: AppColors.grey,
+                          ),
                           border: const OutlineInputBorder(
                             borderSide: BorderSide(
                               color: Colors.black,
@@ -79,30 +84,33 @@ class _LoginScreenState extends State<LoginScreen> {
                             icon: const Icon(Icons.clear),
                           ),
                         ),
-                        onChanged: (value){
+                        onChanged: (value) {
                           setState(() {
-                            if(value.isNotEmpty){
-                              idAction = true
-                              ; }else{
+                            if (value.isNotEmpty) {
+                              idAction = true;
+                            } else {
                               idAction = false;
                             }
                           });
-
                         },
                       ),
-                      const SizedBox(height: 10,),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       TextFormField(
                         controller: _passwordController,
-                        style:  textTheme.bodyText1?.copyWith(
+                        style: textTheme.bodyText1?.copyWith(
                           fontSize: Sizes.TEXT_SIZE_16,
                           fontWeight: FontWeight.w200,
-                          color: AppColors.grey,),
+                          color: AppColors.grey,
+                        ),
                         decoration: InputDecoration(
                           labelText: "비밀번호",
-                          labelStyle:  textTheme.bodyText1?.copyWith(
+                          labelStyle: textTheme.bodyText1?.copyWith(
                             fontSize: Sizes.TEXT_SIZE_16,
                             fontWeight: FontWeight.w600,
-                            color: AppColors.grey,),
+                            color: AppColors.grey,
+                          ),
                           border: const OutlineInputBorder(
                             borderSide: BorderSide(
                               color: Colors.black,
@@ -119,58 +127,81 @@ class _LoginScreenState extends State<LoginScreen> {
                             icon: const Icon(Icons.clear),
                           ),
                         ),
-                        onChanged: (value){
+                        onChanged: (value) {
                           setState(() {
-                            if(value.isNotEmpty){
-                              pwAction = true
-                              ; }else{
+                            if (value.isNotEmpty) {
+                              pwAction = true;
+                            } else {
                               pwAction = false;
                             }
                           });
-
                         },
                       ),
-                      const SizedBox(height: 10,),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       // 회원 가입
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
-                        children: [Text('회원가입',style: textTheme.bodyText1?.copyWith(
-                          fontSize: Sizes.TEXT_SIZE_16,
-                          fontWeight: FontWeight.w200,
-                          color: AppColors.grey,),)],
+                        children: [
+                          Text(
+                            '회원가입',
+                            style: textTheme.bodyText1?.copyWith(
+                              fontSize: Sizes.TEXT_SIZE_16,
+                              fontWeight: FontWeight.w200,
+                              color: AppColors.grey,
+                            ),
+                          )
+                        ],
                       ),
-                      const SizedBox(height: 10,),
-                      idAction && pwAction ?  SizedBox(
-                        width: MediaQuery.of(context).size.width * 1,
-                        height: MediaQuery.of(context).size.height * 0.06,
-                        child: OutlinedButton(
-                          child: Text(StringConst.doLogin, style: textTheme.bodyText1?.copyWith(
-                            fontSize: Sizes.TEXT_SIZE_24,
-                            fontWeight: FontWeight.w200,
-                            color: AppColors.white,
-                          ),),
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: AppColors.thirdColor,
-                          ),
-                          onPressed: () {
-                            print(_idController.text);
-                            print(_passwordController.text);
-                          }),
-                      ): Container(
-                        width: MediaQuery.of(context).size.width * 1,
-                        height: MediaQuery.of(context).size.height * 0.06,
-                        child: Center(
-                          child: Text(StringConst.doLogin, style: textTheme.bodyText1?.copyWith(
-                            fontSize: Sizes.TEXT_SIZE_24,
-                            fontWeight: FontWeight.w200,
-                            color: AppColors.white,
-                          ),),
-                        ),
-                        decoration: const BoxDecoration(
-                          color: AppColors.secondaryColor,
-                          borderRadius: BorderRadius.all(Radius.circular(5),)
-                        ),
+                      const SizedBox(
+                        height: 10,
                       ),
+                      idAction && pwAction
+                          ? SizedBox(
+                              width: MediaQuery.of(context).size.width * 1,
+                              height: MediaQuery.of(context).size.height * 0.06,
+                              child: OutlinedButton(
+                                  child: Text(
+                                    StringConst.doLogin,
+                                    style: textTheme.bodyText1?.copyWith(
+                                      fontSize: Sizes.TEXT_SIZE_24,
+                                      fontWeight: FontWeight.w200,
+                                      color: AppColors.white,
+                                    ),
+                                  ),
+                                  style: OutlinedButton.styleFrom(
+                                    backgroundColor: AppColors.thirdColor,
+                                  ),
+                                  onPressed: () {
+                                    Map<String, dynamic> data = {
+                                      'id': 'saac',
+                                      'pw': 'saac'
+                                    };
+                                    print(data);
+                                    api.loginAPI(data, context);
+
+                                  }),
+                            )
+                          : Container(
+                              width: MediaQuery.of(context).size.width * 1,
+                              height: MediaQuery.of(context).size.height * 0.06,
+                              child: Center(
+                                child: Text(
+                                  StringConst.doLogin,
+                                  style: textTheme.bodyText1?.copyWith(
+                                    fontSize: Sizes.TEXT_SIZE_24,
+                                    fontWeight: FontWeight.w200,
+                                    color: AppColors.white,
+                                  ),
+                                ),
+                              ),
+                              decoration: const BoxDecoration(
+                                  color: AppColors.secondaryColor,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(5),
+                                  )),
+                            ),
                     ],
                   ),
                 )),

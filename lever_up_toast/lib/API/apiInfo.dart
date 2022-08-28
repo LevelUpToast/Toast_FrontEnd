@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 class ApiInfo {
-  static const String loginUri =  "http://210.123.254.201:8080/";
+  static const String url =  "https://api.leveluptoast.com";
+  static const String loginUrl = "/login";
 
 }
