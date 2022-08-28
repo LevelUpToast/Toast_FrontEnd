@@ -27,6 +27,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^2.1.0
 
+  #https://medium.flutterdevs.com/swiper-in-flutter-56ee23b54391
+  flutter_swiper: ^1.1.6
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -37,29 +40,29 @@ flutter:
   fonts:
     - family: Roboto
       fonts:
-        - asset: assets\fonts\Roboto\Roboto-Black.ttf
+        - asset: assets/fonts/Roboto/Roboto-Black.ttf
           weight: 600
-        - asset: assets\fonts\Roboto\Roboto-BlackItalic.ttf
+        - asset: assets/fonts/Roboto/Roboto-BlackItalic.ttf
           weight: 600
-        - asset: assets\fonts\Roboto\Roboto-BoldItalic.ttf
+        - asset: assets/fonts/Roboto/Roboto-BoldItalic.ttf
           weight: 500
-        - asset: assets\fonts\Roboto\Roboto-Bold.ttf
+        - asset: assets/fonts/Roboto/Roboto-Bold.ttf
           weight: 500
-        - asset: assets\fonts\Roboto\Roboto-Italic.ttf
+        - asset: assets/fonts/Roboto/Roboto-Italic.ttf
           weight: 300
-        - asset: assets\fonts\Roboto\Roboto-Light.ttf
+        - asset: assets/fonts/Roboto/Roboto-Light.ttf
           weight: 200
-        - asset: assets\fonts\Roboto\Roboto-LightItalic.ttf
+        - asset: assets/fonts/Roboto/Roboto-LightItalic.ttf
           weight: 200
-        - asset: assets\fonts\Roboto\Roboto-Medium.ttf
+        - asset: assets/fonts/Roboto/Roboto-Medium.ttf
           weight: 400
-        - asset: assets\fonts\Roboto\Roboto-MediumItalic.ttf
+        - asset: assets/fonts/Roboto/Roboto-MediumItalic.ttf
           weight: 400
-        - asset: assets\fonts\Roboto\Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto/Roboto-Regular.ttf
           weight: 300
-        - asset: assets\fonts\Roboto\Roboto-Thin.ttf
+        - asset: assets/fonts/Roboto/Roboto-Thin.ttf
           weight: 100
-        - asset: assets\fonts\Roboto\Roboto-ThinItalic.ttf
+        - asset: assets/fonts/Roboto/Roboto-ThinItalic.ttf
           weight: 100
 
 

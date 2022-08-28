@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lever_up_toast/app_theme.dart';
 import 'package:lever_up_toast/screens/Login/loginScreen.dart';
 import 'package:lever_up_toast/screens/introScreen.dart';
+import 'package:lever_up_toast/screens/main_page/main_page.dart';
 
 void main() {
   runApp(const LUP());
@@ -17,7 +18,7 @@ class LUP extends StatelessWidget {
       theme: AppTheme.lightThemeData,
       initialRoute: '/intro',
       routes: {
-        '/intro' : (context) => IntroScreen(),
+        '/intro' : (context) => MainPage(),
         '/login' : (context) => LoginScreen(),
       },
     );
