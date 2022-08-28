@@ -18,7 +18,7 @@ class LUP extends StatelessWidget {
       theme: AppTheme.lightThemeData,
       initialRoute: '/intro',
       routes: {
-        '/intro' : (context) => MainPage(),
+        '/intro' : (context) => IntroScreen(),
         '/login' : (context) => LoginScreen(),
       },
     );
