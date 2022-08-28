@@ -1,8 +1,12 @@
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'package:flutter/material.dart';
 import 'package:lever_up_toast/app_theme.dart';
 import 'package:lever_up_toast/screens/Login/loginScreen.dart';
 import 'package:lever_up_toast/screens/introScreen.dart';
-import 'package:lever_up_toast/screens/main_page/main_page.dart';
+import 'package:provider/provider.dart';
+import 'package:lever_up_toast/API/api.dart';
+
 
 void main() {
   runApp(const LUP());
@@ -13,14 +17,21 @@ class LUP extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Level Up Toast',
-      theme: AppTheme.lightThemeData,
-      initialRoute: '/intro',
-      routes: {
-        '/intro' : (context) => IntroScreen(),
-        '/login' : (context) => LoginScreen(),
-      },
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (BuildContext context) => Api(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Level Up Toast',
+        theme: AppTheme.lightThemeData,
+        initialRoute: '/intro',
+        routes: {
+          '/intro': (context) => const IntroScreen(),
+          '/login': (context) => const LoginScreen(),
+        },
+      ),
     );
   }
 }

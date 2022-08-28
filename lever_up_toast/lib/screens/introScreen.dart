@@ -55,7 +55,6 @@ class _IntroScreenState extends State<IntroScreen> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.7,
                       child: OutlinedButton(
-
                         child: Text(StringConst.user, style: textTheme.bodyText1?.copyWith(
                           fontSize: Sizes.TEXT_SIZE_24,
                           fontWeight: FontWeight.w200,
@@ -65,7 +64,6 @@ class _IntroScreenState extends State<IntroScreen> {
                           backgroundColor: AppColors.thirdColor,
                         ),
                         onPressed: () {
-                          print("gd");
                           Navigator.pushReplacementNamed(context, '/login');},
                       ),
                     ),

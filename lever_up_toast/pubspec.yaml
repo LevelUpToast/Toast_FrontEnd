@@ -26,6 +26,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   google_fonts: ^2.1.0
+  provider: ^5.0.0
 
   #https://medium.flutterdevs.com/swiper-in-flutter-56ee23b54391
   flutter_swiper: ^1.1.6
