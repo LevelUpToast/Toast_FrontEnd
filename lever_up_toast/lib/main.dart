@@ -7,6 +7,7 @@ import 'package:lever_up_toast/screens/introScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:lever_up_toast/API/api.dart';
 
+
 void main() {
   runApp(const LUP());
 }
