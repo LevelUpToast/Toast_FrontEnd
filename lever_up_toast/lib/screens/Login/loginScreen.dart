@@ -178,9 +178,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       'id': 'saac',
                                       'pw': 'saac'
                                     };
-                                    print(data);
                                     api.loginAPI(data, context);
-
                                   }),
                             )
                           : Container(

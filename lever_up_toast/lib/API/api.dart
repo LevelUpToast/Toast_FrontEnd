@@ -29,6 +29,7 @@ class Api with ChangeNotifier{
       response.listen((event) {
         Map temp = json.decode(utf8.decode(String.fromCharCodes(event).codeUnits));
         print(temp);
+        Navigator.pushReplacementNamed(context, '/home');
       });
     }else{
       print("실패");
