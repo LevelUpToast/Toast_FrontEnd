@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:lever_up_toast/screens/bodyScreen/mainScreen.dart';
 import 'package:lever_up_toast/screens/bodyScreen/searchScreen.dart';
+import 'package:lever_up_toast/screens/bodyScreen/wishScreen.dart';
 import 'package:lever_up_toast/values/values.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -30,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _bodyScreens = [
     const MainScreen(),
     const searchScreen(),
-    const MainScreen(),
+    const WishScreen(),
     const MainScreen()
 
   ];
