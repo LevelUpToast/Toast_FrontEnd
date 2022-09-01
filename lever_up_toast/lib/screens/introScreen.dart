@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lever_up_toast/values/values.dart';
 
 class IntroScreen extends StatefulWidget {
@@ -16,11 +17,12 @@ class _IntroScreenState extends State<IntroScreen> {
     TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Container(
+        height: MediaQuery.of(context).size.height * 1,
         color: AppColors.white,
         child: Column(
           children: [
             Flexible(
-                flex: 3,
+                flex: 4,
                 child: SizedBox(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -43,12 +45,15 @@ class _IntroScreenState extends State<IntroScreen> {
                     ],
                   ),
                 )),
+            const SizedBox(height: Sizes.HEIGHT_50,),
+
             Flexible(
                 flex: 8,
-                child: Container(
-                )),
+                  child: SvgPicture.asset("assets/img/login_img.svg"),
+                ),
+            const SizedBox(height: Sizes.HEIGHT_50,),
             Flexible(
-                flex: 4,
+                flex: 3,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
