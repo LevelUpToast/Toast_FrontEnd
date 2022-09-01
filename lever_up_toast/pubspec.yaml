@@ -30,6 +30,7 @@ dependencies:
 
   #https://medium.flutterdevs.com/swiper-in-flutter-56ee23b54391
   flutter_swiper: ^1.1.6
+  material_floating_search_bar: ^0.2.6
 
 dev_dependencies:
   flutter_test:

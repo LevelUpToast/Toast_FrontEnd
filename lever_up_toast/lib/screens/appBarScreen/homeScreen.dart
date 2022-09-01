@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:lever_up_toast/screens/bodyScreen/mainScreen.dart';
+import 'package:lever_up_toast/screens/bodyScreen/searchScreen.dart';
 import 'package:lever_up_toast/values/values.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 /// 페이지 설명 작성 부탁
 /// 1. 홈페이지
-/// 2.
+/// 2. 검색
 /// 3.
 /// 4.
 
@@ -20,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _onItemTapped(int index) {
     setState(() {
+      print(index);
       _selectedScreenIndex = index;
     });
   }
@@ -27,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // 네비게이션 스크린
   final List<Widget> _bodyScreens = [
     const MainScreen(),
-    const MainScreen(),
+    const searchScreen(),
     const MainScreen(),
     const MainScreen()
 
@@ -99,8 +101,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 label: '마이페이지',
               ),
             ],
-            onTap: _onItemTapped,
             currentIndex: _selectedScreenIndex,
+            onTap: (currentIndex){
+              _onItemTapped(currentIndex);
+            },
           ),
         ),
       ),
