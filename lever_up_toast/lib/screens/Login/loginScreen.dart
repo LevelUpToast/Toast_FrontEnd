@@ -144,14 +144,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text(
-                            '회원가입',
+                          TextButton(
+                           child: Text ('회원가입',
                             style: textTheme.bodyText1?.copyWith(
                               fontSize: Sizes.TEXT_SIZE_16,
                               fontWeight: FontWeight.w200,
-                              color: AppColors.grey,
-                            ),
-                          )
+                              color: AppColors.grey500,
+                            )),
+                          onPressed: (){
+                            Navigator.pushReplacementNamed(context, '/Membership');
+                          },
+                          ),
                         ],
                       ),
                       const SizedBox(
