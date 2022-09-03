@@ -10,6 +10,13 @@ class StringConst {
   // Login
   static const String login = "로그인";
   static const String doLogin = "로그인하기";
+  // Sign up
+  static const String SignUP= '회원가입';
+  static const String email_check= '인증하기';
+  static const String gender_Man= '남자';
+  static const String gender_Woman= '여자';
+  static const String signUP_accept= '가입하기';
+
   // Font Family
   static const String Roboto = "Roboto";
 }
