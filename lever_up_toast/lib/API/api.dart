@@ -6,6 +6,12 @@ import 'package:lever_up_toast/API/apiInfo.dart';
 
 class Api with ChangeNotifier{
 
+static String token = '';
+
+  // 회원가입 세션
+
+
+  // 로그인 세션
   void loginAPI(Map<String, dynamic> data, BuildContext context)async{
     print(data);
     HttpClientResponse response;
@@ -29,6 +35,8 @@ class Api with ChangeNotifier{
       response.listen((event) {
         Map temp = json.decode(utf8.decode(String.fromCharCodes(event).codeUnits));
         print(temp);
+        token = temp['data']['token'];
+        print(token);
         Navigator.pushReplacementNamed(context, '/home');
       });
     }else{
