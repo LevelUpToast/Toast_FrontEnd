@@ -5,25 +5,26 @@ import 'package:lever_up_toast/API/api.dart';
 import 'package:lever_up_toast/values/values.dart';
 import 'package:provider/provider.dart';
 
-// ignore: use_key_in_widget_constructors
 class MembershipScreen extends StatefulWidget {
   @override
   _MembershipScreenState createState() => _MembershipScreenState();
 }
 
 class _MembershipScreenState extends State<MembershipScreen> {
+  final TextEditingController _idController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _emailNumberController = TextEditingController();
+
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _checkPasswordController =
+      TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     String id, password, name, gender, email, phoneNB, address;
-
-    final TextEditingController _idController = TextEditingController();
-    final TextEditingController _nameController = TextEditingController();
-    final TextEditingController _passwordController = TextEditingController();
-    final TextEditingController _checkPasswordController =
-        TextEditingController();
-    final TextEditingController _phoneNumberController =
-        TextEditingController();
-    final TextEditingController _addressController = TextEditingController();
 
     TextTheme textTheme = Theme.of(context).textTheme;
     Api api = Provider.of<Api>(context, listen: false);
@@ -62,7 +63,7 @@ class _MembershipScreenState extends State<MembershipScreen> {
                   color: AppColors.grey,
                 ),
                 decoration: InputDecoration(
-                  labelText: "아이디 (이메일)",
+                  labelText: "아이디",
                   labelStyle: textTheme.bodyText1?.copyWith(
                     fontSize: Sizes.TEXT_SIZE_16,
                     fontWeight: FontWeight.w600,
@@ -84,12 +85,6 @@ class _MembershipScreenState extends State<MembershipScreen> {
                     icon: const Icon(Icons.clear),
                   ),
                 ),
-                onChanged: (value) {
-                  setState(() {
-                    if (value.isNotEmpty) {
-                    } else {}
-                  });
-                },
               ),
             ),
             const SizedBox(
@@ -98,52 +93,61 @@ class _MembershipScreenState extends State<MembershipScreen> {
             // 이메일
             Row(
               children: [
-                Flexible(
-                  flex: 2,
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(3.0, 0, 3, 0),
-                    child: SizedBox(
-                      height: 60,
-                      child: TextFormField(
-                        controller: _idController,
-                        style: textTheme.bodyText1?.copyWith(
-                          fontSize: Sizes.TEXT_SIZE_16,
-                          fontWeight: FontWeight.w200,
-                          color: AppColors.grey,
-                        ),
-                        decoration: InputDecoration(
-                          labelText: "아이디 (이메일)",
-                          labelStyle: textTheme.bodyText1?.copyWith(
-                            fontSize: Sizes.TEXT_SIZE_16,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.grey,
-                          ),
-                          border: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.black,
+                api.checkmembership
+                    ? Flexible(
+                        flex: 2,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(3.0, 0, 3, 0),
+                          child: Container(
+                            height: 60,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.white60,
                             ),
-                          ),
-                          focusedBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.black,
-                            ),
-                          ),
-                          suffixIcon: IconButton(
-                            onPressed: () => _idController.clear(),
-                            color: Colors.grey,
-                            icon: const Icon(Icons.clear),
+                            child: Center(child: Text(_emailController.text)),
                           ),
                         ),
-                        onChanged: (value) {
-                          setState(() {
-                            if (value.isNotEmpty) {
-                            } else {}
-                          });
-                        },
+                      )
+                    : Flexible(
+                        flex: 2,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(3.0, 0, 3, 0),
+                          child: SizedBox(
+                            height: 60,
+                            child: TextFormField(
+                              controller: _emailController,
+                              style: textTheme.bodyText1?.copyWith(
+                                fontSize: Sizes.TEXT_SIZE_16,
+                                fontWeight: FontWeight.w200,
+                                color: AppColors.grey,
+                              ),
+                              decoration: InputDecoration(
+                                labelText: "이메일",
+                                labelStyle: textTheme.bodyText1?.copyWith(
+                                  fontSize: Sizes.TEXT_SIZE_16,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.grey,
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                focusedBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                suffixIcon: IconButton(
+                                  onPressed: () => _emailController.clear(),
+                                  color: Colors.grey,
+                                  icon: const Icon(Icons.clear),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
                 Flexible(
                     flex: 1,
                     child: Padding(
@@ -165,7 +169,117 @@ class _MembershipScreenState extends State<MembershipScreen> {
                           style: OutlinedButton.styleFrom(
                             backgroundColor: AppColors.thirdColor,
                           ),
-                          onPressed: () {}),
+                          onPressed: () {
+                            setState(() {
+                              api.requestEmailAuth(_emailController.text);
+                              Future.delayed(const Duration(milliseconds: 500),
+                                  () {
+                                setState(() {
+                                  api.checkmembership = api.getBoolMember();
+                                });
+                              });
+                            });
+                          }),
+                    )),
+              ],
+            ),
+            const SizedBox(
+              height: Sizes.HEIGHT_30,
+            ),
+
+            // 인증 번호 입력
+            Row(
+              children: [
+                api.checklog
+                    ? Flexible(
+                        flex: 2,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(3.0, 0, 3, 0),
+                          child: Container(
+                            height: 60,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.white60,
+                            ),
+                            child: Center(
+                              child: Text(StringConst.email_message, textAlign: TextAlign.center,),
+                            ),
+                          ),
+                        ),
+                      )
+                    : Flexible(
+                        flex: 2,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(3.0, 0, 3, 0),
+                          child: SizedBox(
+                            height: 60,
+                            child: TextFormField(
+                              controller: _emailNumberController,
+                              style: textTheme.bodyText1?.copyWith(
+                                fontSize: Sizes.TEXT_SIZE_16,
+                                fontWeight: FontWeight.w200,
+                                color: AppColors.grey,
+                              ),
+                              decoration: InputDecoration(
+                                labelText: "인증번호 입력",
+                                labelStyle: textTheme.bodyText1?.copyWith(
+                                  fontSize: Sizes.TEXT_SIZE_16,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.grey,
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                focusedBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                suffixIcon: IconButton(
+                                  onPressed: () =>
+                                      _emailNumberController.clear(),
+                                  color: Colors.grey,
+                                  icon: const Icon(Icons.clear),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                Flexible(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(3.0, 0, 3, 0),
+                      child: OutlinedButton(
+                          child: SizedBox(
+                            height: 60,
+                            child: Center(
+                              child: Text(
+                                StringConst.email_membership,
+                                style: textTheme.bodyText1?.copyWith(
+                                  fontSize: Sizes.TEXT_SIZE_20,
+                                  fontWeight: FontWeight.w200,
+                                  color: AppColors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: AppColors.thirdColor,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              api.confirmEmailAuth(_emailNumberController.text);
+                              Future.delayed(const Duration(milliseconds: 500),
+                                  () {
+                                setState(() {
+                                  api.checkmembership = api.getBoolMember();
+                                });
+                              });
+                            });
+                          }),
                     )),
               ],
             ),
@@ -180,7 +294,7 @@ class _MembershipScreenState extends State<MembershipScreen> {
                   Flexible(
                     flex: 1,
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(4,0,4,0),
+                      padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
                       child: OutlinedButton(
                           child: SizedBox(
                             height: 60,
@@ -204,7 +318,7 @@ class _MembershipScreenState extends State<MembershipScreen> {
                   Flexible(
                     flex: 1,
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(4,0,4,0),
+                      padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
                       child: OutlinedButton(
                           child: SizedBox(
                             height: 60,
