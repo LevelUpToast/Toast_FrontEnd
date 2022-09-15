@@ -4,4 +4,5 @@ class ApiInfo {
   static const String url =  "https://api.leveluptoast.com";
   static const String loginUrl = "/login";
   static const String membershipUrl = "/mail/";
+  static const String signUpUrl = "/signup";
 }

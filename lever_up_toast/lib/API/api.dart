@@ -79,6 +79,36 @@ class Api with ChangeNotifier {
     return checkmembership;
   }
 
+  void signUp(Map<String, dynamic> data, BuildContext context) async{
+    HttpClientResponse response;
+    Uri signUpUrl = Uri.parse(ApiInfo.url + ApiInfo.signUpUrl);
+    print(signUpUrl);
+    HttpClient httpClient = HttpClient();
+    HttpClientRequest request = await httpClient.postUrl(signUpUrl);
+    request.headers.set(HttpHeaders.contentTypeHeader, "application/json");
+    request.headers.set(
+      HttpHeaders.acceptHeader,
+      'application/json',
+    );
+    request.headers.set(
+      HttpHeaders.acceptCharsetHeader,
+      'utf-8',
+    );
+    request.add(utf8.encode(json.encode(data)));
+    response = await request.close();
+    if (response.statusCode == 200) {
+      response.listen((event) {
+        Map temp =
+        json.decode(utf8.decode(String.fromCharCodes(event).codeUnits));
+        print(temp);
+
+        // Navigator.pushReplacementNamed(context, '/home');
+      });
+    } else {
+      print("실패");
+    }
+  }
+
   // 로그인 세션
   void loginAPI(Map<String, dynamic> data, BuildContext context) async {
     print(data);

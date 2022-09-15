@@ -14,17 +14,20 @@ class _MembershipScreenState extends State<MembershipScreen> {
   final TextEditingController _idController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _emailNumberController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _checkPasswordController =
       TextEditingController();
-  final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
+
+  bool _gendercheck = true;
+  bool _pwcheck = false;
+  String gender = 'M';
 
   @override
   Widget build(BuildContext context) {
-    String id, password, name, gender, email, phoneNB, address;
 
     TextTheme textTheme = Theme.of(context).textTheme;
     Api api = Provider.of<Api>(context, listen: false);
@@ -60,14 +63,14 @@ class _MembershipScreenState extends State<MembershipScreen> {
                 style: textTheme.bodyText1?.copyWith(
                   fontSize: Sizes.TEXT_SIZE_16,
                   fontWeight: FontWeight.w200,
-                  color: AppColors.grey,
+                  color: AppColors.grey300,
                 ),
                 decoration: InputDecoration(
-                  labelText: "아이디",
+                  labelText: "아이디 입력",
                   labelStyle: textTheme.bodyText1?.copyWith(
                     fontSize: Sizes.TEXT_SIZE_16,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.grey,
+                    color: AppColors.grey300,
                   ),
                   border: const OutlineInputBorder(
                     borderSide: BorderSide(
@@ -81,6 +84,44 @@ class _MembershipScreenState extends State<MembershipScreen> {
                   ),
                   suffixIcon: IconButton(
                     onPressed: () => _idController.clear(),
+                    color: Colors.grey,
+                    icon: const Icon(Icons.clear),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: Sizes.HEIGHT_30,
+            ),
+            // 이름
+            SizedBox(
+              height: 60,
+              child: TextFormField(
+                controller: _nameController,
+                style: textTheme.bodyText1?.copyWith(
+                  fontSize: Sizes.TEXT_SIZE_16,
+                  fontWeight: FontWeight.w200,
+                  color: AppColors.grey300,
+                ),
+                decoration: InputDecoration(
+                  labelText: "이름 입력",
+                  labelStyle: textTheme.bodyText1?.copyWith(
+                    fontSize: Sizes.TEXT_SIZE_16,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.grey300,
+                  ),
+                  border: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.black,
+                    ),
+                  ),
+                  focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.black,
+                    ),
+                  ),
+                  suffixIcon: IconButton(
+                    onPressed: () => _nameController.clear(),
                     color: Colors.grey,
                     icon: const Icon(Icons.clear),
                   ),
@@ -119,14 +160,14 @@ class _MembershipScreenState extends State<MembershipScreen> {
                               style: textTheme.bodyText1?.copyWith(
                                 fontSize: Sizes.TEXT_SIZE_16,
                                 fontWeight: FontWeight.w200,
-                                color: AppColors.grey,
+                                color: AppColors.grey300,
                               ),
                               decoration: InputDecoration(
-                                labelText: "이메일",
+                                labelText: "이메일 입력",
                                 labelStyle: textTheme.bodyText1?.copyWith(
                                   fontSize: Sizes.TEXT_SIZE_16,
                                   fontWeight: FontWeight.w600,
-                                  color: AppColors.grey,
+                                  color: AppColors.grey300,
                                 ),
                                 border: const OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -186,7 +227,6 @@ class _MembershipScreenState extends State<MembershipScreen> {
             const SizedBox(
               height: Sizes.HEIGHT_30,
             ),
-
             // 인증 번호 입력
             Row(
               children: [
@@ -202,7 +242,10 @@ class _MembershipScreenState extends State<MembershipScreen> {
                               color: Colors.white60,
                             ),
                             child: Center(
-                              child: Text(StringConst.email_message, textAlign: TextAlign.center,),
+                              child: Text(
+                                StringConst.email_message,
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                           ),
                         ),
@@ -218,14 +261,14 @@ class _MembershipScreenState extends State<MembershipScreen> {
                               style: textTheme.bodyText1?.copyWith(
                                 fontSize: Sizes.TEXT_SIZE_16,
                                 fontWeight: FontWeight.w200,
-                                color: AppColors.grey,
+                                color: AppColors.grey300,
                               ),
                               decoration: InputDecoration(
                                 labelText: "인증번호 입력",
                                 labelStyle: textTheme.bodyText1?.copyWith(
                                   fontSize: Sizes.TEXT_SIZE_16,
                                   fontWeight: FontWeight.w600,
-                                  color: AppColors.grey,
+                                  color: AppColors.grey300,
                                 ),
                                 border: const OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -291,54 +334,122 @@ class _MembershipScreenState extends State<MembershipScreen> {
               height: 60,
               child: Row(
                 children: [
-                  Flexible(
-                    flex: 1,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
-                      child: OutlinedButton(
-                          child: SizedBox(
-                            height: 60,
-                            child: Center(
-                              child: Text(
-                                StringConst.gender_Man,
-                                style: textTheme.bodyText1?.copyWith(
-                                  fontSize: Sizes.TEXT_SIZE_20,
-                                  fontWeight: FontWeight.w200,
-                                  color: AppColors.white,
+                  _gendercheck
+                      ? Flexible(
+                          flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
+                            child: OutlinedButton(
+                                child: SizedBox(
+                                  height: 60,
+                                  child: Center(
+                                    child: Text(
+                                      StringConst.gender_Man,
+                                      style: textTheme.bodyText1?.copyWith(
+                                        fontSize: Sizes.TEXT_SIZE_20,
+                                        fontWeight: FontWeight.w200,
+                                        color: AppColors.white,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: AppColors.thirdColor,
-                          ),
-                          onPressed: () {}),
-                    ),
-                  ),
-                  Flexible(
-                    flex: 1,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
-                      child: OutlinedButton(
-                          child: SizedBox(
-                            height: 60,
-                            child: Center(
-                              child: Text(
-                                StringConst.gender_Woman,
-                                style: textTheme.bodyText1?.copyWith(
-                                  fontSize: Sizes.TEXT_SIZE_20,
-                                  fontWeight: FontWeight.w200,
-                                  color: AppColors.white,
+                                style: OutlinedButton.styleFrom(
+                                  backgroundColor: AppColors.thirdColor,
                                 ),
-                              ),
-                            ),
+                                onPressed: () {
+                                  setState(() {
+                                    _gendercheck = true;
+                                    gender = 'M';
+                                  });
+                                }),
                           ),
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: AppColors.thirdColor,
+                        )
+                      : Flexible(
+                          flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
+                            child: OutlinedButton(
+                                child: SizedBox(
+                                  height: 60,
+                                  child: Center(
+                                    child: Text(
+                                      StringConst.gender_Man,
+                                      style: textTheme.bodyText1?.copyWith(
+                                        fontSize: Sizes.TEXT_SIZE_20,
+                                        fontWeight: FontWeight.w200,
+                                        color: AppColors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                style: OutlinedButton.styleFrom(
+                                  backgroundColor: AppColors.secondaryColor,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _gendercheck = true;
+                                    gender = 'M';
+                                  });
+                                }),
                           ),
-                          onPressed: () {}),
-                    ),
-                  ),
+                        ),
+                  _gendercheck
+                      ? Flexible(
+                          flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
+                            child: OutlinedButton(
+                                child: SizedBox(
+                                  height: 60,
+                                  child: Center(
+                                    child: Text(
+                                      StringConst.gender_Woman,
+                                      style: textTheme.bodyText1?.copyWith(
+                                        fontSize: Sizes.TEXT_SIZE_20,
+                                        fontWeight: FontWeight.w200,
+                                        color: AppColors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                style: OutlinedButton.styleFrom(
+                                  backgroundColor: AppColors.secondaryColor,
+                                ),
+                                onPressed: () {
+                                  gender = 'WM';
+                                setState(() {
+                                  _gendercheck = false;
+                                });
+                                }),
+                          ),
+                        )
+                      : Flexible(
+                          flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
+                            child: OutlinedButton(
+                                child: SizedBox(
+                                  height: 60,
+                                  child: Center(
+                                    child: Text(
+                                      StringConst.gender_Woman,
+                                      style: textTheme.bodyText1?.copyWith(
+                                        fontSize: Sizes.TEXT_SIZE_20,
+                                        fontWeight: FontWeight.w200,
+                                        color: AppColors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                style: OutlinedButton.styleFrom(
+                                  backgroundColor: AppColors.thirdColor,
+                                ),
+                                onPressed: () {
+                                  gender = 'WM';
+                                  _gendercheck = false;
+                                }),
+                          ),
+                        )
                 ],
               ),
             ),
@@ -349,18 +460,19 @@ class _MembershipScreenState extends State<MembershipScreen> {
             SizedBox(
               height: 60,
               child: TextFormField(
-                controller: _idController,
+                controller: _phoneNumberController,
+                keyboardType: TextInputType.number,
                 style: textTheme.bodyText1?.copyWith(
                   fontSize: Sizes.TEXT_SIZE_16,
                   fontWeight: FontWeight.w200,
-                  color: AppColors.grey,
+                  color: AppColors.grey300,
                 ),
                 decoration: InputDecoration(
-                  labelText: "아이디 (이메일)",
+                  labelText: "전화번호 입력",
                   labelStyle: textTheme.bodyText1?.copyWith(
                     fontSize: Sizes.TEXT_SIZE_16,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.grey,
+                    color: AppColors.grey300,
                   ),
                   border: const OutlineInputBorder(
                     borderSide: BorderSide(
@@ -373,17 +485,11 @@ class _MembershipScreenState extends State<MembershipScreen> {
                     ),
                   ),
                   suffixIcon: IconButton(
-                    onPressed: () => _idController.clear(),
+                    onPressed: () => _phoneNumberController.clear(),
                     color: Colors.grey,
                     icon: const Icon(Icons.clear),
                   ),
                 ),
-                onChanged: (value) {
-                  setState(() {
-                    if (value.isNotEmpty) {
-                    } else {}
-                  });
-                },
               ),
             ),
             const SizedBox(
@@ -393,18 +499,18 @@ class _MembershipScreenState extends State<MembershipScreen> {
             SizedBox(
               height: 60,
               child: TextFormField(
-                controller: _idController,
+                controller: _addressController,
                 style: textTheme.bodyText1?.copyWith(
                   fontSize: Sizes.TEXT_SIZE_16,
                   fontWeight: FontWeight.w200,
-                  color: AppColors.grey,
+                  color: AppColors.grey300,
                 ),
                 decoration: InputDecoration(
-                  labelText: "아이디 (이메일)",
+                  labelText: "주소 입력",
                   labelStyle: textTheme.bodyText1?.copyWith(
                     fontSize: Sizes.TEXT_SIZE_16,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.grey,
+                    color: AppColors.grey300,
                   ),
                   border: const OutlineInputBorder(
                     borderSide: BorderSide(
@@ -417,17 +523,11 @@ class _MembershipScreenState extends State<MembershipScreen> {
                     ),
                   ),
                   suffixIcon: IconButton(
-                    onPressed: () => _idController.clear(),
+                    onPressed: () => _addressController.clear(),
                     color: Colors.grey,
                     icon: const Icon(Icons.clear),
                   ),
                 ),
-                onChanged: (value) {
-                  setState(() {
-                    if (value.isNotEmpty) {
-                    } else {}
-                  });
-                },
               ),
             ),
             const SizedBox(
@@ -437,18 +537,19 @@ class _MembershipScreenState extends State<MembershipScreen> {
             SizedBox(
               height: 60,
               child: TextFormField(
-                controller: _idController,
+                controller: _passwordController,
+                obscureText: true,
                 style: textTheme.bodyText1?.copyWith(
                   fontSize: Sizes.TEXT_SIZE_16,
                   fontWeight: FontWeight.w200,
-                  color: AppColors.grey,
+                  color: AppColors.grey300,
                 ),
                 decoration: InputDecoration(
-                  labelText: "아이디 (이메일)",
+                  labelText: "비밀번호 입력",
                   labelStyle: textTheme.bodyText1?.copyWith(
                     fontSize: Sizes.TEXT_SIZE_16,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.grey,
+                    color: AppColors.grey300,
                   ),
                   border: const OutlineInputBorder(
                     borderSide: BorderSide(
@@ -461,7 +562,7 @@ class _MembershipScreenState extends State<MembershipScreen> {
                     ),
                   ),
                   suffixIcon: IconButton(
-                    onPressed: () => _idController.clear(),
+                    onPressed: () => _passwordController.clear(),
                     color: Colors.grey,
                     icon: const Icon(Icons.clear),
                   ),
@@ -481,18 +582,19 @@ class _MembershipScreenState extends State<MembershipScreen> {
             SizedBox(
               height: 60,
               child: TextFormField(
-                controller: _idController,
+                controller: _checkPasswordController,
+                obscureText: true,
                 style: textTheme.bodyText1?.copyWith(
                   fontSize: Sizes.TEXT_SIZE_16,
                   fontWeight: FontWeight.w200,
-                  color: AppColors.grey,
+                  color: AppColors.grey300,
                 ),
                 decoration: InputDecoration(
-                  labelText: "아이디 (이메일)",
+                  labelText: "비밀번호 확인",
                   labelStyle: textTheme.bodyText1?.copyWith(
                     fontSize: Sizes.TEXT_SIZE_16,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.grey,
+                    color: AppColors.grey300,
                   ),
                   border: const OutlineInputBorder(
                     borderSide: BorderSide(
@@ -505,15 +607,18 @@ class _MembershipScreenState extends State<MembershipScreen> {
                     ),
                   ),
                   suffixIcon: IconButton(
-                    onPressed: () => _idController.clear(),
+                    onPressed: () => _checkPasswordController.clear(),
                     color: Colors.grey,
                     icon: const Icon(Icons.clear),
                   ),
                 ),
                 onChanged: (value) {
                   setState(() {
-                    if (value.isNotEmpty) {
-                    } else {}
+                    if (value == _passwordController.text) {
+                      _pwcheck = true;
+                    } else {
+                      _pwcheck = false;
+                    }
                   });
                 },
               ),
@@ -522,24 +627,49 @@ class _MembershipScreenState extends State<MembershipScreen> {
               height: Sizes.HEIGHT_30,
             ),
             // 가입확인
-            OutlinedButton(
-                child: SizedBox(
-                  height: 60,
-                  child: Center(
-                    child: Text(
-                      StringConst.signUP_accept,
-                      style: textTheme.bodyText1?.copyWith(
-                        fontSize: Sizes.TEXT_SIZE_20,
-                        fontWeight: FontWeight.w200,
-                        color: AppColors.white,
+            _pwcheck
+                ? OutlinedButton(
+                    child: SizedBox(
+                      height: 60,
+                      child: Center(
+                        child: Text(
+                          StringConst.signUP_accept,
+                          style: textTheme.bodyText1?.copyWith(
+                            fontSize: Sizes.TEXT_SIZE_20,
+                            fontWeight: FontWeight.w200,
+                            color: AppColors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                    style: OutlinedButton.styleFrom(
+                      backgroundColor: AppColors.thirdColor,
+                    ),
+                    onPressed: () {
+                      Map<String, dynamic> data =
+                      { "id" : _idController.text,
+                        "pw" : _checkPasswordController.text,
+                        "name" : _nameController.text,
+                        "gender" : gender,
+                        "phoneNumber" : _phoneNumberController.text,
+                        "e_mail" : _emailNumberController.text,
+                        "address" : _addressController.text};
+                      api.signUp(data, context);
+                    })
+                : Container(
+                    height: 60,
+                    color: AppColors.secondaryColor,
+                    child: Center(
+                      child: Text(
+                        StringConst.signUP_accept,
+                        style: textTheme.bodyText1?.copyWith(
+                          fontSize: Sizes.TEXT_SIZE_20,
+                          fontWeight: FontWeight.w200,
+                          color: AppColors.white,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                style: OutlinedButton.styleFrom(
-                  backgroundColor: AppColors.thirdColor,
-                ),
-                onPressed: () {}),
           ],
         ),
       ),
