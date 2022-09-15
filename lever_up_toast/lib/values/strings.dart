@@ -13,6 +13,10 @@ class StringConst {
   // Sign up
   static const String SignUP= '회원가입';
   static const String email_check= '인증하기';
+  static const String email_membership= '확인하기';
+  // ignore: non_constant_identifier_names
+  static String email_message = '';
+
   static const String gender_Man= '남자';
   static const String gender_Woman= '여자';
   static const String signUP_accept= '가입하기';
