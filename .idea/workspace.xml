@@ -2,36 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02c425ff-ae40-446b-8a5f-04273c8dcf01" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lever_up_toast/lib/screens/bodyScreen/myPageScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Toast_FrontEnd.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Toast_FrontEnd.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/.metadata" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/.metadata" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/android/app/src/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/android/app/src/main/kotlin/com/issacexample/level_up_toast/MainActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/android/app/src/profile/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/android/app/src/profile/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/ios/Runner/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/linux/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/linux/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_1024.png" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_1024.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_128.png" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_128.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_16.png" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_16.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_256.png" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_256.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_32.png" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_32.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_512.png" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_512.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_64.png" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_64.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/macos/Runner/Configs/AppInfo.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/macos/Runner/Configs/AppInfo.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/web/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/web/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/windows/runner/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/windows/runner/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/windows/runner/Runner.rc" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/windows/runner/Runner.rc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_up_toast/windows/runner/runner.exe.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/level_up_toast/windows/runner/runner.exe.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lever_up_toast/lib/screens/appBarScreen/homeScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lever_up_toast/lib/screens/appBarScreen/homeScreen.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,11 +26,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/level_up_toast" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager">
     <configuration name="main.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" nameIsGenerated="true">
