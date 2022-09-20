@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:lever_up_toast/screens/bodyScreen/mainScreen.dart';
+import 'package:lever_up_toast/screens/bodyScreen/myPageScreen.dart';
 import 'package:lever_up_toast/screens/bodyScreen/searchScreen.dart';
 import 'package:lever_up_toast/screens/bodyScreen/wishScreen.dart';
 import 'package:lever_up_toast/values/values.dart';
@@ -14,8 +15,8 @@ class HomeScreen extends StatefulWidget {
 /// 페이지 설명 작성 부탁
 /// 1. 홈페이지
 /// 2. 검색
-/// 3.
-/// 4.
+/// 3. 찜
+/// 4. 마이페이지
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedScreenIndex = 0;
@@ -32,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const MainScreen(),
     const searchScreen(),
     const WishScreen(),
-    const MainScreen()
+    const MyPageScreen()
 
   ];
 
