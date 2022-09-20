@@ -3,10 +3,13 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/lever_up_toast/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/lever_up_toast/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/lever_up_toast/build" />
+      <excludeFolder url="file://$MODULE_DIR$/lever_up_toast/ios/.symlinks/plugins/path_provider/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/lever_up_toast/ios/.symlinks/plugins/path_provider/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/lever_up_toast/ios/.symlinks/plugins/path_provider/build" />
+      <excludeFolder url="file://$MODULE_DIR$/lever_up_toast/ios/.symlinks/plugins/path_provider/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/lever_up_toast/ios/.symlinks/plugins/path_provider/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/lever_up_toast/ios/.symlinks/plugins/path_provider/example/build" />
     </content>

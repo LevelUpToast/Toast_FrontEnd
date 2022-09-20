@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02c425ff-ae40-446b-8a5f-04273c8dcf01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lever_up_toast/lib/screens/bodyScreen/myPageScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Toast_FrontEnd.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Toast_FrontEnd.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lever_up_toast/lib/screens/appBarScreen/homeScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lever_up_toast/lib/screens/appBarScreen/homeScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lever_up_toast/lib/API/api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lever_up_toast/lib/API/api.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lever_up_toast/lib/screens/Login/loginScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lever_up_toast/lib/screens/Login/loginScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lever_up_toast/lib/screens/Login/membershipScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lever_up_toast/lib/screens/Login/membershipScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lever_up_toast/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/lever_up_toast/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lever_up_toast/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/lever_up_toast/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lever_up_toast/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lever_up_toast/test/widget_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,19 +31,40 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="SDK Location" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.17" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="dart.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Flutter Test.tests in widget_test.dart">
     <configuration name="main.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/level_up_toast/lib/main.dart" />
-      <option name="workingDirectory" value="$PROJECT_DIR$/level_up_toast" />
+      <option name="filePath" value="$PROJECT_DIR$/lever_up_toast/lib/main.dart" />
+      <option name="workingDirectory" value="$PROJECT_DIR$/lever_up_toast" />
       <method v="2" />
     </configuration>
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter" nameIsGenerated="true">
+      <option name="additionalArgs" value="--no-sound-null-safety" />
+      <option name="filePath" value="$PROJECT_DIR$/lever_up_toast/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tests in widget_test.dart" type="FlutterTestConfigType" factoryName="Flutter Test" temporary="true" nameIsGenerated="true">
+      <option name="testFile" value="$PROJECT_DIR$/lever_up_toast/test/widget_test.dart" />
+      <option name="additionalArgs" value="--no-sound-null-safety" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Dart Command Line App.main.dart" />
+      <item itemvalue="Flutter.main.dart" />
+      <item itemvalue="Flutter Test.tests in widget_test.dart" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Flutter Test.tests in widget_test.dart" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -54,37 +80,65 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1660278704515">
-      <screen x="0" y="0" width="1920" height="1032" />
+    <state x="134" y="80" key="#Plugins" timestamp="1663634653723">
+      <screen x="0" y="25" width="1440" height="822" />
+    </state>
+    <state x="134" y="80" key="#Plugins/0.25.1440.822@0.25.1440.822" timestamp="1663634653723" />
+    <state x="195" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1663638825381">
+      <screen x="0" y="25" width="1440" height="823" />
     </state>
     <state x="0" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1660278704515" />
-    <state x="92" y="92" width="1736" height="848" key="AVDManager" timestamp="1660278803706">
-      <screen x="0" y="0" width="1920" height="1032" />
+    <state x="195" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1440.822@0.25.1440.822" timestamp="1663634104809" />
+    <state x="195" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1440.823@0.25.1440.823" timestamp="1663638825381" />
+    <state x="591" y="217" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1663633944762">
+      <screen x="0" y="25" width="1440" height="822" />
+    </state>
+    <state x="591" y="217" key="#com.intellij.ide.util.TreeFileChooserDialog/0.25.1440.822@0.25.1440.822" timestamp="1663633944762" />
+    <state x="535" y="162" key="#main.dart" timestamp="1663633916233">
+      <screen x="0" y="25" width="1440" height="822" />
+    </state>
+    <state x="535" y="162" key="#main.dart/0.25.1440.822@0.25.1440.822" timestamp="1663633916233" />
+    <state x="69" y="98" width="1302" height="676" key="AVDManager" timestamp="1663634561279">
+      <screen x="0" y="25" width="1440" height="822" />
     </state>
     <state x="92" y="92" width="1736" height="848" key="AVDManager/0.0.1920.1032@0.0.1920.1032" timestamp="1660278803706" />
+    <state x="69" y="98" width="1302" height="676" key="AVDManager/0.25.1440.822@0.25.1440.822" timestamp="1663634561279" />
     <state x="267" y="271" key="FileChooserDialogImpl" timestamp="1660278863442">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="267" y="271" key="FileChooserDialogImpl/0.0.1920.1032@0.0.1920.1032" timestamp="1660278863442" />
-    <state width="1899" height="279" key="GridCell.Tab.0.bottom" timestamp="1660278864774">
-      <screen x="0" y="0" width="1920" height="1032" />
+    <state width="1019" height="210" key="GridCell.Tab.0.bottom" timestamp="1663640822227">
+      <screen x="0" y="25" width="1440" height="823" />
     </state>
     <state width="1899" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1032@0.0.1920.1032" timestamp="1660278864774" />
-    <state width="1899" height="279" key="GridCell.Tab.0.center" timestamp="1660278864774">
-      <screen x="0" y="0" width="1920" height="1032" />
+    <state width="1019" height="210" key="GridCell.Tab.0.bottom/0.25.1440.822@0.25.1440.822" timestamp="1663636879408" />
+    <state width="1019" height="210" key="GridCell.Tab.0.bottom/0.25.1440.823@0.25.1440.823" timestamp="1663640822227" />
+    <state width="1019" height="210" key="GridCell.Tab.0.center" timestamp="1663640822226">
+      <screen x="0" y="25" width="1440" height="823" />
     </state>
     <state width="1899" height="279" key="GridCell.Tab.0.center/0.0.1920.1032@0.0.1920.1032" timestamp="1660278864774" />
-    <state width="1899" height="279" key="GridCell.Tab.0.left" timestamp="1660278864774">
-      <screen x="0" y="0" width="1920" height="1032" />
+    <state width="1019" height="210" key="GridCell.Tab.0.center/0.25.1440.822@0.25.1440.822" timestamp="1663636879407" />
+    <state width="1019" height="210" key="GridCell.Tab.0.center/0.25.1440.823@0.25.1440.823" timestamp="1663640822226" />
+    <state width="1019" height="210" key="GridCell.Tab.0.left" timestamp="1663640822225">
+      <screen x="0" y="25" width="1440" height="823" />
     </state>
     <state width="1899" height="279" key="GridCell.Tab.0.left/0.0.1920.1032@0.0.1920.1032" timestamp="1660278864774" />
-    <state width="1899" height="279" key="GridCell.Tab.0.right" timestamp="1660278864774">
-      <screen x="0" y="0" width="1920" height="1032" />
+    <state width="1019" height="210" key="GridCell.Tab.0.left/0.25.1440.822@0.25.1440.822" timestamp="1663636879406" />
+    <state width="1019" height="210" key="GridCell.Tab.0.left/0.25.1440.823@0.25.1440.823" timestamp="1663640822225" />
+    <state width="1019" height="210" key="GridCell.Tab.0.right" timestamp="1663640822226">
+      <screen x="0" y="25" width="1440" height="823" />
     </state>
     <state width="1899" height="279" key="GridCell.Tab.0.right/0.0.1920.1032@0.0.1920.1032" timestamp="1660278864774" />
-    <state x="0" y="160" key="SettingsEditor" timestamp="1660278534453">
-      <screen x="0" y="0" width="1920" height="1032" />
+    <state width="1019" height="210" key="GridCell.Tab.0.right/0.25.1440.822@0.25.1440.822" timestamp="1663636879408" />
+    <state width="1019" height="210" key="GridCell.Tab.0.right/0.25.1440.823@0.25.1440.823" timestamp="1663640822226" />
+    <state x="491" y="182" key="IDE.errors.dialog" timestamp="1663635519079">
+      <screen x="0" y="25" width="1440" height="822" />
+    </state>
+    <state x="491" y="182" key="IDE.errors.dialog/0.25.1440.822@0.25.1440.822" timestamp="1663635519079" />
+    <state x="39" y="25" width="1024" height="822" key="SettingsEditor" timestamp="1663635197207">
+      <screen x="0" y="25" width="1440" height="822" />
     </state>
     <state x="0" y="160" key="SettingsEditor/0.0.1920.1032@0.0.1920.1032" timestamp="1660278534453" />
+    <state x="39" y="25" width="1024" height="822" key="SettingsEditor/0.25.1440.822@0.25.1440.822" timestamp="1663635197207" />
   </component>
 </project>

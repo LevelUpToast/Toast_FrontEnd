@@ -32,11 +32,16 @@ dependencies:
   flutter_swiper: ^1.1.6
 
   material_floating_search_bar: ^0.2.6
-  flutter_svg: ^1.0.3
+  flutter_svg: ^0.22.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  # https://pub.dev/packages/test#-installing-tab-
+  test: ^1.9.4
+
+  # https://pub.dev/packages/shared_preferences#-readme-tab-
+  shared_preferences: ^0.5.6
 
   flutter_lints: ^1.0.0
 
@@ -45,33 +50,33 @@ flutter:
   assets:
     - assets/img/
 
-  fonts:
-    - family: Roboto
-      fonts:
-        - asset: assets/fonts/Roboto/Roboto-Black.ttf
-          weight: 600
-        - asset: assets/fonts/Roboto/Roboto-BlackItalic.ttf
-          weight: 600
-        - asset: assets/fonts/Roboto/Roboto-BoldItalic.ttf
-          weight: 500
-        - asset: assets/fonts/Roboto/Roboto-Bold.ttf
-          weight: 500
-        - asset: assets/fonts/Roboto/Roboto-Italic.ttf
-          weight: 300
-        - asset: assets/fonts/Roboto/Roboto-Light.ttf
-          weight: 200
-        - asset: assets/fonts/Roboto/Roboto-LightItalic.ttf
-          weight: 200
-        - asset: assets/fonts/Roboto/Roboto-Medium.ttf
-          weight: 400
-        - asset: assets/fonts/Roboto/Roboto-MediumItalic.ttf
-          weight: 400
-        - asset: assets/fonts/Roboto/Roboto-Regular.ttf
-          weight: 300
-        - asset: assets/fonts/Roboto/Roboto-Thin.ttf
-          weight: 100
-        - asset: assets/fonts/Roboto/Roboto-ThinItalic.ttf
-          weight: 100
+#  fonts:
+#    - family: Roboto
+#      fonts:
+#        - asset: assets/fonts/Roboto/Roboto-Black.ttf
+#          weight: 600
+#        - asset: assets/fonts/Roboto/Roboto-BlackItalic.ttf
+#          weight: 600
+#        - asset: assets/fonts/Roboto/Roboto-BoldItalic.ttf
+#          weight: 500
+#        - asset: assets/fonts/Roboto/Roboto-Bold.ttf
+#          weight: 500
+#        - asset: assets/fonts/Roboto/Roboto-Italic.ttf
+#          weight: 300
+#        - asset: assets/fonts/Roboto/Roboto-Light.ttf
+#          weight: 200
+#        - asset: assets/fonts/Roboto/Roboto-LightItalic.ttf
+#          weight: 200
+#        - asset: assets/fonts/Roboto/Roboto-Medium.ttf
+#          weight: 400
+#        - asset: assets/fonts/Roboto/Roboto-MediumItalic.ttf
+#          weight: 400
+#        - asset: assets/fonts/Roboto/Roboto-Regular.ttf
+#          weight: 300
+#        - asset: assets/fonts/Roboto/Roboto-Thin.ttf
+#          weight: 100
+#        - asset: assets/fonts/Roboto/Roboto-ThinItalic.ttf
+#          weight: 100
 
 
   uses-material-design: true

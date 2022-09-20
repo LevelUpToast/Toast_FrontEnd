@@ -2,17 +2,24 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:lever_up_toast/API/apiInfo.dart';
 import 'package:lever_up_toast/screens/Login/membershipScreen.dart';
 import 'package:lever_up_toast/values/values.dart';
 
 class Api with ChangeNotifier {
-  static String token = '';
+  String token = '';
   static String email = '';
   bool checkmembership = false;
   bool checklog = false;
 
   // 회원가입 세션
+  void setToken(String _token){
+    token = _token;
+  }
+  String getToken(){
+    return token;
+  }
   void requestEmailAuth(String _email) async {
     email = _email;
     HttpClientResponse response;
@@ -79,7 +86,7 @@ class Api with ChangeNotifier {
     return checkmembership;
   }
 
-  void signUp(Map<String, dynamic> data, BuildContext context) async{
+  void signUp(Map<String, dynamic> data) async{
     HttpClientResponse response;
     Uri signUpUrl = Uri.parse(ApiInfo.url + ApiInfo.signUpUrl);
     print(signUpUrl);
@@ -110,11 +117,12 @@ class Api with ChangeNotifier {
   }
 
   // 로그인 세션
-  void loginAPI(Map<String, dynamic> data, BuildContext context) async {
+  Future<int> loginAPI(Map<String, dynamic> data) async {
     print(data);
+    int result = 0;
     HttpClientResponse response;
+    Map<String, dynamic>  temp = {};
     Uri loginUrl = Uri.parse(ApiInfo.url + ApiInfo.loginUrl);
-    print(loginUrl);
     HttpClient httpClient = HttpClient();
     HttpClientRequest request = await httpClient.postUrl(loginUrl);
     request.headers.set(HttpHeaders.contentTypeHeader, "application/json");
@@ -127,18 +135,17 @@ class Api with ChangeNotifier {
       'utf-8',
     );
     request.add(utf8.encode(json.encode(data)));
-    response = await request.close();
+    response = await request.close().timeout(const Duration(seconds: 5));
     if (response.statusCode == 200) {
-      response.listen((event) {
-        Map temp =
+      await response.listen((event) {
+        temp =
             json.decode(utf8.decode(String.fromCharCodes(event).codeUnits));
-        print(temp);
-        token = temp['data']['token'];
-        print(token);
-        Navigator.pushReplacementNamed(context, '/home');
+        result = 1; // succes
       });
     } else {
       print("실패");
     }
+    setToken(temp['data']['token']);
+    return result;
   }
 }

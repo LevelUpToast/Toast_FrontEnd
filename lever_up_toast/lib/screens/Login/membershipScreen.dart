@@ -654,7 +654,7 @@ class _MembershipScreenState extends State<MembershipScreen> {
                         "phoneNumber" : _phoneNumberController.text,
                         "e_mail" : _emailNumberController.text,
                         "address" : _addressController.text};
-                      api.signUp(data, context);
+                      api.signUp(data);
                     })
                 : Container(
                     height: 60,

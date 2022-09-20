@@ -181,7 +181,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                       'id': 'saac',
                                       'pw': 'saac'
                                     };
-                                    api.loginAPI(data, context);
+                                    if(api.loginAPI(data) == 1){
+                                      Navigator.pushReplacementNamed(context,'/home');
+                                    }
                                   }),
                             )
                           : Container(
