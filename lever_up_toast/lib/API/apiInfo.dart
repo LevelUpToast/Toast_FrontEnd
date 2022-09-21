@@ -5,4 +5,6 @@ class ApiInfo {
   static const String loginUrl = "/login";
   static const String membershipUrl = "/mail/";
   static const String signUpUrl = "/signup";
+  static const String mainUrl ="/main/";
+  static const String imageUrl = "/img/";
 }

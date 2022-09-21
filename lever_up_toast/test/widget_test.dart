@@ -6,26 +6,38 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test/src/test_compat.dart';
 import 'package:lever_up_toast/API/api.dart';
 
 
 void main() {
-  test("api", ()async{
-    Map<String, dynamic> data = {
-      'id': 'saac',
-      'pw': 'saac'
-    };
+  group("api", (){
     var api = new Api();
-    int result = await api.loginAPI(data);
-    if (result == 1){
-      print(api.getToken());
-    };
-  });
+    var result;
 
-  test("image test", (){
+    test("login", ()async{
+      Map<String, dynamic> data = {
+        'id': 'saac',
+        'pw': 'saac'
+      };
+      result = await api.loginAPI(data);
+      if (result == 1){
+        print(api.getToken());
+      };
+    });
 
+    test("main page", ()async{
+    result = await api.mainPageApi();
+    //print(result);
+    });
+    // test("image", ()async{
+    //   result = await api.imageApi();
+    //  print(MemoryImage(result));
+    // });
   });
 
 }
