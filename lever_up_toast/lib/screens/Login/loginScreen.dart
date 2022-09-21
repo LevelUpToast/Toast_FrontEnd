@@ -176,12 +176,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                   style: OutlinedButton.styleFrom(
                                     backgroundColor: AppColors.thirdColor,
                                   ),
-                                  onPressed: () {
+                                  onPressed: () async {
                                     Map<String, dynamic> data = {
                                       'id': 'saac',
                                       'pw': 'saac'
                                     };
-                                    if(api.loginAPI(data) == 1){
+
+                                    if(api.loginAPI(data) != 1){
                                       Navigator.pushReplacementNamed(context,'/home');
                                     }
                                   }),
