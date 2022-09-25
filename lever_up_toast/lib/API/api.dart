@@ -128,7 +128,7 @@ class Api with ChangeNotifier {
     int result = 0;
     HttpClientResponse _response;
     Map<String, dynamic>  temp = {};
-    uri = Uri.parse(ApiInfo.url + ApiInfo.loginUrl);
+    uri = Uri.parse(ApiInfo.testUrl + ApiInfo.loginUrl);
     HttpClient httpClient = HttpClient();
     HttpClientRequest request = await httpClient.postUrl(uri);
     request.headers.set(HttpHeaders.contentTypeHeader, "application/json");
@@ -164,8 +164,8 @@ class Api with ChangeNotifier {
     // mainPageUrl = Uri.parse(ApiInfo.url + ApiInfo.mainUrl + _token);
 
 
-    uri = Uri.parse(ApiInfo.url + ApiInfo.mainUrl);
-    //print(uri);
+    uri = Uri.parse(ApiInfo.testUrl + ApiInfo.mainUrl);
+    print(uri);
 
     HttpClient httpClient = HttpClient();
     HttpClientRequest request = await httpClient.getUrl(uri);
@@ -196,50 +196,42 @@ class Api with ChangeNotifier {
 
 
 
-  Future<Uint8List> imageApi(String image) async{
-    //print(image.substring(1,image.length - 1));
-    //print(image.length);
-    HttpClientResponse _response;
-    List<int> _result = [0];
-    Map<String, dynamic> temp = {};
-    //String images = 'e2f8f5f0-182e-4710-9b42-1c78d0b6f5eb.png';
-    //image == null? uri = Uri.parse(ApiInfo.url + ApiInfo.imageUrl) :uri
-    uri = Uri.parse(ApiInfo.url + ApiInfo.imageUrl + image);
-    //print(uri);
-    HttpClient httpClient = HttpClient();
-    HttpClientRequest request = await httpClient.getUrl(uri);
-    request.headers.set(HttpHeaders.contentTypeHeader, "application/json");
-    request.headers.set(
-      HttpHeaders.acceptHeader,
-      'application/json',
-    );
-    request.headers.set(
-      HttpHeaders.acceptCharsetHeader,
-      'utf-8',
-    );
-    _response = await request.close().timeout(const Duration(seconds: 5));
-  try {
-    if (_response.statusCode == 200) {
-      await _response.listen((event) {
-        _result = event as Uint8List;
-        //print(_result.length);
-        //temp = json.decode(utf8.decode(String.fromCharCodes(event).codeUnits));
-        //print(base64.decode(event.toString()));
-        //print(byteImag);
-      });
-    } else {
-      print("실패");
-    }
-  }
-  catch(e){
-    print(e);
-  }
-  //print(_result.length);
-    return _result as Uint8List;
-  }
+  // Future<dynamic> imageApi(String image) async{
+  //   HttpClientResponse _response;
+  //   var _result;
+  //   uri = Uri.parse(ApiInfo.testUrl + ApiInfo.imageUrl + image);
+  //   print(uri);
+  //   HttpClient httpClient = HttpClient();
+  //   HttpClientRequest request = await httpClient.getUrl(uri);
+  //   request.headers.set(HttpHeaders.contentTypeHeader, "image/png");
+  //   request.headers.set(
+  //     HttpHeaders.acceptHeader,
+  //     'image/png',
+  //   );
+  //   request.headers.set(
+  //     HttpHeaders.acceptCharsetHeader,
+  //     'utf-8',
+  //   );
+  //   _response = await request.close().timeout(const Duration(seconds: 3));
+  //
+  // try {
+  //   if (_response.statusCode == 200) {
+  //     await _response.listen((event) {
+  //       _result = event;
+  //     });
+  //   } else {
+  //     print("실패");
+  //   }
+  // }
+  // catch(e){
+  //   print(e);
+  // }
+  //   return _result;
+  // }
 
 
   Future<Image> bytesToImage(Uint8List imgBytes) async{
+    String image ="3787d445-1a6d-4f16-8ddb-84d4d5bf89ad.png";
     var codec = await instantiateImageCodec(imgBytes);
     FrameInfo frame = await codec.getNextFrame();
     return frame.image as Image;
