@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:lever_up_toast/API/api.dart';
 import 'package:lever_up_toast/API/apiInfo.dart';
+import 'package:lever_up_toast/values/currentPage.dart';
 
 
 class MainScreen extends StatefulWidget {
@@ -176,7 +177,8 @@ class _MainScreenState extends State<MainScreen> {
                                   itemBuilder: (context, int index){
                                     return GestureDetector(
                                       onTap: (){
-                                        print(snapshot.data!['data']['recommendedProducts'][index]['productSeq']);
+                                        currentPage.addPage(snapshot.data!['data']['recommendedProducts'][index]);
+                                        print(snapshot.data!['data']['recommendedProducts'][index]);
                                       },
                                       child: Card(
                                         elevation: 0,
@@ -332,7 +334,8 @@ class _MainScreenState extends State<MainScreen> {
                                   itemBuilder: (context, int index){
                                     return GestureDetector(
                                       onTap: (){
-                                        print(snapshot.data!['data'][selectedValue.toString()+'Products'][index]['productSeq']);
+                                        currentPage.addPage(snapshot.data!['data'][selectedValue.toString()+'Products'][index]);
+                                        print(snapshot.data!['data'][selectedValue.toString()+'Products'][index]);
                                       },
                                       child: Card(
                                         elevation: 0,
