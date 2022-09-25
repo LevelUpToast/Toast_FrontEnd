@@ -232,18 +232,18 @@ class MyPageScreen extends StatelessWidget {
                                       child: Container(
                                         height: 150,
                                         width: 150,
-                                        child: Card(
-                                          elevation: 1,
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius: const BorderRadius.all( Radius.circular(23.0))
-                                          ),
-                                          child: Image(
-                                            fit: BoxFit.fill,
-                                            image: NetworkImage(
-                                                imagePath+_currentpage[index]['initialImgUrl'][1].toString()
+                                        child: Padding(
+                                          padding:EdgeInsets.only(left: 10),
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(20),
+                                            child: Image(
+                                              fit: BoxFit.fill,
+                                              image: NetworkImage(
+                                                  imagePath+_currentpage[index]['initialImgUrl'][1].toString()
+                                              ),
                                             ),
                                           ),
-                                        ),
+                                        )
                                       ),
                                     ),
                                     Flexible(
@@ -253,23 +253,34 @@ class MyPageScreen extends StatelessWidget {
                                           children: [
                                             Flexible(
                                                 child: Container(
-                                                  child: Center(
-                                                    child: Text(_currentpage[index]['title'].toString()),
-                                                  ),
-                                                )),
-                                            SizedBox(
-                                              height: 30,
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(left: 10),
+                                                    child: Center(
+                                                      child: Text(_currentpage[index]['title'].toString(),
+                                                        style: TextStyle(
+                                                          fontSize: 20,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  )
+                                                ),
                                             ),
+                                            // SizedBox(
+                                            //   height: 30,
+                                            // ),
                                             Flexible(
                                               child: Container(
-                                                child: Text(
-                                                  percentage(_currentpage[index]['funding']['currentAmount'],
-                                                      _currentpage[index]['funding']['finalAmount']),
-                                                  style: TextStyle(
-                                                      fontWeight: FontWeight.w500,
-                                                      fontSize: 15,
-                                                      color:Colors.green),
-                                                ),
+                                                child: Padding(
+                                                  padding:EdgeInsets.only(left: 10),
+                                                  child:  Text(
+                                                    percentage(_currentpage[index]['funding']['currentAmount'],
+                                                        _currentpage[index]['funding']['finalAmount']),
+                                                    style: TextStyle(
+                                                        fontWeight: FontWeight.w500,
+                                                        fontSize: 15,
+                                                        color:Colors.green),
+                                                  ),
+                                                )
                                               ),
                                             ),
                                           ],

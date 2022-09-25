@@ -35,7 +35,7 @@ class _searchScreenState extends State<searchScreen> {
             child: Card(
               color: Colors.white54,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
+                borderRadius: BorderRadius.circular(20.0),
               ),
               child: Container(
                 width: 350,

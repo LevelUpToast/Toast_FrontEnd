@@ -31,7 +31,6 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   @override
-  List<Color> _color = [Colors.black , Colors.grey , Colors.blue];
   String imagePath = ApiInfo.testUrl+ApiInfo.imageUrl;
   Widget build(BuildContext context) {
     return Scaffold(
@@ -180,48 +179,47 @@ class _MainScreenState extends State<MainScreen> {
                                         currentPage.addPage(snapshot.data!['data']['recommendedProducts'][index]);
                                         print(snapshot.data!['data']['recommendedProducts'][index]);
                                       },
-                                      child: Card(
-                                        elevation: 0,
-                                          // shape: RoundedRectangleBorder(
-                                          //   borderRadius: const BorderRadius.all(Radius.circular(23)),
-                                          // ),
-                                          child:Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Flexible(
-                                                flex: 2,
-                                                child: Container(
-                                                    height: 150,
-                                                    width: 150,
-                                                    child: Card(
-                                                      elevation: 1,
-                                                      shape: RoundedRectangleBorder(
-                                                        borderRadius: const BorderRadius.all( Radius.circular(23.0))
-                                                      ),
-                                                      child: Image(
-                                                        fit: BoxFit.fill,
-                                                        image: NetworkImage(
-                                                            imagePath+snapshot.data!['data']['recommendedProducts'][index]['initialImgUrl'][1].toString()
+                                      child: Padding(
+                                        padding:EdgeInsets.only(left: 10),
+                                        child:Card(
+                                            elevation: 0,
+                                            child:Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Flexible(
+                                                    flex: 2,
+                                                    child: Container(
+                                                      height: 150,
+                                                      width: 150,
+                                                      child: ClipRRect(
+                                                        borderRadius: BorderRadius.circular(20),
+                                                        child: Image(
+                                                          fit: BoxFit.fill ,
+                                                          image: NetworkImage(
+                                                              imagePath+snapshot.data!['data']['recommendedProducts'][index]['initialImgUrl'][1].toString()
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
+                                                    )
                                                 ),
-                                              ),
-                                              Flexible(
-                                                  flex: 1,
-                                                  child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                      Flexible(
-                                                          child: Container(
-                                                            child: Center(
-                                                              child: Text(snapshot.data!['data']['recommendedProducts'][index]['title'].toString()),
-                                                            ),
-                                                          )),
-                                                      SizedBox(
-                                                        height: 30,
-                                                      ),
-                                                      Flexible(
+                                                Flexible(
+                                                    flex: 1,
+                                                    child: Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Flexible(
+                                                            child: Container(
+                                                              child: Center(
+                                                                child: Text(snapshot.data!['data']['recommendedProducts'][index]['title'].toString(),
+                                                                  style: TextStyle(
+                                                                    fontSize: 20,
+                                                                  ),),
+                                                              ),
+                                                            )),
+                                                        // SizedBox(
+                                                        //   height: 30,
+                                                        // ),
+                                                        Flexible(
                                                           child: Container(
                                                             child: Text(
                                                               percentage(snapshot.data!['data']['recommendedProducts'][index]['funding']['currentAmount'],
@@ -232,11 +230,12 @@ class _MainScreenState extends State<MainScreen> {
                                                                   color:Colors.green),
                                                             ),
                                                           ),
-                                                      ),
-                                                    ],
-                                                  )),
-                                            ],
-                                          )
+                                                        ),
+                                                      ],
+                                                    )),
+                                              ],
+                                            )
+                                        ),
                                       ),
                                     );
                                   },
@@ -337,50 +336,63 @@ class _MainScreenState extends State<MainScreen> {
                                         currentPage.addPage(snapshot.data!['data'][selectedValue.toString()+'Products'][index]);
                                         print(snapshot.data!['data'][selectedValue.toString()+'Products'][index]);
                                       },
-                                      child: Card(
-                                        elevation: 0,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: const BorderRadius.all(Radius.circular(12)),
-                                          ),
-                                          child:Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Flexible(
-                                                flex: 2,
-                                                child: Container(
-                                                    width: 150,
-                                                    child: Image(
-                                                    image: NetworkImage(imagePath+snapshot.data!['data'][selectedValue.toString()+'Products'][index]['initialImgUrl'][0]),
-                                          )
+                                      child: Padding(
+                                        padding:EdgeInsets.only(left: 10),
+                                        child: Card(
+                                            elevation: 0,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius: const BorderRadius.all(Radius.circular(12)),
+                                            ),
+                                            child:Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Flexible(
+                                                  flex: 2,
+                                                  child: Container(
+                                                      height: 150,
+                                                      width: 150,
+                                                      child: ClipRRect(
+                                                        borderRadius: BorderRadius.circular(20),
+                                                        child: Image(
+                                                          fit: BoxFit.fill,
+                                                          image: NetworkImage(
+                                                              imagePath+snapshot.data!['data'][selectedValue.toString()+'Products'][index]['initialImgUrl'][1]),
+                                                        ),
+                                                      )
+                                                  ),
                                                 ),
-                                              ),
-                                              Flexible(
-                                                  flex: 1,
-                                                  child: Column(
-                                                    children: [
-                                                      Flexible(
+                                                Flexible(
+                                                    flex: 1,
+                                                    child: Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Flexible(
+                                                            child: Container(
+                                                              child: Text(snapshot.data!['data'][selectedValue!+'Products'][index]['title'].toString(),
+                                                                style: TextStyle(
+                                                                  fontSize: 20,
+                                                                ),),
+                                                            )),
+                                                        // SizedBox(
+                                                        //   height: 30,
+                                                        // ),
+                                                        Flexible(
                                                           child: Container(
-                                                            child: Text(snapshot.data!['data'][selectedValue!+'Products'][index]['title'].toString()),
-                                                          )),
-                                                      SizedBox(
-                                                        height: 30,
-                                                      ),
-                                                      Flexible(
-                                                        child: Container(
-                                                          child: Text(
-                                                            percentage(snapshot.data!['data'][selectedValue!+"Products"][index]['funding']['currentAmount'],
-                                                                snapshot.data!['data'][selectedValue!+"Products"][index]['funding']['finalAmount']),
-                                                            style: TextStyle(
-                                                                fontWeight: FontWeight.w500,
-                                                                fontSize: 15,
-                                                                color:Colors.green),
+                                                            child: Text(
+                                                              percentage(snapshot.data!['data'][selectedValue!+"Products"][index]['funding']['currentAmount'],
+                                                                  snapshot.data!['data'][selectedValue!+"Products"][index]['funding']['finalAmount']),
+                                                              style: TextStyle(
+                                                                  fontWeight: FontWeight.w500,
+                                                                  fontSize: 15,
+                                                                  color:Colors.green),
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ],
-                                                  )),
-                                            ],
-                                          )
+                                                      ],
+                                                    )),
+                                              ],
+                                            )
+                                        ),
                                       ),
                                     );
                                   },

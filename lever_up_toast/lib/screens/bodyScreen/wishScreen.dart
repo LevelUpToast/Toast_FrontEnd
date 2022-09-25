@@ -100,10 +100,8 @@ class _WishScreenState extends State<WishScreen> with PreferredSizeWidget{
                                 width: 150,
                                 child: Padding(
                                   padding: EdgeInsets.only(right: 10),
-                                  child: Card(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15.0),
-                                    ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
                                     child: Image(
                                       fit: BoxFit.fill,
                                       image: NetworkImage(
@@ -197,106 +195,106 @@ class _WishScreenState extends State<WishScreen> with PreferredSizeWidget{
                   itemBuilder: (context, index){
                     return Container(
                       height: 150,
-                      child: Card(
-                        elevation: 0,
-                        shadowColor: Colors.white,
-                        child: Row(
-                          children: [
-                            Flexible(
-                              flex:1,
-                              child: Container(
-                                height: 120,
-                                width: 150,
-                                child: Padding(
-                                  padding: EdgeInsets.only(right: 10),
-                                  child: Card(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15.0),
-                                    ),
-                                    child: Image(
-                                      fit: BoxFit.fill,
-                                      image: NetworkImage(
-                                          imagePath+_currentpage[index]['initialImgUrl'][0].toString()
+                      child: Padding(
+                        padding:EdgeInsets.only(left: 10),
+                        child: Card(
+                          elevation: 0,
+                          shadowColor: Colors.white,
+                          child: Row(
+                            children: [
+                              Flexible(
+                                flex:1,
+                                child: Container(
+                                  height: 120,
+                                  width: 150,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(right: 10),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image(
+                                        fit: BoxFit.fill,
+                                        image: NetworkImage(
+                                            imagePath+_currentpage[index]['initialImgUrl'][1].toString()
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Flexible(
-                              flex : 2,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Flexible(
-                                    child: Container(
-                                      color: Colors.white,
-                                      child: Text(_currentpage[index]['title'],
-                                        style: TextStyle(
-                                            color: AppColors.grey550,
-                                            fontSize: 20
-                                        ),),
-                                    ),
-                                  ),
-                                  Flexible(
-                                    child: Container(
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            height: 70,
-                                            width: 70,
-                                            child: Card(
-                                              color: AppColors.thirdColor,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(10.0),
-                                              ),
-                                              child: Center(
-                                                child: Text(_currentpage[index]['tag'],
-                                                  style: TextStyle(
-                                                      fontSize: 10,
-                                                      color: Colors.white),),
-                                              ),
-                                            ),
-                                          )
-
-                                        ],
+                              Flexible(
+                                flex : 2,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Flexible(
+                                      child: Container(
+                                        color: Colors.white,
+                                        child: Text(_currentpage[index]['title'],
+                                          style: TextStyle(
+                                              color: AppColors.grey550,
+                                              fontSize: 20
+                                          ),),
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(height: 35,),
-                                  Flexible(
-                                      child: Row(
-                                        children: [
-                                          Text((percentage(_currentpage[index]['funding']['currentAmount'],
-                                              _currentpage[index]['funding']['finalAmount'])*100).toString()+"% 완료",
-                                            style: TextStyle(
-                                                color: Colors.green,
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold
-                                            ),
-                                          ),
-                                          SizedBox(width: 90,),
-                                          Text("종료까지 xxx남음",
-                                            style: TextStyle(
-                                                fontSize: 13,
-                                                color: Colors.grey
-                                            ),),
-                                        ],
-                                      )
-                                  ),
-                                  Flexible(
-                                    child: LinearPercentIndicator(
-                                      width: 280.0,
-                                      lineHeight: 15.0,
-                                      percent: percentage(_currentpage[index]['funding']['currentAmount'],
-                                          _currentpage[index]['funding']['finalAmount']),
-                                      progressColor: Colors.green,
+                                    Flexible(
+                                      child: Container(
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              height: 70,
+                                              width: 70,
+                                              child: Card(
+                                                color: AppColors.thirdColor,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.circular(10.0),
+                                                ),
+                                                child: Center(
+                                                  child: Text(_currentpage[index]['tag'],
+                                                    style: TextStyle(
+                                                        fontSize: 10,
+                                                        color: Colors.white),),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    SizedBox(height: 35,),
+                                    Flexible(
+                                        child: Row(
+                                          children: [
+                                            Text((percentage(_currentpage[index]['funding']['currentAmount'],
+                                                _currentpage[index]['funding']['finalAmount'])*100).toString()+"% 완료",
+                                              style: TextStyle(
+                                                  color: Colors.green,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold
+                                              ),
+                                            ),
+                                            SizedBox(width: 90,),
+                                            Text("종료까지 xxx남음",
+                                              style: TextStyle(
+                                                  fontSize: 13,
+                                                  color: Colors.grey
+                                              ),),
+                                          ],
+                                        )
+                                    ),
+                                    Flexible(
+                                      child: LinearPercentIndicator(
+                                        width: 270.0,
+                                        lineHeight: 15.0,
+                                        percent: percentage(_currentpage[index]['funding']['currentAmount'],
+                                            _currentpage[index]['funding']['finalAmount']),
+                                        progressColor: Colors.green,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     );
