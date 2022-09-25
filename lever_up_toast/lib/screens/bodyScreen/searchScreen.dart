@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:lever_up_toast/values/values.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 
 
@@ -42,18 +43,16 @@ class _searchScreenState extends State<searchScreen> {
                   children: [
                     Flexible(
                       flex: 6,
-                      child: Container(),
-                    ),
-                    Flexible(
-                      flex: 1,
                       child: Container(
-                        child: IconButton(
-                          onPressed: (){
-                            print("눌림");
-                          },
-                          color: Colors.black,
-                          icon: Icon(
-                            Icons.search
+                        child: TextField(
+                          controller: TextEditingController(),
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(Icons.search),
+                            hintText: '원하는 물품을 입력하시오',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: const BorderSide(color: Colors.white54)
+                            )
                           ),
                         ),
                       ),
@@ -98,7 +97,7 @@ class _searchScreenState extends State<searchScreen> {
                     child: Center(
                       child: Container(
                         child: Card(
-                          color: Colors.green,
+                          color: AppColors.thirdColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(13.0),
                           ),
