@@ -224,9 +224,6 @@ class MyPageScreen extends StatelessWidget {
                             },
                             child: Card(
                                 elevation: 0,
-                                // shape: RoundedRectangleBorder(
-                                //   borderRadius: const BorderRadius.all(Radius.circular(23)),
-                                // ),
                                 child:Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [

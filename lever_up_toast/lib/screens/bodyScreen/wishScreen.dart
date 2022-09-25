@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lever_up_toast/values/currentPage.dart';
+import 'package:lever_up_toast/API/apiInfo.dart';
+import 'package:lever_up_toast/values/values.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class WishScreen extends StatefulWidget {
   const WishScreen({Key? key}) : super(key: key);
@@ -10,8 +14,16 @@ class WishScreen extends StatefulWidget {
 
 
 class _WishScreenState extends State<WishScreen> with PreferredSizeWidget{
+  double  percentage(int currentAmount,int finalAmount){
+    double result = 0 ;
+    result = (currentAmount/finalAmount);
+    return result;
+  }
+
   @override
   Widget build(BuildContext context) {
+    String imagePath = ApiInfo.testUrl+ApiInfo.imageUrl;
+    List<Map<String,dynamic>> _currentpage = currentPage.getPage();
     return DefaultTabController(
       length: 2,
       child: MaterialApp(
@@ -72,25 +84,31 @@ class _WishScreenState extends State<WishScreen> with PreferredSizeWidget{
           body: TabBarView(
             children: [
               ListView.builder(
-                  itemCount: 10,
+                  itemCount: 0,
                   itemBuilder: (context, index){
                     return Container(
                       height: 150,
                       child: Card(
+                        elevation: 0,
                         shadowColor: Colors.white,
                         child: Row(
                           children: [
                             Flexible(
                               flex:1,
                               child: Container(
+                                height: 120,
+                                width: 150,
                                 child: Padding(
                                   padding: EdgeInsets.only(right: 10),
                                   child: Card(
-                                    color: Colors.black,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15.0),
                                     ),
-                                    child: Container(
+                                    child: Image(
+                                      fit: BoxFit.fill,
+                                      image: NetworkImage(
+                                          imagePath+_currentpage[index]['initialImgUrl'][0].toString()
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -99,20 +117,71 @@ class _WishScreenState extends State<WishScreen> with PreferredSizeWidget{
                             Flexible(
                               flex : 2,
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Flexible(
                                     child: Container(
-                                      color: Colors.green,
+                                      color: Colors.white,
+                                      child: Text(_currentpage[index]['title'],
+                                      style: TextStyle(
+                                        color: AppColors.grey550,
+                                        fontSize: 20
+                                      ),),
                                     ),
                                   ),
                                   Flexible(
                                     child: Container(
-                                      color : Colors.tealAccent,
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            height: 70,
+                                            width: 70,
+                                            child: Card(
+                                              color: AppColors.thirdColor,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(10.0),
+                                              ),
+                                              child: Center(
+                                                child: Text(_currentpage[index]['tag'],
+                                                style: TextStyle(
+                                                    fontSize: 10,
+                                                    color: Colors.white),),
+                                              ),
+                                            ),
+                                          )
+
+                                        ],
+                                      ),
                                     ),
                                   ),
+                                  SizedBox(height: 35,),
                                   Flexible(
-                                    child: Container(
-                                      color: Colors.red,
+                                    child: Row(
+                                      children: [
+                                        Text((percentage(_currentpage[index]['funding']['currentAmount'],
+                                            _currentpage[index]['funding']['finalAmount'])*100).toString()+"% 완료",
+                                        style: TextStyle(
+                                          color: Colors.green,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold
+                                        ),
+                                        ),
+                                        SizedBox(width: 90,),
+                                        Text("종료까지 xxx남음",
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          color: Colors.grey
+                                        ),),
+                                      ],
+                                    )
+                                  ),
+                                  Flexible(
+                                    child: LinearPercentIndicator(
+                                      width: 280.0,
+                                      lineHeight: 15.0,
+                                      percent: percentage(_currentpage[index]['funding']['currentAmount'],
+                                          _currentpage[index]['funding']['finalAmount']),
+                                      progressColor: Colors.green,
                                     ),
                                   ),
                                 ],
@@ -124,37 +193,104 @@ class _WishScreenState extends State<WishScreen> with PreferredSizeWidget{
                     );
                   }),
               ListView.builder(
-                  itemCount: 10,
+                  itemCount: _currentpage.length,
                   itemBuilder: (context, index){
                     return Container(
-                      height: 160,
+                      height: 150,
                       child: Card(
+                        elevation: 0,
                         shadowColor: Colors.white,
                         child: Row(
                           children: [
                             Flexible(
                               flex:1,
                               child: Container(
-                                color: Colors.grey,
+                                height: 120,
+                                width: 150,
+                                child: Padding(
+                                  padding: EdgeInsets.only(right: 10),
+                                  child: Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15.0),
+                                    ),
+                                    child: Image(
+                                      fit: BoxFit.fill,
+                                      image: NetworkImage(
+                                          imagePath+_currentpage[index]['initialImgUrl'][0].toString()
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
                             Flexible(
                               flex : 2,
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Flexible(
                                     child: Container(
-                                      color: Colors.green,
+                                      color: Colors.white,
+                                      child: Text(_currentpage[index]['title'],
+                                        style: TextStyle(
+                                            color: AppColors.grey550,
+                                            fontSize: 20
+                                        ),),
                                     ),
                                   ),
                                   Flexible(
                                     child: Container(
-                                      color : Colors.tealAccent,
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            height: 70,
+                                            width: 70,
+                                            child: Card(
+                                              color: AppColors.thirdColor,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(10.0),
+                                              ),
+                                              child: Center(
+                                                child: Text(_currentpage[index]['tag'],
+                                                  style: TextStyle(
+                                                      fontSize: 10,
+                                                      color: Colors.white),),
+                                              ),
+                                            ),
+                                          )
+
+                                        ],
+                                      ),
                                     ),
                                   ),
+                                  SizedBox(height: 35,),
                                   Flexible(
-                                    child: Container(
-                                      color: Colors.red,
+                                      child: Row(
+                                        children: [
+                                          Text((percentage(_currentpage[index]['funding']['currentAmount'],
+                                              _currentpage[index]['funding']['finalAmount'])*100).toString()+"% 완료",
+                                            style: TextStyle(
+                                                color: Colors.green,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold
+                                            ),
+                                          ),
+                                          SizedBox(width: 90,),
+                                          Text("종료까지 xxx남음",
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                color: Colors.grey
+                                            ),),
+                                        ],
+                                      )
+                                  ),
+                                  Flexible(
+                                    child: LinearPercentIndicator(
+                                      width: 280.0,
+                                      lineHeight: 15.0,
+                                      percent: percentage(_currentpage[index]['funding']['currentAmount'],
+                                          _currentpage[index]['funding']['finalAmount']),
+                                      progressColor: Colors.green,
                                     ),
                                   ),
                                 ],
