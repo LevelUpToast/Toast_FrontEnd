@@ -6,9 +6,9 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 
-import 'dart:convert';
+import 'dart:typed_data';
+import 'dart:ui';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test/src/test_compat.dart';
 import 'package:lever_up_toast/API/api.dart';
@@ -32,11 +32,14 @@ void main() {
 
     test("main page", ()async{
     result = await api.mainPageApi();
-    //print(result);
+    print(result);
     });
+
     // test("image", ()async{
-    //   result = await api.imageApi();
-    //  print(MemoryImage(result));
+    //   result = await api.imageApi("");
+    //   var codec = await instantiateImageCodec(result);
+    //   FrameInfo frame = await codec.getNextFrame();
+    //  print(frame);
     // });
   });
 

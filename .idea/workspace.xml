@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="02c425ff-ae40-446b-8a5f-04273c8dcf01" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Toast_FrontEnd.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Toast_FrontEnd.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lever_up_toast/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/lever_up_toast/ios/Podfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lever_up_toast/lib/API/api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lever_up_toast/lib/API/api.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lever_up_toast/lib/API/apiInfo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lever_up_toast/lib/API/apiInfo.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lever_up_toast/lib/screens/Login/loginScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lever_up_toast/lib/screens/Login/loginScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lever_up_toast/lib/screens/bodyScreen/mainScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lever_up_toast/lib/screens/bodyScreen/mainScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lever_up_toast/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/lever_up_toast/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lever_up_toast/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/lever_up_toast/pubspec.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lever_up_toast/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lever_up_toast/test/widget_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,8 +83,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Flutter Test.image" />
         <item itemvalue="Flutter Test.tests in widget_test.dart" />
+        <item itemvalue="Flutter Test.image" />
       </list>
     </recent_temporary>
   </component>
@@ -87,17 +101,29 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="134" y="80" key="#Plugins" timestamp="1663634653723">
       <screen x="0" y="25" width="1440" height="822" />
     </state>
     <state x="134" y="80" key="#Plugins/0.25.1440.822@0.25.1440.822" timestamp="1663634653723" />
-    <state x="195" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1663660741416">
+    <state x="195" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1663804075625">
       <screen x="0" y="25" width="1440" height="823" />
     </state>
     <state x="0" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1660278704515" />
     <state x="195" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1440.822@0.25.1440.822" timestamp="1663634104809" />
-    <state x="195" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1440.823@0.25.1440.823" timestamp="1663660741416" />
+    <state x="195" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1440.823@0.25.1440.823" timestamp="1663804075625" />
     <state x="591" y="217" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1663633944762">
       <screen x="0" y="25" width="1440" height="822" />
     </state>
@@ -115,34 +141,38 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="267" y="271" key="FileChooserDialogImpl/0.0.1920.1032@0.0.1920.1032" timestamp="1660278863442" />
-    <state width="1019" height="210" key="GridCell.Tab.0.bottom" timestamp="1663762994628">
-      <screen x="0" y="25" width="1440" height="823" />
+    <state width="1019" height="210" key="GridCell.Tab.0.bottom" timestamp="1663991176636">
+      <screen x="0" y="25" width="1920" height="988" />
     </state>
     <state width="1899" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1032@0.0.1920.1032" timestamp="1660278864774" />
     <state width="1019" height="210" key="GridCell.Tab.0.bottom/0.25.1440.822@0.25.1440.822" timestamp="1663636879408" />
-    <state width="1019" height="210" key="GridCell.Tab.0.bottom/0.25.1440.823@0.25.1440.823" timestamp="1663762994628" />
-    <state width="1019" height="167" key="GridCell.Tab.0.bottom/0.25.1440.824@0.25.1440.824" timestamp="1663762359851" />
-    <state width="1019" height="210" key="GridCell.Tab.0.center" timestamp="1663762994627">
-      <screen x="0" y="25" width="1440" height="823" />
+    <state width="756" height="210" key="GridCell.Tab.0.bottom/0.25.1440.823@0.25.1440.823" timestamp="1663822452024" />
+    <state width="509" height="167" key="GridCell.Tab.0.bottom/0.25.1440.824@0.25.1440.824" timestamp="1663826871942" />
+    <state width="1019" height="210" key="GridCell.Tab.0.bottom/0.25.1920.988@0.25.1920.988" timestamp="1663991176636" />
+    <state width="1019" height="210" key="GridCell.Tab.0.center" timestamp="1663991176635">
+      <screen x="0" y="25" width="1920" height="988" />
     </state>
     <state width="1899" height="279" key="GridCell.Tab.0.center/0.0.1920.1032@0.0.1920.1032" timestamp="1660278864774" />
     <state width="1019" height="210" key="GridCell.Tab.0.center/0.25.1440.822@0.25.1440.822" timestamp="1663636879407" />
-    <state width="1019" height="210" key="GridCell.Tab.0.center/0.25.1440.823@0.25.1440.823" timestamp="1663762994627" />
-    <state width="1019" height="167" key="GridCell.Tab.0.center/0.25.1440.824@0.25.1440.824" timestamp="1663762359850" />
-    <state width="1019" height="210" key="GridCell.Tab.0.left" timestamp="1663762994626">
-      <screen x="0" y="25" width="1440" height="823" />
+    <state width="756" height="210" key="GridCell.Tab.0.center/0.25.1440.823@0.25.1440.823" timestamp="1663822452023" />
+    <state width="509" height="167" key="GridCell.Tab.0.center/0.25.1440.824@0.25.1440.824" timestamp="1663826871942" />
+    <state width="1019" height="210" key="GridCell.Tab.0.center/0.25.1920.988@0.25.1920.988" timestamp="1663991176635" />
+    <state width="1019" height="210" key="GridCell.Tab.0.left" timestamp="1663991176635">
+      <screen x="0" y="25" width="1920" height="988" />
     </state>
     <state width="1899" height="279" key="GridCell.Tab.0.left/0.0.1920.1032@0.0.1920.1032" timestamp="1660278864774" />
     <state width="1019" height="210" key="GridCell.Tab.0.left/0.25.1440.822@0.25.1440.822" timestamp="1663636879406" />
-    <state width="1019" height="210" key="GridCell.Tab.0.left/0.25.1440.823@0.25.1440.823" timestamp="1663762994626" />
-    <state width="1019" height="167" key="GridCell.Tab.0.left/0.25.1440.824@0.25.1440.824" timestamp="1663762359850" />
-    <state width="1019" height="210" key="GridCell.Tab.0.right" timestamp="1663762994628">
-      <screen x="0" y="25" width="1440" height="823" />
+    <state width="756" height="210" key="GridCell.Tab.0.left/0.25.1440.823@0.25.1440.823" timestamp="1663822452023" />
+    <state width="509" height="167" key="GridCell.Tab.0.left/0.25.1440.824@0.25.1440.824" timestamp="1663826871942" />
+    <state width="1019" height="210" key="GridCell.Tab.0.left/0.25.1920.988@0.25.1920.988" timestamp="1663991176635" />
+    <state width="1019" height="210" key="GridCell.Tab.0.right" timestamp="1663991176636">
+      <screen x="0" y="25" width="1920" height="988" />
     </state>
     <state width="1899" height="279" key="GridCell.Tab.0.right/0.0.1920.1032@0.0.1920.1032" timestamp="1660278864774" />
     <state width="1019" height="210" key="GridCell.Tab.0.right/0.25.1440.822@0.25.1440.822" timestamp="1663636879408" />
-    <state width="1019" height="210" key="GridCell.Tab.0.right/0.25.1440.823@0.25.1440.823" timestamp="1663762994628" />
-    <state width="1019" height="167" key="GridCell.Tab.0.right/0.25.1440.824@0.25.1440.824" timestamp="1663762359850" />
+    <state width="756" height="210" key="GridCell.Tab.0.right/0.25.1440.823@0.25.1440.823" timestamp="1663822452024" />
+    <state width="509" height="167" key="GridCell.Tab.0.right/0.25.1440.824@0.25.1440.824" timestamp="1663826871942" />
+    <state width="1019" height="210" key="GridCell.Tab.0.right/0.25.1920.988@0.25.1920.988" timestamp="1663991176636" />
     <state x="491" y="182" key="IDE.errors.dialog" timestamp="1663635519079">
       <screen x="0" y="25" width="1440" height="822" />
     </state>
@@ -152,16 +182,9 @@
     </state>
     <state x="0" y="160" key="SettingsEditor/0.0.1920.1032@0.0.1920.1032" timestamp="1660278534453" />
     <state x="39" y="25" width="1024" height="822" key="SettingsEditor/0.25.1440.822@0.25.1440.822" timestamp="1663635197207" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
-          <url>file://$PROJECT_DIR$/lever_up_toast/lib/screens/bodyScreen/mainScreen.dart</url>
-          <line>77</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="195" y="172" width="670" height="676" key="search.everywhere.popup" timestamp="1663806082355">
+      <screen x="0" y="25" width="1440" height="823" />
+    </state>
+    <state x="195" y="172" width="670" height="676" key="search.everywhere.popup/0.25.1440.823@0.25.1440.823" timestamp="1663806082355" />
   </component>
 </project>
