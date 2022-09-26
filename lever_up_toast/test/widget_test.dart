@@ -32,15 +32,14 @@ void main() {
 
     test("main page", ()async{
     result = await api.mainPageApi();
+    print("\n");
     print(result);
     });
-
-    // test("image", ()async{
-    //   result = await api.imageApi("");
-    //   var codec = await instantiateImageCodec(result);
-    //   FrameInfo frame = await codec.getNextFrame();
-    //  print(frame);
-    // });
+    test("search", ()async{
+      result =await api.searchApi("망고");
+      print("\n" );
+      print(result);
+    });
   });
 
 }

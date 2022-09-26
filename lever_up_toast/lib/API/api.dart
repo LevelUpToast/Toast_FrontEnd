@@ -193,9 +193,6 @@ class Api with ChangeNotifier {
     return result;
   }
 
-
-
-
   // Future<dynamic> imageApi(String image) async{
   //   HttpClientResponse _response;
   //   var _result;
@@ -228,7 +225,38 @@ class Api with ChangeNotifier {
   // }
   //   return _result;
   // }
+  Future<Map<String,dynamic>> searchApi(String keyWord) async{
+    print(keyWord);
+    String a = ApiInfo.url + ApiInfo.searchUrl + "1/"+ keyWord;
+    print(a);
+    uri = Uri.parse(a);
+    print(uri);
+    HttpClientResponse _response;
+    HttpClient httpClient = HttpClient();
+    Map<String, dynamic>  temp = {};
 
+    HttpClientRequest request = await httpClient.getUrl(uri);
+    request.headers.set(HttpHeaders.contentTypeHeader, "application/json");
+    request.headers.set(
+      HttpHeaders.acceptHeader,
+      'application/json',
+    );
+    request.headers.set(
+      HttpHeaders.acceptCharsetHeader,
+      'utf-8',
+    );
+    _response = await request.close().timeout(const Duration(seconds: 5));
+    if (_response.statusCode == 200) {
+      await _response.listen((event) {
+        temp = json.decode(utf8.decode(String.fromCharCodes(event).codeUnits));
+        result = temp;
+      });
+    } else {
+      print("실패");
+    }
+
+    return result;
+  }
 
   Future<Image> bytesToImage(Uint8List imgBytes) async{
     String image ="3787d445-1a6d-4f16-8ddb-84d4d5bf89ad.png";
