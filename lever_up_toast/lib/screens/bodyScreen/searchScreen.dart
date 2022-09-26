@@ -16,7 +16,7 @@ class searchScreen extends StatefulWidget {
 class _searchScreenState extends State<searchScreen> {
   @override
   final List<Map> myProducts =
-  List.generate(20, (index) => {"id": index, "name": "Product $index"})
+  List.generate(10, (index) => {"id": index, "name": "Product $index"})
       .toList();
   final myController = TextEditingController();
   String imagePath = ApiInfo.testUrl+ApiInfo.imageUrl;
@@ -42,21 +42,35 @@ class _searchScreenState extends State<searchScreen> {
           Flexible(
             flex: 1,
             child: Card(
-              color: Colors.white54,
+              elevation: 0,
+              color: AppColors.grey100,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(10.0),
               ),
               child: Container(
-                width: 350,
+                width: 390,
                 child: Row(
                   children: [
                     Flexible(
                       flex: 6,
                       child: Container(
                         child: TextField(
+                          onEditingComplete:() async{
+                            searchResult = await Api().searchApi(myController.value.text);
+                            print(searchResult);
+                            if (searchResult['data'] != null){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => findPro(context,searchResult)),
+                              );
+                            }else if(searchResult['data'] == null){
+                              FlutterDialog();
+                            }
+                          },
                           controller: myController,
                           decoration: InputDecoration(
-                            prefixIcon: IconButton(
+                            suffixIcon:IconButton(
+                              color: Colors.black,
                               icon: Icon(Icons.search),
                               onPressed: () async{
                                 searchResult = await Api().searchApi(myController.value.text);
@@ -71,10 +85,10 @@ class _searchScreenState extends State<searchScreen> {
                                 }
                               },
                             ),
-                            hintText: '원하는 물품을 입력하시오',
+                            hintText: '검색 내용을 입력해주세요.',
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                                borderSide: const BorderSide(color: Colors.white54)
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: const BorderSide(color: AppColors.grey100)
                             ),
                           ),
                         ),
@@ -117,44 +131,50 @@ class _searchScreenState extends State<searchScreen> {
               children: [
                 Flexible(
                   child: Container(
-                    child: Center(
-                      child: Container(
-                        child: Card(
-                          color: AppColors.thirdColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(13.0),
-                          ),
-                          child: Column(
-                            children: [
-                              Flexible(
-                                flex: 2,
-                                child: Row(
-                                  children: [
-                                    Flexible(
-                                      flex: 2,
-                                      child: Container(
-                                        child: Center(
-                                          child: Text("과일",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 20,
-                                            ),),
+                    child: Padding(
+                      padding:EdgeInsets.only(
+                          left: 20.0,
+                          right: 10.0
+                      ),
+                      child: Center(
+                        child: Container(
+                          child: Card(
+                            color: AppColors.thirdColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(13.0),
+                            ),
+                            child: Column(
+                              children: [
+                                Flexible(
+                                  flex: 2,
+                                  child: Row(
+                                    children: [
+                                      Flexible(
+                                        flex: 2,
+                                        child: Container(
+                                          child: Center(
+                                            child: Text("과일",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 20,
+                                              ),),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Flexible(
-                                      flex: 3,
-                                      child: Container(),
-                                    ),
-                                  ],
+                                      Flexible(
+                                        flex: 3,
+                                        child: Container(),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Flexible(
-                                flex: 3,
-                                child: Container(),
-                              ),
-                            ],
+                                Flexible(
+                                  flex: 3,
+                                  child: Container(),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -164,44 +184,50 @@ class _searchScreenState extends State<searchScreen> {
                 ),
                 Flexible(
                   child: Container(
-                    child: Center(
-                      child: Container(
-                        child: Card(
-                          color: Colors.green,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(13.0),
-                          ),
-                          child: Column(
-                            children: [
-                              Flexible(
-                                flex: 2,
-                                child: Row(
-                                  children: [
-                                    Flexible(
-                                      flex: 2,
-                                      child: Container(
-                                        child: Center(
-                                          child: Text("채소",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 20,
-                                            ),),
+                    child: Padding(
+                      padding:EdgeInsets.only(
+                        left: 10.0,
+                        right: 20.0,
+                      ),
+                      child: Center(
+                        child: Container(
+                          child: Card(
+                            color: AppColors.roamSelectedNavTitle,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(13.0),
+                            ),
+                            child: Column(
+                              children: [
+                                Flexible(
+                                  flex: 2,
+                                  child: Row(
+                                    children: [
+                                      Flexible(
+                                        flex: 2,
+                                        child: Container(
+                                          child: Center(
+                                            child: Text("채소",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 20,
+                                              ),),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Flexible(
-                                      flex: 3,
-                                      child: Container(),
-                                    ),
-                                  ],
+                                      Flexible(
+                                        flex: 3,
+                                        child: Container(),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Flexible(
-                                flex: 3,
-                                child: Container(),
-                              ),
-                            ],
+                                Flexible(
+                                  flex: 3,
+                                  child: Container(),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -242,7 +268,10 @@ class _searchScreenState extends State<searchScreen> {
             flex: 6,
             child: Container(
               child: Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: EdgeInsets.only(
+                    left: 20.0,
+                    right: 20.0
+                ),
                 child: GridView.builder(
                     gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                         maxCrossAxisExtent: 200,
@@ -254,9 +283,12 @@ class _searchScreenState extends State<searchScreen> {
                       return Container(
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                            color: Colors.green,
+                            color: AppColors.secondaryColor,
                             borderRadius: BorderRadius.circular(15)),
-                        child: Text(myProducts[index]["name"]),
+                        child: Text(myProducts[index]["name"],
+                          style: TextStyle(
+                              color: Colors.white
+                          ),),
                       );
                     }),
               ),
@@ -408,14 +440,12 @@ class _searchScreenState extends State<searchScreen> {
   void FlutterDialog() {
     showDialog(
         context: context,
-        //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
         barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
-            // RoundedRectangleBorder - Dialog 화면 모서리 둥글게 조절
+            elevation: 0,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0)),
-            //Dialog Main Title
             title: Column(
               children: <Widget>[
                 new Text("검색 에러"),

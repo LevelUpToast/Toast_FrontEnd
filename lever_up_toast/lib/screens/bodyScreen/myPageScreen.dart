@@ -258,6 +258,7 @@ class MyPageScreen extends StatelessWidget {
                                                     child: Center(
                                                       child: Text(_currentpage[index]['title'].toString(),
                                                         style: TextStyle(
+                                                          color: Colors.grey,
                                                           fontSize: 20,
                                                         ),
                                                       ),

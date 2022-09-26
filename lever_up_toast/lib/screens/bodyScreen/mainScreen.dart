@@ -213,6 +213,7 @@ class _MainScreenState extends State<MainScreen> {
                                                                 child: Text(snapshot.data!['data']['recommendedProducts'][index]['title'].toString(),
                                                                   style: TextStyle(
                                                                     fontSize: 20,
+                                                                    color: Colors.grey
                                                                   ),),
                                                               ),
                                                             )),
@@ -370,6 +371,7 @@ class _MainScreenState extends State<MainScreen> {
                                                             child: Container(
                                                               child: Text(snapshot.data!['data'][selectedValue!+'Products'][index]['title'].toString(),
                                                                 style: TextStyle(
+                                                                  color: Colors.grey,
                                                                   fontSize: 20,
                                                                 ),),
                                                             )),
