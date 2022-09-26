@@ -5,6 +5,7 @@ import 'package:lever_up_toast/app_theme.dart';
 import 'package:lever_up_toast/screens/Login/loginScreen.dart';
 import 'package:lever_up_toast/screens/Login/membershipScreen.dart';
 import 'package:lever_up_toast/screens/appBarScreen/homeScreen.dart';
+import 'package:lever_up_toast/screens/bodyScreen/searchScreen.dart';
 import 'package:lever_up_toast/screens/introScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:lever_up_toast/API/api.dart';
@@ -34,6 +35,8 @@ class LUP extends StatelessWidget {
           '/login': (context) => const LoginScreen(),
           '/home' : (context) => HomeScreen(),
           '/Membership': (context) => MembershipScreen(),
+          '/search' : (context) =>searchScreen(),
+          //'/findSearch' : (context) =>findSearchScreen(),
         },
       ),
     );
