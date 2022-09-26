@@ -9,4 +9,5 @@ class ApiInfo {
   static const String mainUrl ="/main/";
   static const String imageUrl = "/img/";
   static const String searchUrl = "/search/";
+  static const String productUrl = "/product/";
 }

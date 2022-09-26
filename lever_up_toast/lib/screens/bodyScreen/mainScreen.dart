@@ -178,6 +178,8 @@ class _MainScreenState extends State<MainScreen> {
                                       onTap: (){
                                         currentPage.addPage(snapshot.data!['data']['recommendedProducts'][index]);
                                         print(snapshot.data!['data']['recommendedProducts'][index]);
+                                        Api().productDetail(snapshot.data!['data']['recommendedProducts'][index]["productSeq"]);
+
                                       },
                                       child: Padding(
                                         padding:EdgeInsets.only(left: 10),
