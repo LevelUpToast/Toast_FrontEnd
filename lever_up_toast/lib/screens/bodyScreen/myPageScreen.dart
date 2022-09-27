@@ -49,7 +49,7 @@ class MyPageScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         SizedBox(
-                          width: 30,
+                          width: MediaQuery.of(context).size.width * 0.04,
                         ),
                         Flexible(
                             flex:3,
@@ -58,7 +58,7 @@ class MyPageScreen extends StatelessWidget {
                                   borderRadius: const BorderRadius.all( Radius.circular(60.0))
                               ),
                               child: Container(
-                                width: 90,
+                                width: MediaQuery.of(context).size.width * 0.21,
                               ),
                             ),
                         ),
@@ -71,7 +71,7 @@ class MyPageScreen extends StatelessWidget {
                                   flex: 1,
                                   child: Text(" 반갑습니다.",
                                   style: TextStyle(
-                                    fontSize: 30,
+                                    fontSize: MediaQuery.of(context).size.height * 0.037,
                                   ),
                                   ),
                                 ),
@@ -79,7 +79,7 @@ class MyPageScreen extends StatelessWidget {
                                   flex:1,
                                   child: Text(" 김준범 님",
                                   style: TextStyle(
-                                    fontSize: 30,
+                                    fontSize: MediaQuery.of(context).size.height * 0.035,
                                     fontWeight: FontWeight.bold,
                                   ),
                                   ),
@@ -89,7 +89,7 @@ class MyPageScreen extends StatelessWidget {
                       ],
                     ),
                 ),
-                SizedBox(height: 25),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.03),
                 Flexible(
                     flex:2,
                     child: Row(
@@ -105,16 +105,16 @@ class MyPageScreen extends StatelessWidget {
                                         color: Colors.green,
                                         icon: Icon(
                                           Icons.add_shopping_cart,
-                                          size: 40,
+                                          size: MediaQuery.of(context).size.height * 0.04,
                                         ),
                                       ),
                                     )),
-                                SizedBox(height: 10,),
+                                SizedBox(height: MediaQuery.of(context).size.height *0.01,),
                                 Flexible(
                                     child: Text(
                                       "펀딩한 상품",
                                       style: TextStyle(
-                                        fontSize: 15,
+                                        fontSize: MediaQuery.of(context).size.height * 0.017,
                                         fontWeight: FontWeight.bold
                                     ),
                                     )),
@@ -133,16 +133,16 @@ class MyPageScreen extends StatelessWidget {
                                           color: Colors.green,
                                           icon: Icon(
                                               Icons.monetization_on,
-                                            size: 40,
+                                            size: MediaQuery.of(context).size.height * 0.04,
                                           ),
                                         ),
                                       )),
-                                  SizedBox(height: 10,),
+                                  SizedBox(height:  MediaQuery.of(context).size.height *0.01,),
                                   Flexible(
                                       child: Text(
                                           "ToastPay",
                                         style: TextStyle(
-                                            fontSize: 15,
+                                            fontSize: MediaQuery.of(context).size.height * 0.017,
                                             fontWeight: FontWeight.bold
                                         ),
                                       )),
@@ -161,16 +161,16 @@ class MyPageScreen extends StatelessWidget {
                                           color: Colors.green,
                                           icon: Icon(
                                               Icons.people,
-                                            size: 40,
+                                            size: MediaQuery.of(context).size.height * 0.04,
                                           ),
                                         ),
                                       )),
-                                  SizedBox(height: 10,),
+                                  SizedBox(height:  MediaQuery.of(context).size.height *0.01,),
                                   Flexible(
                                       child: Text(
                                           "고객센터",
                                         style: TextStyle(
-                                          fontSize: 15,
+                                          fontSize: MediaQuery.of(context).size.height * 0.017,
                                           fontWeight: FontWeight.bold
                                         ),
                                       )),
@@ -195,22 +195,24 @@ class MyPageScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 10,
+                  height: MediaQuery.of(context).size.height * 0.01,
                 ),
                 Flexible(
                   flex:1,
                     child: Row(
                       children: [
-                        SizedBox(width: 15,),
+                        SizedBox(width: MediaQuery.of(context).size.width * 0.04,),
                         Container(
                           child: Text("최근 본 제품",
                             style: TextStyle(
-                                fontSize: 25,
+                                fontSize: MediaQuery.of(context).size.height * 0.026,
                                 fontWeight: FontWeight.w600
-                            ),),
+                            ),
+                          ),
                         )
                       ],
-                    )),
+                    ),
+                ),
                 Flexible(
                   flex: 3,
                     child: ListView.builder(
@@ -230,10 +232,10 @@ class MyPageScreen extends StatelessWidget {
                                     Flexible(
                                       flex: 2,
                                       child: Container(
-                                        height: 150,
-                                        width: 150,
+                                        height: MediaQuery.of(context).size.height*0.3,
+                                        width: MediaQuery.of(context).size.width*0.35,
                                         child: Padding(
-                                          padding:EdgeInsets.only(left: 10),
+                                          padding:EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
                                           child: ClipRRect(
                                             borderRadius: BorderRadius.circular(20),
                                             child: Image(
@@ -254,12 +256,12 @@ class MyPageScreen extends StatelessWidget {
                                             Flexible(
                                                 child: Container(
                                                   child: Padding(
-                                                    padding: EdgeInsets.only(left: 10),
+                                                    padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
                                                     child: Center(
                                                       child: Text(_currentpage[index]['title'].toString(),
                                                         style: TextStyle(
                                                           color: Colors.grey,
-                                                          fontSize: 20,
+                                                          fontSize: MediaQuery.of(context).size.height*0.02,
                                                         ),
                                                       ),
                                                     ),
@@ -272,13 +274,13 @@ class MyPageScreen extends StatelessWidget {
                                             Flexible(
                                               child: Container(
                                                 child: Padding(
-                                                  padding:EdgeInsets.only(left: 10),
+                                                  padding:EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
                                                   child:  Text(
                                                     percentage(_currentpage[index]['funding']['currentAmount'],
                                                         _currentpage[index]['funding']['finalAmount']),
                                                     style: TextStyle(
                                                         fontWeight: FontWeight.w500,
-                                                        fontSize: 15,
+                                                        fontSize: MediaQuery.of(context).size.height*0.018,
                                                         color:Colors.green),
                                                   ),
                                                 )
@@ -308,89 +310,89 @@ class MyPageScreen extends StatelessWidget {
               child: Column(
                  children: [
                    Container(
-                     height: 50,
+                     height: MediaQuery.of(context).size.height * 0.05,
                      child: Row(
                        children: [
-                         SizedBox(width: 30,),
+                         SizedBox(width: MediaQuery.of(context).size.width * 0.04,),
                          Text(" 공지사항",
                          style: TextStyle(
-                           fontSize: 20,
+                           fontSize: MediaQuery.of(context).size.height * 0.021,
                            fontWeight: FontWeight.bold,
                          ),),
-                         SizedBox(width: 270),
+                         SizedBox(width: MediaQuery.of(context).size.width * 0.66),
                          IconButton(
                              onPressed: (){},
                             color:Colors.black,
                              icon: Icon(
                                Icons.navigate_next,
-                               size:30 ,
+                               size:MediaQuery.of(context).size.height * 0.03 ,
                              ),
                          ),
                        ],
                      ),
                    ),
                    Container(
-                     height: 50,
+                     height: MediaQuery.of(context).size.height * 0.05,
                      child: Row(
                        children: [
-                         SizedBox(width: 30,),
+                         SizedBox(width: MediaQuery.of(context).size.width * 0.04,),
                          Text(" 이용안내",
                            style: TextStyle(
-                             fontSize: 20,
+                             fontSize: MediaQuery.of(context).size.height * 0.021,
                              fontWeight: FontWeight.bold,
                            ),),
-                         SizedBox(width: 270),
+                         SizedBox(width: MediaQuery.of(context).size.width * 0.66),
                          IconButton(
                            onPressed: (){},
                            color:Colors.black,
                            icon: Icon(
                              Icons.navigate_next,
-                             size:30 ,
+                             size:MediaQuery.of(context).size.height * 0.03 ,
                            ),
                          ),
                        ],
                      ),
                    ),
                    Container(
-                     height: 50,
+                     height: MediaQuery.of(context).size.height * 0.05,
                      child: Row(
                        children: [
-                         SizedBox(width: 30,),
+                         SizedBox(width: MediaQuery.of(context).size.width * 0.04,),
                          Text(" LevelUpToast안내",
                            style: TextStyle(
-                             fontSize: 20,
+                             fontSize: MediaQuery.of(context).size.height * 0.021,
                              fontWeight: FontWeight.bold,
                            ),),
-                         SizedBox(width: 170),
+                         SizedBox(width: MediaQuery.of(context).size.width * 0.44),
                          IconButton(
                            onPressed: (){},
                            color:Colors.black,
                            icon: Icon(
                              Icons.navigate_next,
-                             size:30 ,
+                             size:MediaQuery.of(context).size.height * 0.03 ,
                            ),
                          ),
                        ],
                      ),
                    ),
                    Container(
-                     height: 50,
+                     height: MediaQuery.of(context).size.height * 0.05,
                      child: Row(
                        children: [
-                         SizedBox(width: 30,),
+                         SizedBox(width: MediaQuery.of(context).size.width * 0.04,),
                          Text(" 로그아웃",
                            style: TextStyle(
                              color: Colors.red,
-                             fontSize: 20,
+                             fontSize: MediaQuery.of(context).size.height * 0.021,
                              fontWeight: FontWeight.bold,
                            ),),
-                         SizedBox(width: 270),
+                         SizedBox(width: MediaQuery.of(context).size.width * 0.66),
                          IconButton(
                            onPressed: (){},
                            color:Colors.black,
                            icon: Icon(
                              Icons.navigate_next,
-                             size:30 ,
+                             size:MediaQuery.of(context).size.height * 0.03 ,
                            ),
                          ),
                        ],
