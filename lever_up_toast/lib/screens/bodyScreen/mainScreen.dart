@@ -37,20 +37,20 @@ class _MainScreenState extends State<MainScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        actions : [
+        actions : const [
           Padding(
             padding: EdgeInsets.all(16.0),
             child: Icon(Icons.notifications,color: Colors.black,),
           ),
         ],
         elevation: 0,
-        title: Text('LevelUpToast',
+        title: const Text('LevelUpToast',
           style: TextStyle(
               color: Colors.black,
             fontWeight: FontWeight.w700,
           ),
         ),
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color : Colors.black,
         ),
       ),
