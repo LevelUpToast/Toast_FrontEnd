@@ -36,6 +36,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         actions : [
           Padding(
             padding: EdgeInsets.all(16.0),
@@ -179,7 +180,6 @@ class _MainScreenState extends State<MainScreen> {
                                         currentPage.addPage(snapshot.data!['data']['recommendedProducts'][index]);
                                         print(snapshot.data!['data']['recommendedProducts'][index]);
                                         Api().productDetail(snapshot.data!['data']['recommendedProducts'][index]["productSeq"]);
-
                                       },
                                       child: Padding(
                                         padding:EdgeInsets.only(left: 10),
