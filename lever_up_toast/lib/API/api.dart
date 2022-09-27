@@ -17,6 +17,7 @@ class Api with ChangeNotifier {
   bool checklog = false;
   Uri uri = null as Uri;
   Map<String, dynamic> result = {};
+  Map<String, dynamic> productData = {};
   late HttpClientResponse response;
 
   // 회원가입 세션
@@ -264,7 +265,7 @@ class Api with ChangeNotifier {
   }
 
   Future<int> productDetail(int _productSep) async {
-
+    int result = 0;
     HttpClientResponse _response;
     uri =
         Uri.parse(ApiInfo.url + ApiInfo.productUrl+ _productSep.toString());
@@ -283,8 +284,8 @@ class Api with ChangeNotifier {
     _response = await request.close();
     if (_response.statusCode == 200) {
       _response.listen((event) {
-        Map temp =
-            json.decode(utf8.decode(String.fromCharCodes(event).codeUnits));
+        productData = json.decode(utf8.decode(String.fromCharCodes(event).codeUnits));
+        print(productData);
       });
     } else {
       print("실패");
