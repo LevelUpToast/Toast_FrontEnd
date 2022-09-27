@@ -115,7 +115,6 @@ class Api with ChangeNotifier {
         Map temp =
             json.decode(utf8.decode(String.fromCharCodes(event).codeUnits));
         print(temp);
-
         // Navigator.pushReplacementNamed(context, '/home');
       });
     } else {
@@ -264,9 +263,9 @@ class Api with ChangeNotifier {
     return frame.image as Image;
   }
 
-  Future<void> productDetail(int _productSep) async {
-    HttpClientResponse _response;
+  Future<int> productDetail(int _productSep) async {
 
+    HttpClientResponse _response;
     uri =
         Uri.parse(ApiInfo.url + ApiInfo.productUrl+ _productSep.toString());
     print(uri);
@@ -286,11 +285,10 @@ class Api with ChangeNotifier {
       _response.listen((event) {
         Map temp =
             json.decode(utf8.decode(String.fromCharCodes(event).codeUnits));
-
-        print(temp);
       });
     } else {
       print("실패");
     }
+    return 0;
   }
 }
