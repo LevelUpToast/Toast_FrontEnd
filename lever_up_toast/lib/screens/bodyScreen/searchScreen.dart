@@ -48,7 +48,7 @@ class _searchScreenState extends State<searchScreen> {
                 borderRadius: BorderRadius.circular(10.0),
               ),
               child: Container(
-                width: 390,
+                width: MediaQuery.of(context).size.width * 0.9,
                 child: Row(
                   children: [
                     Flexible(
@@ -108,10 +108,10 @@ class _searchScreenState extends State<searchScreen> {
                       flex: 2,
                       child: Container(
                         child: Padding(
-                          padding: EdgeInsets.only(left: 20),
+                          padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.048),
                           child: Text('카테고리',
                             style: TextStyle(
-                              fontSize: 20.0,
+                              fontSize: MediaQuery.of(context).size.height * 0.025,
                               fontWeight: FontWeight.w700,
                             ),),
                         ),
@@ -133,8 +133,8 @@ class _searchScreenState extends State<searchScreen> {
                   child: Container(
                     child: Padding(
                       padding:EdgeInsets.only(
-                          left: 20.0,
-                          right: 10.0
+                          left: MediaQuery.of(context).size.width * 0.04,
+                          right: MediaQuery.of(context).size.width * 0.03
                       ),
                       child: Center(
                         child: Container(
@@ -157,7 +157,7 @@ class _searchScreenState extends State<searchScreen> {
                                               style: TextStyle(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.w700,
-                                                fontSize: 20,
+                                                fontSize: MediaQuery.of(context).size.height * 0.025,
                                               ),),
                                           ),
                                         ),
@@ -186,8 +186,8 @@ class _searchScreenState extends State<searchScreen> {
                   child: Container(
                     child: Padding(
                       padding:EdgeInsets.only(
-                        left: 10.0,
-                        right: 20.0,
+                          right: MediaQuery.of(context).size.width * 0.04,
+                          left: MediaQuery.of(context).size.width * 0.03
                       ),
                       child: Center(
                         child: Container(
@@ -210,7 +210,7 @@ class _searchScreenState extends State<searchScreen> {
                                               style: TextStyle(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.w700,
-                                                fontSize: 20,
+                                                fontSize: MediaQuery.of(context).size.height * 0.025,
                                               ),),
                                           ),
                                         ),
@@ -247,10 +247,11 @@ class _searchScreenState extends State<searchScreen> {
                       flex: 2,
                       child: Container(
                         child: Padding(
-                          padding: EdgeInsets.only(left: 20),
+                          padding: EdgeInsets.only(
+                              left: MediaQuery.of(context).size.width * 0.048),
                           child: Text('키워드',
                             style: TextStyle(
-                              fontSize: 20.0,
+                              fontSize: MediaQuery.of(context).size.height * 0.025,
                               fontWeight: FontWeight.w700,
                             ),),
                         ),
@@ -269,8 +270,8 @@ class _searchScreenState extends State<searchScreen> {
             child: Container(
               child: Padding(
                 padding: EdgeInsets.only(
-                    left: 20.0,
-                    right: 20.0
+                    left: MediaQuery.of(context).size.width * 0.04,
+                    right: MediaQuery.of(context).size.width * 0.04,
                 ),
                 child: GridView.builder(
                     gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -329,9 +330,9 @@ class _searchScreenState extends State<searchScreen> {
           itemCount: searchResult['data']['SearchProduct'].length,
           itemBuilder: (context, index){
             return Container(
-              height: 150,
+              height: MediaQuery.of(context).size.height * 0.15,
               child: Padding(
-                padding:EdgeInsets.only(left: 10),
+                padding:EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.03),
                 child: Card(
                   elevation: 0,
                   shadowColor: Colors.white,
@@ -340,10 +341,10 @@ class _searchScreenState extends State<searchScreen> {
                       Flexible(
                         flex:1,
                         child: Container(
-                          height: 120,
-                          width: 150,
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          width: MediaQuery.of(context).size.height * 0.4,
                           child: Padding(
-                            padding: EdgeInsets.only(right: 10),
+                            padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.03),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(20),
                               child: Image(
@@ -367,7 +368,7 @@ class _searchScreenState extends State<searchScreen> {
                                 child: Text(searchResult['data']['SearchProduct'][index]['title'],
                                   style: TextStyle(
                                       color: AppColors.grey550,
-                                      fontSize: 20
+                                      fontSize: MediaQuery.of(context).size.height * 0.025
                                   ),),
                               ),
                             ),
@@ -376,8 +377,8 @@ class _searchScreenState extends State<searchScreen> {
                                 child: Row(
                                   children: [
                                     Container(
-                                      height: 70,
-                                      width: 70,
+                                      height: MediaQuery.of(context).size.height * 0.03,
+                                      width: MediaQuery.of(context).size.height * 0.08,
                                       child: Card(
                                         color: AppColors.thirdColor,
                                         shape: RoundedRectangleBorder(
@@ -386,7 +387,7 @@ class _searchScreenState extends State<searchScreen> {
                                         child: Center(
                                           child: Text(searchResult['data']['SearchProduct'][index]['tag'],
                                             style: TextStyle(
-                                                fontSize: 10,
+                                                fontSize: MediaQuery.of(context).size.width * 0.02,
                                                 color: Colors.white),),
                                         ),
                                       ),
@@ -395,7 +396,7 @@ class _searchScreenState extends State<searchScreen> {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 35,),
+                            SizedBox(height: MediaQuery.of(context).size.height * 0.04,),
                             Flexible(
                                 child: Row(
                                   children: [
@@ -403,14 +404,14 @@ class _searchScreenState extends State<searchScreen> {
                                         searchResult['data']['SearchProduct'][index]['funding']['finalAmount'])*100).toString()+"% 완료",
                                       style: TextStyle(
                                           color: Colors.green,
-                                          fontSize: 16,
+                                          fontSize: MediaQuery.of(context).size.height * 0.018,
                                           fontWeight: FontWeight.bold
                                       ),
                                     ),
-                                    SizedBox(width: 90,),
+                                    SizedBox(width: MediaQuery.of(context).size.width * 0.18,),
                                     Text("종료까지 xxx남음",
                                       style: TextStyle(
-                                          fontSize: 13,
+                                          fontSize: MediaQuery.of(context).size.width * 0.03,
                                           color: Colors.grey
                                       ),),
                                   ],
@@ -418,8 +419,8 @@ class _searchScreenState extends State<searchScreen> {
                             ),
                             Flexible(
                               child: LinearPercentIndicator(
-                                width: 270.0,
-                                lineHeight: 15.0,
+                                width: MediaQuery.of(context).size.width * 0.62,
+                                lineHeight: MediaQuery.of(context).size.height * 0.018,
                                 percent: percentage(searchResult['data']['SearchProduct'][index]['funding']['currentAmount'],
                                     searchResult['data']['SearchProduct'][index]['funding']['finalAmount']),
                                 progressColor: Colors.green,

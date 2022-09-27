@@ -123,33 +123,32 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                 ),
                 Container(
-                    height: 250,
-                    //flex: 2,
+                    height: MediaQuery.of(context!).size.height *0.3,
                     child: Container(
-                      //color: Colors.lightGreen,
                       child: Column(
                         children: [
                           Flexible(
                               flex: 1,
                               child: Container(
+                                width: MediaQuery.of(context!).size.width,
                                 child: Row(
                                   children: [
                                     Flexible(
-                                        flex: 7,
+                                        flex: 6,
                                         child: Padding(
-                                          padding: EdgeInsets.only(left: 24),
+                                          padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.05),
                                           child: Container(
                                             child: Text(' 이런상품도 있어요!',
                                               style: TextStyle(
-                                                fontSize: 25,
+                                                fontSize: MediaQuery.of(context).size.height * 0.025,
                                                 color: Colors.grey
                                                 ,
                                               ),),
                                           ),
                                         )),
-                                    Flexible(
-                                        flex: 3,
-                                        child: Container()),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width * 0.27,
+                                    ),
                                     Flexible(
                                       flex: 2,
                                       child: Container(
@@ -170,7 +169,7 @@ class _MainScreenState extends State<MainScreen> {
                           Flexible(
                               flex: 3,
                               child: Container(
-                                padding: EdgeInsets.only(left: 20),
+                                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.05),
                                 child: ListView.builder(
                                   scrollDirection: Axis.horizontal,
                                   itemCount: snapshot.data!['data']['recommendedProducts'].length,
@@ -191,8 +190,8 @@ class _MainScreenState extends State<MainScreen> {
                                                 Flexible(
                                                     flex: 2,
                                                     child: Container(
-                                                      height: 150,
-                                                      width: 150,
+                                                      height: MediaQuery.of(context).size.height*0.2,
+                                                      width: MediaQuery.of(context).size.width*0.35,
                                                       child: ClipRRect(
                                                         borderRadius: BorderRadius.circular(20),
                                                         child: Image(
@@ -214,7 +213,7 @@ class _MainScreenState extends State<MainScreen> {
                                                               child: Center(
                                                                 child: Text(snapshot.data!['data']['recommendedProducts'][index]['title'].toString(),
                                                                   style: TextStyle(
-                                                                    fontSize: 20,
+                                                                    fontSize: MediaQuery.of(context).size.height*0.025,
                                                                     color: Colors.grey
                                                                   ),),
                                                               ),
@@ -229,7 +228,7 @@ class _MainScreenState extends State<MainScreen> {
                                                                   snapshot.data!['data']['recommendedProducts'][index]['funding']['finalAmount']),
                                                               style: TextStyle(
                                                                   fontWeight: FontWeight.w500,
-                                                                  fontSize: 15,
+                                                                  fontSize: MediaQuery.of(context).size.height * 0.018,
                                                                   color:Colors.green),
                                                             ),
                                                           ),
@@ -243,16 +242,17 @@ class _MainScreenState extends State<MainScreen> {
                                     );
                                   },
                                 ),
-                              )),
+                              ),
+                          ),
                         ],
                       ),
                     )),
                 SizedBox(
-                  height: 30,
+                  height: MediaQuery.of(context).size.height * 0.01,
                 ),
                 Container(
                   //flex: 2,
-                    height: 250,
+                    height: MediaQuery.of(context).size.height *0.3,
                     child: Container(
                       //color: Colors.lightGreen,
                       child: Column(
@@ -265,11 +265,11 @@ class _MainScreenState extends State<MainScreen> {
                                     Flexible(
                                         flex: 7,
                                         child: Padding(
-                                          padding: EdgeInsets.only(left: 24),
+                                          padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.05),
                                           child: Container(
                                             child: Text(' 이런상품은 어떠신가요?',
                                               style: TextStyle(
-                                                fontSize: 22,
+                                                fontSize: MediaQuery.of(context).size.height * 0.025,
                                                 color: Colors.grey,
                                               ),),
                                           ),
@@ -281,7 +281,7 @@ class _MainScreenState extends State<MainScreen> {
                                           hint: Text(
                                             'Select Item',
                                             style: TextStyle(
-                                                fontSize: 11,
+                                                fontSize: MediaQuery.of(context).size.height * 0.002,
                                                 color: Colors.black
                                             ),
                                           ),
@@ -291,8 +291,8 @@ class _MainScreenState extends State<MainScreen> {
                                                 value: item,
                                                 child: Text(
                                                   item,
-                                                  style: const TextStyle(
-                                                    fontSize: 12,
+                                                  style: TextStyle(
+                                                    fontSize: MediaQuery.of(context).size.height * 0.015,
                                                   ),
                                                 ),
                                               ))
@@ -304,9 +304,9 @@ class _MainScreenState extends State<MainScreen> {
                                               print(selectedValue);
                                             });
                                           },
-                                          buttonHeight: 70,
-                                          buttonWidth: 90,
-                                          itemHeight: 50,
+                                          buttonHeight: MediaQuery.of(context).size.height * 0.03,
+                                          buttonWidth: MediaQuery.of(context).size.width * 0.3,
+                                          itemHeight: MediaQuery.of(context).size.height * 0.03,
                                         ),
                                       ),),//TODO
                                     Flexible(
@@ -329,7 +329,7 @@ class _MainScreenState extends State<MainScreen> {
                           Flexible(
                               flex: 3,
                               child: Container(
-                                padding: EdgeInsets.only(left: 20),
+                                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.05),
                                 child: ListView.builder(
                                   scrollDirection: Axis.horizontal,
                                   itemCount: 1,
