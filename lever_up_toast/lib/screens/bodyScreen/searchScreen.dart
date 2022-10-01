@@ -40,7 +40,7 @@ class _searchScreenState extends State<searchScreen> {
       body: Column(
         children: [
           Flexible(
-            flex: 1,
+            flex: 2,
             child: Card(
               elevation: 0,
               color: AppColors.grey100,
@@ -130,6 +130,7 @@ class _searchScreenState extends State<searchScreen> {
             child: Row(
               children: [
                 Flexible(
+                  flex: 1,
                   child: Container(
                     child: Padding(
                       padding:EdgeInsets.only(
@@ -141,7 +142,7 @@ class _searchScreenState extends State<searchScreen> {
                           child: Card(
                             color: AppColors.thirdColor,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(13.0),
+                              borderRadius: BorderRadius.circular(7.0),
                             ),
                             child: Column(
                               children: [
@@ -180,7 +181,6 @@ class _searchScreenState extends State<searchScreen> {
                       ),
                     ),
                   ),
-                  flex: 1,
                 ),
                 Flexible(
                   child: Container(
@@ -194,7 +194,7 @@ class _searchScreenState extends State<searchScreen> {
                           child: Card(
                             color: AppColors.roamSelectedNavTitle,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(13.0),
+                              borderRadius: BorderRadius.circular(7.0),
                             ),
                             child: Column(
                               children: [
@@ -266,7 +266,7 @@ class _searchScreenState extends State<searchScreen> {
             ),
           ),
           Flexible(
-            flex: 6,
+            flex: 7,
             child: Container(
               child: Padding(
                 padding: EdgeInsets.only(
