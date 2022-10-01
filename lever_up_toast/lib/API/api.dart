@@ -17,7 +17,7 @@ class Api with ChangeNotifier {
   bool checklog = false;
   Uri uri = null as Uri;
   Map<String, dynamic> result = {};
-  Map<String, dynamic> productData = {};
+  static Map<String, dynamic> productData = {};
   late HttpClientResponse response;
 
   // 회원가입 세션
@@ -292,4 +292,5 @@ class Api with ChangeNotifier {
     }
     return 0;
   }
+
 }

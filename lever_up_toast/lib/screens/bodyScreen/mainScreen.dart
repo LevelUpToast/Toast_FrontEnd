@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:lever_up_toast/API/api.dart';
 import 'package:lever_up_toast/API/apiInfo.dart';
+import 'package:lever_up_toast/screens/bodyScreen/productDetailScreen.dart';
 import 'package:lever_up_toast/values/currentPage.dart';
 
 
@@ -130,7 +131,7 @@ class _MainScreenState extends State<MainScreen> {
                           Flexible(
                               flex: 1,
                               child: Container(
-                                width: MediaQuery.of(context!).size.width,
+                                width: MediaQuery.of(context).size.width,
                                 child: Row(
                                   children: [
                                     Flexible(
@@ -169,16 +170,21 @@ class _MainScreenState extends State<MainScreen> {
                           Flexible(
                               flex: 3,
                               child: Container(
-                                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.05),
+                                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.02),
                                 child: ListView.builder(
                                   scrollDirection: Axis.horizontal,
                                   itemCount: snapshot.data!['data']['recommendedProducts'].length,
                                   itemBuilder: (context, int index){
                                     return GestureDetector(
-                                      onTap: (){
+                                      onTap: () async{
                                         currentPage.addPage(snapshot.data!['data']['recommendedProducts'][index]);
                                         print(snapshot.data!['data']['recommendedProducts'][index]);
-                                        Api().productDetail(snapshot.data!['data']['recommendedProducts'][index]["productSeq"]);
+                                        if(0 == await Api().productDetail(snapshot.data!['data']['recommendedProducts'][index]["productSeq"])){
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(builder: (context) => ProductDetailScreen()),
+                                          );
+                                        }
                                       },
                                       child: Padding(
                                         padding:EdgeInsets.only(left: 10),
@@ -191,7 +197,7 @@ class _MainScreenState extends State<MainScreen> {
                                                     flex: 2,
                                                     child: Container(
                                                       height: MediaQuery.of(context).size.height*0.2,
-                                                      width: MediaQuery.of(context).size.width*0.35,
+                                                      width: MediaQuery.of(context).size.width*0.376,
                                                       child: ClipRRect(
                                                         borderRadius: BorderRadius.circular(20),
                                                         child: Image(
@@ -335,9 +341,15 @@ class _MainScreenState extends State<MainScreen> {
                                   itemCount: 1,
                                   itemBuilder: (context, int index){
                                     return GestureDetector(
-                                      onTap: (){
+                                      onTap: () async{
                                         currentPage.addPage(snapshot.data!['data'][selectedValue.toString()+'Products'][index]);
                                         print(snapshot.data!['data'][selectedValue.toString()+'Products'][index]);
+                                        if(0 == await Api().productDetail(snapshot.data!['data']['recommendedProducts'][index]["productSeq"])){
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(builder: (context) => ProductDetailScreen()),
+                                          );
+                                        }
                                       },
                                       child: Padding(
                                         padding:EdgeInsets.only(left: 10),
