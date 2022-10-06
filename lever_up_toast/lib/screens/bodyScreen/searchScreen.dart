@@ -3,9 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:lever_up_toast/API/api.dart';
 import 'package:lever_up_toast/API/apiInfo.dart';
+import 'package:lever_up_toast/screens/bodyScreen/productDetailScreen.dart';
 import 'package:lever_up_toast/values/values.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:lever_up_toast/values/currentPage.dart';
 
 class searchScreen extends StatefulWidget {
   const searchScreen({Key? key}) : super(key: key);
@@ -15,9 +17,18 @@ class searchScreen extends StatefulWidget {
 
 class _searchScreenState extends State<searchScreen> {
   @override
-  final List<Map> myProducts =
-  List.generate(10, (index) => {"id": index, "name": "Product $index"})
-      .toList();
+  final List<Map> myProducts =[
+    {"name":"사과"},
+    {"name":"포도"},
+    {"name":"오렌지"},
+    {"name":"수박"},
+    {"name":"참외"},
+    {"name":"고등어"},
+    {"name":"맛있는거"},
+    {"name":"다랑어"},
+    {"name":"내얼굴"},
+    {"name":"맛있는거"},
+  ];
   final myController = TextEditingController();
   String imagePath = ApiInfo.testUrl+ApiInfo.imageUrl;
   Map<String,dynamic> searchResult ={};
@@ -276,7 +287,7 @@ class _searchScreenState extends State<searchScreen> {
                 child: GridView.builder(
                     gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                         maxCrossAxisExtent: 200,
-                        childAspectRatio: 8 / 2,
+                        childAspectRatio: 7 / 2,
                         crossAxisSpacing: 20,
                         mainAxisSpacing: 20),
                     itemCount: myProducts.length,
@@ -285,11 +296,16 @@ class _searchScreenState extends State<searchScreen> {
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                             color: AppColors.secondaryColor,
-                            borderRadius: BorderRadius.circular(15)),
-                        child: Text(myProducts[index]["name"],
+                            borderRadius: BorderRadius.circular(8)),
+                        child: ListTile(
+                          title: Text(myProducts[index]["name"].toString(),
                           style: TextStyle(
-                              color: Colors.white
-                          ),),
+                            color: Colors.white
+                          ),
+                          ),
+                          trailing: Icon(Icons.navigate_next,
+                          color: Colors.white,),
+                        ),
                       );
                     }),
               ),
@@ -301,6 +317,7 @@ class _searchScreenState extends State<searchScreen> {
   }
 
   Widget findPro(BuildContext context, searchResult){
+    //List<Map<String,dynamic>> _currentpage = currentPage.getPage();
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -326,115 +343,193 @@ class _searchScreenState extends State<searchScreen> {
         ),
       ),
       //body: Text(searchResult['data']['SearchProduct'].toString()),
-      body:ListView.builder(
-          itemCount: searchResult['data']['SearchProduct'].length,
-          itemBuilder: (context, index){
-            return Container(
-              height: MediaQuery.of(context).size.height * 0.15,
-              child: Padding(
-                padding:EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.03),
-                child: Card(
-                  elevation: 0,
-                  shadowColor: Colors.white,
-                  child: Row(
-                    children: [
-                      Flexible(
-                        flex:1,
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.2,
-                          width: MediaQuery.of(context).size.height * 0.4,
-                          child: Padding(
-                            padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.03),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image(
-                                fit: BoxFit.fill,
-                                image: NetworkImage(
-                                    imagePath+searchResult['data']['SearchProduct'][index]['initialImgUrl'][1].toString()
-                                ),
-                              ),
+      body:Column(
+        children: [
+          Flexible(
+            flex: 2,
+            child: Card(
+              elevation: 0,
+              color: AppColors.grey100,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: Row(
+                  children: [
+                    Flexible(
+                      flex: 6,
+                      child: Container(
+                        child: TextField(
+                          onEditingComplete:() async{
+                            searchResult = await Api().searchApi(myController.value.text);
+                            print(searchResult);
+                            if (searchResult['data'] != null){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => findPro(context,searchResult)),
+                              );
+                            }else if(searchResult['data'] == null){
+                              FlutterDialog();
+                            }
+                          },
+                          controller: myController,
+                          decoration: InputDecoration(
+                            suffixIcon:IconButton(
+                              color: Colors.black,
+                              icon: Icon(Icons.search),
+                              onPressed: () async{
+                                searchResult = await Api().searchApi(myController.value.text);
+                                print(searchResult);
+                                if (searchResult['data'] != null){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => findPro(context,searchResult)),
+                                  );
+                                }else if(searchResult['data'] == null){
+                                  FlutterDialog();
+                                }
+                              },
+                            ),
+                            hintText: '검색 내용을 입력해주세요.',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: const BorderSide(color: AppColors.grey100)
                             ),
                           ),
                         ),
                       ),
-                      Flexible(
-                        flex : 2,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Flexible(
+            flex: 10,
+            child: ListView.builder(
+              itemCount: searchResult['data']['SearchProduct'].length,
+              itemBuilder: (context, index){
+                return GestureDetector(
+                  onTap: () async {
+                    currentPage.addPage(searchResult['data']['SearchProduct'][index]);
+                    if(0 == await Api().productDetail(searchResult['data']['SearchProduct'][index]["productSeq"])){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ProductDetailScreen()),
+                      );
+                    }
+                  },
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.15,
+                    child: Padding(
+                      padding:EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.03),
+                      child: Card(
+                        elevation: 0,
+                        shadowColor: Colors.white,
+                        child: Row(
                           children: [
                             Flexible(
+                              flex:1,
                               child: Container(
-                                color: Colors.white,
-                                child: Text(searchResult['data']['SearchProduct'][index]['title'],
-                                  style: TextStyle(
-                                      color: AppColors.grey550,
-                                      fontSize: MediaQuery.of(context).size.height * 0.025
-                                  ),),
-                              ),
-                            ),
-                            Flexible(
-                              child: Container(
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      height: MediaQuery.of(context).size.height * 0.03,
-                                      width: MediaQuery.of(context).size.height * 0.08,
-                                      child: Card(
-                                        color: AppColors.thirdColor,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(10.0),
-                                        ),
-                                        child: Center(
-                                          child: Text(searchResult['data']['SearchProduct'][index]['tag'],
-                                            style: TextStyle(
-                                                fontSize: MediaQuery.of(context).size.width * 0.02,
-                                                color: Colors.white),),
-                                        ),
+                                height: MediaQuery.of(context).size.height * 0.2,
+                                width: MediaQuery.of(context).size.height * 0.4,
+                                child: Padding(
+                                  padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.03),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Image(
+                                      fit: BoxFit.fill,
+                                      image: NetworkImage(
+                                          imagePath+searchResult['data']['SearchProduct'][index]['initialImgUrl'][1].toString()
                                       ),
-                                    )
-                                  ],
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
-                            SizedBox(height: MediaQuery.of(context).size.height * 0.04,),
                             Flexible(
-                                child: Row(
-                                  children: [
-                                    Text((percentage(searchResult['data']['SearchProduct'][index]['funding']['currentAmount'],
-                                        searchResult['data']['SearchProduct'][index]['funding']['finalAmount'])*100).toString()+"% 완료",
-                                      style: TextStyle(
-                                          color: Colors.green,
-                                          fontSize: MediaQuery.of(context).size.height * 0.018,
-                                          fontWeight: FontWeight.bold
+                              flex : 2,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Flexible(
+                                    child: Container(
+                                      color: Colors.white,
+                                      child: Text(searchResult['data']['SearchProduct'][index]['title'],
+                                        style: TextStyle(
+                                            color: AppColors.grey550,
+                                            fontSize: MediaQuery.of(context).size.height * 0.025
+                                        ),),
+                                    ),
+                                  ),
+                                  Flexible(
+                                    child: Container(
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            height: MediaQuery.of(context).size.height * 0.03,
+                                            width: MediaQuery.of(context).size.height * 0.08,
+                                            child: Card(
+                                              color: AppColors.thirdColor,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(10.0),
+                                              ),
+                                              child: Center(
+                                                child: Text(searchResult['data']['SearchProduct'][index]['tag'],
+                                                  style: TextStyle(
+                                                      fontSize: MediaQuery.of(context).size.width * 0.02,
+                                                      color: Colors.white),),
+                                              ),
+                                            ),
+                                          )
+                                        ],
                                       ),
                                     ),
-                                    SizedBox(width: MediaQuery.of(context).size.width * 0.18,),
-                                    Text("종료까지 xxx남음",
-                                      style: TextStyle(
-                                          fontSize: MediaQuery.of(context).size.width * 0.03,
-                                          color: Colors.grey
-                                      ),),
-                                  ],
-                                )
-                            ),
-                            Flexible(
-                              child: LinearPercentIndicator(
-                                width: MediaQuery.of(context).size.width * 0.62,
-                                lineHeight: MediaQuery.of(context).size.height * 0.018,
-                                percent: percentage(searchResult['data']['SearchProduct'][index]['funding']['currentAmount'],
-                                    searchResult['data']['SearchProduct'][index]['funding']['finalAmount']),
-                                progressColor: Colors.green,
+                                  ),
+                                  SizedBox(height: MediaQuery.of(context).size.height * 0.04,),
+                                  Flexible(
+                                      child: Row(
+                                        children: [
+                                          Text((percentage(searchResult['data']['SearchProduct'][index]['funding']['currentAmount'],
+                                              searchResult['data']['SearchProduct'][index]['funding']['finalAmount'])*100).toString()+"% 완료",
+                                            style: TextStyle(
+                                                color: Colors.green,
+                                                fontSize: MediaQuery.of(context).size.height * 0.018,
+                                                fontWeight: FontWeight.bold
+                                            ),
+                                          ),
+                                          SizedBox(width: MediaQuery.of(context).size.width * 0.18,),
+                                          Text("종료까지 xxx남음",
+                                            style: TextStyle(
+                                                fontSize: MediaQuery.of(context).size.width * 0.03,
+                                                color: Colors.grey
+                                            ),),
+                                        ],
+                                      )
+                                  ),
+                                  Flexible(
+                                    child: LinearPercentIndicator(
+                                      width: MediaQuery.of(context).size.width * 0.62,
+                                      lineHeight: MediaQuery.of(context).size.height * 0.018,
+                                      percent: percentage(searchResult['data']['SearchProduct'][index]['funding']['currentAmount'],
+                                          searchResult['data']['SearchProduct'][index]['funding']['finalAmount']),
+                                      progressColor: Colors.green,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
                         ),
                       ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-            );
-          }),
+                );
+              }),
+          ),
+        ],
+      )
     );
   }
 

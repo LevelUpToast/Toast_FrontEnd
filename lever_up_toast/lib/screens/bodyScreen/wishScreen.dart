@@ -2,6 +2,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lever_up_toast/API/api.dart';
+import 'package:lever_up_toast/screens/bodyScreen/productDetailScreen.dart';
 import 'package:lever_up_toast/values/currentPage.dart';
 import 'package:lever_up_toast/API/apiInfo.dart';
 import 'package:lever_up_toast/values/values.dart';
@@ -20,6 +22,12 @@ class _WishScreenState extends State<WishScreen> with PreferredSizeWidget{
     double result = 0 ;
     result = (currentAmount/finalAmount);
     return result;
+  }
+  String nameTranse(_name){
+    return _name == 'VEGETABLE'? "채소":"과일";
+  }
+  Color colorTanse(_color){
+    return _color == "채소"?Color(0xFF667302):Color(0xFFF2A30F);
   }
 
   @override
@@ -195,112 +203,150 @@ class _WishScreenState extends State<WishScreen> with PreferredSizeWidget{
               ListView.builder(
                   itemCount: _currentpage.length,
                   itemBuilder: (context, index){
-                    return Container(
-                      height: MediaQuery.of(context).size.height * 0.15,
-                      child: Padding(
-                        padding:EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.025),
-                        child: Card(
-                          elevation: 0,
-                          shadowColor: Colors.white,
-                          child: Row(
-                            children: [
-                              Flexible(
-                                flex:1,
-                                child: Container(
-                                  height: MediaQuery.of(context).size.height * 0.2,
-                                  width: MediaQuery.of(context).size.width * 0.5,
-                                  child: Padding(
-                                    padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.025),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image(
-                                        fit: BoxFit.fill,
-                                        image: NetworkImage(
-                                            imagePath+_currentpage[index]['initialImgUrl'][1].toString()
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Flexible(
-                                flex : 2,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                    return GestureDetector(
+                      onTap: () async {
+                        print(_currentpage[index]);
+                        currentPage.addPage(_currentpage[index]);
+                        if(0 == await Api().productDetail(_currentpage[index]["productSeq"])){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => ProductDetailScreen()),
+                          );
+                        }
+                      },
+                      child: Column(
+                        children: [
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.15,
+                            child: Padding(
+                              padding:EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.025),
+                              child: Card(
+                                elevation: 0,
+                                shadowColor: Colors.white,
+                                child: Row(
                                   children: [
                                     Flexible(
+                                      flex:1,
                                       child: Container(
-                                        color: Colors.white,
-                                        child: Text(_currentpage[index]['title'],
-                                          style: TextStyle(
-                                              color: AppColors.grey550,
-                                              fontSize: MediaQuery.of(context).size.height * 0.023
-                                          ),),
-                                      ),
-                                    ),
-                                    Flexible(
-                                      child: Container(
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              height: MediaQuery.of(context).size.height * 0.03,
-                                              width: MediaQuery.of(context).size.height * 0.08,
-                                              child: Card(
-                                                color: AppColors.thirdColor,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.circular(10.0),
-                                                ),
-                                                child: Center(
-                                                  child: Text(_currentpage[index]['tag'],
-                                                    style: TextStyle(
-                                                        fontSize: MediaQuery.of(context).size.width * 0.02,
-                                                        color: Colors.white),),
-                                                ),
+                                        height: MediaQuery.of(context).size.height * 0.2,
+                                        width: MediaQuery.of(context).size.width * 0.5,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.025),
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(20),
+                                            child: Image(
+                                              fit: BoxFit.fill,
+                                              image: NetworkImage(
+                                                  imagePath+_currentpage[index]['initialImgUrl'][1].toString()
                                               ),
-                                            )
-                                          ],
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: MediaQuery.of(context).size.height * 0.04,),
                                     Flexible(
-                                        child: Row(
-                                          children: [
-                                            Text((percentage(_currentpage[index]['funding']['currentAmount'],
-                                                _currentpage[index]['funding']['finalAmount'])*100).toString()+"% 완료",
-                                              style: TextStyle(
-                                                  color: Colors.green,
-                                                  fontSize: MediaQuery.of(context).size.height * 0.018,
-                                                  fontWeight: FontWeight.bold
+                                      flex : 2,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Flexible(
+                                            flex:3,
+                                            child: Container(
+                                              color: Colors.white,
+                                              child: Text(_currentpage[index]['title'],
+                                                style: TextStyle(
+                                                    color: AppColors.grey550,
+                                                    fontSize: MediaQuery.of(context).size.height * 0.023
+                                                ),),
+                                            ),
+                                          ),
+                                          Flexible(
+                                            flex: 3,
+                                            child: Container(
+                                              child: Row(
+                                                children: [
+                                                  Container(
+                                                    height: MediaQuery.of(context).size.height * 0.10,
+                                                    width: MediaQuery.of(context).size.width * 0.14,
+                                                    child: Card(
+                                                      color: colorTanse(nameTranse(_currentpage[index]['tag'])),
+                                                      shape: RoundedRectangleBorder(
+                                                        borderRadius: BorderRadius.circular(10.0),
+                                                      ),
+                                                      child: Center(
+                                                        child: Text(nameTranse(_currentpage[index]['tag']),
+                                                          style: TextStyle(
+                                                              fontSize: MediaQuery.of(context).size.width * 0.03,
+                                                              color: Colors.white),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
                                               ),
                                             ),
-                                            SizedBox(width: MediaQuery.of(context).size.width * 0.18,),
-                                            Text("종료까지 xxx남음",
-                                              style: TextStyle(
-                                                  fontSize: MediaQuery.of(context).size.width * 0.03,
-                                                  color: Colors.grey
-                                              ),),
-                                          ],
-                                        )
-                                    ),
-                                    Flexible(
-                                      child: LinearPercentIndicator(
-                                        width: MediaQuery.of(context).size.width * 0.62,
-                                        lineHeight: MediaQuery.of(context).size.height * 0.018,
-                                        percent: percentage(_currentpage[index]['funding']['currentAmount'],
-                                            _currentpage[index]['funding']['finalAmount']),
-                                        progressColor: Colors.green,
+                                          ),
+                                          Flexible(
+                                              flex: 1,
+                                              child: Container()),
+                                          Flexible(
+                                              flex: 3,
+                                              child: Container()),
+                                          Flexible(
+                                            flex: 2,
+                                            child: Row(
+                                              children: [
+                                                SizedBox(width: MediaQuery.of(context).size.width * 0.012,),
+                                                Container(
+                                                  width:MediaQuery.of(context).size.width * 0.3,
+                                                  child: Text((percentage(_currentpage[index]['funding']['currentAmount'],
+                                                      _currentpage[index]['funding']['finalAmount'])*100).toString()+"% 완료",
+                                                    style: TextStyle(
+                                                        color: Colors.green,
+                                                        fontSize: MediaQuery.of(context).size.height * 0.018,
+                                                        fontWeight: FontWeight.bold
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(width: MediaQuery.of(context).size.width * 0.061,),
+                                                Container(
+                                                  width: MediaQuery.of(context).size.width * 0.25,
+                                                  child: Text("종료까지 xxx남음",
+                                                    style: TextStyle(
+                                                        fontSize: MediaQuery.of(context).size.width * 0.03,
+                                                        color: Colors.grey
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Flexible(
+                                            child: LinearPercentIndicator(
+                                              width: MediaQuery.of(context).size.width * 0.62,
+                                              lineHeight: MediaQuery.of(context).size.height * 0.013,
+                                              percent: percentage(_currentpage[index]['funding']['currentAmount'],
+                                                  _currentpage[index]['funding']['finalAmount']),
+                                              backgroundColor: AppColors.grey100,
+                                              progressColor: Colors.green,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
-                            ],
+                            ),
                           ),
-                        ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.01,
+                          ),
+                        ],
                       ),
                     );
-                  }),
+                  },
+              ),
             ],
           ),
         ),

@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:lever_up_toast/API/api.dart';
+import 'package:lever_up_toast/screens/bodyScreen/productDetailScreen.dart';
 import 'package:lever_up_toast/values/values.dart';
 import 'package:lever_up_toast/values/currentPage.dart';
 import 'package:lever_up_toast/API/apiInfo.dart';
@@ -55,12 +58,15 @@ class MyPageScreen extends StatelessWidget {
                             flex:3,
                             child: Card(
                               shape: RoundedRectangleBorder(
-                                  borderRadius: const BorderRadius.all( Radius.circular(60.0))
+                                side: BorderSide(color: Colors.white70, width: 1),
+                                borderRadius: BorderRadius.circular(45),
                               ),
-                              child: Container(
-                                width: MediaQuery.of(context).size.width * 0.21,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(45),
+                                child: Image.asset("assets/img/userImage.png",
+                                  fit: BoxFit.fitHeight,),
                               ),
-                            ),
+                            )
                         ),
                         Flexible(
                             flex: 4,
@@ -100,15 +106,14 @@ class MyPageScreen extends StatelessWidget {
                               children: [
                                 Flexible(
                                     child: Container(
-                                      child: IconButton(
-                                        onPressed: (){},
-                                        color: Colors.green,
-                                        icon: Icon(
-                                          Icons.add_shopping_cart,
-                                          size: MediaQuery.of(context).size.height * 0.04,
-                                        ),
+                                      child: GestureDetector(
+                                        onTap: (){
+                                          print("asd");
+                                        },
+                                        child: SvgPicture.asset("assets/img/펀딩한 상품.svg"),
                                       ),
-                                    )),
+                                    ),
+                                ),
                                 SizedBox(height: MediaQuery.of(context).size.height *0.01,),
                                 Flexible(
                                     child: Text(
@@ -117,7 +122,8 @@ class MyPageScreen extends StatelessWidget {
                                         fontSize: MediaQuery.of(context).size.height * 0.017,
                                         fontWeight: FontWeight.bold
                                     ),
-                                    )),
+                                    ),
+                                ),
                               ],
                             ),
                           )
@@ -127,16 +133,15 @@ class MyPageScreen extends StatelessWidget {
                               child: Column(
                                 children: [
                                   Flexible(
-                                      child: Container(
-                                        child: IconButton(
-                                          onPressed: (){},
-                                          color: Colors.green,
-                                          icon: Icon(
-                                              Icons.monetization_on,
-                                            size: MediaQuery.of(context).size.height * 0.04,
-                                          ),
-                                        ),
-                                      )),
+                                    child: Container(
+                                      child: GestureDetector(
+                                        onTap: (){
+                                          print("asd");
+                                        },
+                                        child: SvgPicture.asset("assets/img/toastpay.svg"),
+                                      ),
+                                    ),
+                                  ),
                                   SizedBox(height:  MediaQuery.of(context).size.height *0.01,),
                                   Flexible(
                                       child: Text(
@@ -155,16 +160,15 @@ class MyPageScreen extends StatelessWidget {
                               child: Column(
                                 children: [
                                   Flexible(
-                                      child: Container(
-                                        child: IconButton(
-                                          onPressed: (){},
-                                          color: Colors.green,
-                                          icon: Icon(
-                                              Icons.people,
-                                            size: MediaQuery.of(context).size.height * 0.04,
-                                          ),
-                                        ),
-                                      )),
+                                    child: Container(
+                                      child: GestureDetector(
+                                        onTap: (){
+                                          print("asd");
+                                        },
+                                        child: SvgPicture.asset("assets/img/고객센터.svg"),
+                                      ),
+                                    ),
+                                  ),
                                   SizedBox(height:  MediaQuery.of(context).size.height *0.01,),
                                   Flexible(
                                       child: Text(
@@ -220,10 +224,16 @@ class MyPageScreen extends StatelessWidget {
                       itemCount: _currentpage.length,
                         itemBuilder: (context, index){
                           return GestureDetector(
-                            onTap: (){
-                              //currentPage.addPage(currentPage.page);
-                              //print(currentPage.page);
-                            },
+                            onTap: () async {
+                              print(_currentpage[index]);
+                                currentPage.addPage(_currentpage[index]);
+                                if(0 == await Api().productDetail(_currentpage[index]["productSeq"])){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => ProductDetailScreen()),
+                                  );
+                                }
+                              },
                             child: Card(
                                 elevation: 0,
                                 child:Column(

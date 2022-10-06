@@ -60,6 +60,7 @@ flutter:
 
   assets:
     - assets/img/
+    - assets/img/userImage.png
 
 #  fonts:
 #    - family: Roboto

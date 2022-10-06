@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:lever_up_toast/API/apiInfo.dart';
 import 'package:lever_up_toast/values/values.dart';
@@ -17,7 +18,7 @@ class ProductDetailScreen extends StatefulWidget {
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
-  double  percentage(int currentAmount,int finalAmount){
+  double percentage(int currentAmount,int finalAmount){
     double result = 0 ;
     result = (currentAmount/finalAmount);
     return result;
@@ -25,10 +26,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   String pop(images){
     return images;
   }
+
   String imagePath = ApiInfo.testUrl+ApiInfo.imageUrl;
   Map<String,dynamic> Data = Api.productData;
   var images = Api.productData['data']['Product']['productInfo']['productImgUrl'];
-  //List<String> image = images.toString().substring(1,images.toString().length -1).split(",");
   List<Map<String,dynamic>> _currentpage = currentPage.getPage();
   List<String> parse = Api.productData['data']['Product']['productInfo']['text'].toString().trim().split("\n");
   @override
@@ -51,7 +52,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             ),
             Flexible(
               flex: 5,
-              child: Text('LevelUpToast',
+              child: Text('     LevelUpToast',
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w700,
@@ -87,120 +88,116 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             ),
           ), // 배너
           Container(
-            //color: Colors.grey,
-            height: MediaQuery.of(context).size.height * 0.2,
+            height: MediaQuery.of(context).size.height * 0.21,
             child: Padding(
               padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width *0.02),
+                  left: MediaQuery.of(context).size.width *0.04,
+                right: MediaQuery.of(context).size.width *0.04,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Flexible(
-                    child: Container(
-                      width:MediaQuery.of(context).size.width* 0.2,
-                      child: Card(
-                        color: AppColors.thirdColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: Center(
-                          child: Text(Data['data']['Product']['tag'],
-                            style: TextStyle(
-                                fontSize: MediaQuery.of(context).size.width *0.03,
-                                color: Colors.white),),
-                        ),
+                  Container(
+                    height: MediaQuery.of(context).size.height *0.045,
+                    width:MediaQuery.of(context).size.width* 0.255,
+                    child: Card(
+                      color: AppColors.thirdColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: Center(
+                        child: Text(Data['data']['Product']['tag'],
+                          style: TextStyle(
+                              fontSize: MediaQuery.of(context).size.width *0.03,
+                              color: Colors.white),),
                       ),
                     ),
                   ),
-                  Flexible(
-                    child: Container(
-                      child: Text(Data['data']["Product"]['title'],
-                        style:TextStyle(
-                          fontSize: MediaQuery.of(context).size.width * 0.08,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  Container(
+                    child: Text(Data['data']["Product"]['title'],
+                      style:TextStyle(
+                        fontSize: MediaQuery.of(context).size.width * 0.06,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  Flexible(
-                    child: Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(
-                              left: MediaQuery.of(context).size.width * 0.01,
-                              right: MediaQuery.of(context).size.width * 0.01,
-                            ),
-                            child:Container(
-                              child: Row(
-                                children: [
-                                  Text(Data['data']['Product']['funding']['currentAmount'].toString()+"원",
-                                    style: TextStyle(
-                                      color: Colors.green,
-                                      fontSize: MediaQuery.of(context).size.width * 0.05,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height* 0.004,
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.06,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: MediaQuery.of(context).size.width * 0.01,
+                            right: MediaQuery.of(context).size.width * 0.01,
+                          ),
+                          child:Container(
+                            child: Row(
+                              children: [
+                                Text(Data['data']['Product']['funding']['currentAmount'].toString()+"원",
+                                  style: TextStyle(
+                                    color: Colors.green,
+                                    fontSize: MediaQuery.of(context).size.width * 0.05,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width * 0.56,
-                                  ),
-                                  //Data['data']['Product']['funding']['deadline']
-                                  //Text(DateFormat('yyyy-MM-dd').format(DateTime.now())+"-" +Data['data']['Product']['funding']['deadline']),
-                                  Text("종료까지"+((DateTime.now().difference(DateTime.parse(Data['data']['Product']['funding']['deadline'])).inDays) * -1).toString()+"일",
+                                ),
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width * 0.5,
+                                ),
+                                Text("종료까지"+((DateTime.now().difference(DateTime.parse(Data['data']['Product']['funding']['deadline'])).inDays) * -1).toString()+"일",
                                   style: TextStyle(
                                     color: Colors.grey,
                                     fontWeight: FontWeight.bold,
                                   ),),
-                                ],
-                              ),
+                              ],
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 5),
-                            child: Container(
-                              child: LinearPercentIndicator(
-                                backgroundColor: AppColors.grey300,
-                                width: MediaQuery.of(context).size.width * 0.95,
-                                lineHeight: MediaQuery.of(context).size.height * 0.02,
-                                percent: percentage(Data['data']['Product']['funding']['currentAmount'],
-                                    Data['data']['Product']['funding']['finalAmount']),
-                                progressColor: AppColors.thirdColor,
-                              ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 5),
+                          child: Container(
+                            child: LinearPercentIndicator(
+                              backgroundColor: AppColors.grey300,
+                              width: MediaQuery.of(context).size.width * 0.9,
+                              lineHeight: MediaQuery.of(context).size.height * 0.02,
+                              percent: percentage(Data['data']['Product']['funding']['currentAmount'],
+                                  Data['data']['Product']['funding']['finalAmount']),
+                              progressColor: AppColors.thirdColor,
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
-                  Flexible(
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.2,
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        color: AppColors.secondaryColor,
-                        elevation: 1,
-                        child: Container(
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                  width: MediaQuery.of(context).size.width * 0.03),
-                              Text("목표금액",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: MediaQuery.of(context).size.height * 0.018
-                                ),),
-                              SizedBox(
-                                  width: MediaQuery.of(context).size.width * 0.6),
-                              Text(Data['data']['Product']['funding']['finalAmount'].toString()+"원",
-                                style: TextStyle(
-                                  fontSize: MediaQuery.of(context).size.height * 0.018,
-                                  fontWeight: FontWeight.bold,
-                                ),),
-                            ],
-                          ),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.06,
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      color: AppColors.secondaryColor,
+                      elevation: 1,
+                      child: Container(
+                        child: Row(
+                          children: [
+                            SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.05),
+                            Text("목표금액",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: MediaQuery.of(context).size.height * 0.018
+                              ),),
+                            SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.5),
+                            Text(Data['data']['Product']['funding']['finalAmount'].toString()+"원",
+                              style: TextStyle(
+                                fontSize: MediaQuery.of(context).size.height * 0.018,
+                                fontWeight: FontWeight.bold,
+                              ),),
+                          ],
                         ),
                       ),
                     ),
@@ -214,26 +211,31 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             height: MediaQuery.of(context).size.height * 0.02,
           ),
           Container(
-            height: MediaQuery.of(context).size.height * 0.1,
+            height: MediaQuery.of(context).size.height * 0.11,
             child: Row(
               children: [
                 Flexible(
                   flex:2,
                     child: Padding(
                       padding: EdgeInsets.only(
-                          left: 5,
-                          top: 5,
-                        bottom: 5,
+                        left: MediaQuery.of(context).size.width *0.04,
+                        right: MediaQuery.of(context).size.width *0.04,
+                          top: MediaQuery.of(context).size.height *0.014,
+                        bottom: MediaQuery.of(context).size.height *0.014,
                       ),
                       child: Container(
                         color: Colors.white,
                         height: MediaQuery.of(context).size.height * 0.1,
-                        width: MediaQuery.of(context).size.width * 0.2,
-                        child: Card(
-                          elevation: 0,
-                          color: Colors.grey,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(150.0),
+                        width: MediaQuery.of(context).size.width * 0.18,
+                        child: GestureDetector(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(50),
+                            child: Image(
+                              fit: BoxFit.fill,
+                              image: NetworkImage(
+                                  imagePath+Data['data']['vendorInfo']['vendorProfileImg']
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -241,19 +243,41 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 ),
                 Flexible(
                   flex: 4,
-                    child: Container(
-                      color: Colors.white,
-                      child: Column(
-                        children: [
-                          Flexible(
-                              child: Container(),
-                          ),
-                          Flexible(
-                            child: Container(),
-                          ),
-                        ],
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height *0.014,
+                        bottom: MediaQuery.of(context).size.height *0.014,
                       ),
-                    )),
+                      child: Container(
+                        color: Colors.white,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height *0.008,),
+                            Container(
+                              child: Text(Data['data']['vendorInfo']['vendorName'],
+                                style: TextStyle(
+                                  fontSize: MediaQuery.of(context).size.height *0.023,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height *0.007,
+                            ),
+                            Container(
+                              child: Text(Data['data']['vendorInfo']['vendorIntroduction'],
+                              style: TextStyle(
+                                fontSize: MediaQuery.of(context).size.height *0.0175,
+                              ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                ),
               ],
             ),
           ), //제공자 정보
@@ -262,7 +286,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             height: MediaQuery.of(context).size.height * 0.02,
           ),
           Container(
-            height: MediaQuery.of(context).size.height * 0.8,
+            height: MediaQuery.of(context).size.height * 0.7,
             child: ListView.builder(
               itemCount: parse.length,
                 physics: NeverScrollableScrollPhysics(),
@@ -277,30 +301,40 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       //height: MediaQuery.of(context).size.height * 0.1,
                         child:(parse[index].contains("<img"))?
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image(
-                            height: MediaQuery.of(context).size.height * 0.2,
-                            fit: BoxFit.fill,
-                            image: NetworkImage(
-                                imagePath+image[imageCount++].trim()
+                          borderRadius: BorderRadius.circular(0),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              left: MediaQuery.of(context).size.width *0.04,
+                              right: MediaQuery.of(context).size.width *0.04,
+                            ),
+                            child: Image(
+                              height: MediaQuery.of(context).size.height * 0.2,
+                              fit: BoxFit.fill,
+                              image: NetworkImage(
+                                  imagePath+image[imageCount++].trim()
+                              ),
                             ),
                           ),
                         ):
                         Padding(
                           padding: EdgeInsets.only(
+                            left: MediaQuery.of(context).size.width *0.04,
+                            right: MediaQuery.of(context).size.width *0.04,
                             top: MediaQuery.of(context).size.height * 0.032,
                           ),
                           child: Container(
-                            child:Text(parse[index],
+                            child:Text(parse[index].toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: MediaQuery.of(context).size.height * 0.02
-                              ),),
+                              ),
+                            ),
                           ),
-                        )
+                        ),
                     ),
                   );
-                }),
+                },
+            ),
           ), //본문 내용
           Container(
             color: AppColors.grey,
@@ -343,28 +377,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           ),
                           ),
                           Container(
-                            //height: MediaQuery.of(context).size.height * 0.2,
-                            // child:  RatingBar(
-                            //   itemSize: MediaQuery.of(context).size.height * 0.025,
-                            //     initialRating: 0,
-                            //     direction: Axis.horizontal,
-                            //     allowHalfRating: true,
-                            //     itemCount: 5,
-                            //     ratingWidget: RatingWidget(
-                            //         full:  Icon(Icons.star, color: Colors.orange),
-                            //         half:  Icon(
-                            //           Icons.star_half,
-                            //           color: Colors.orange,
-                            //         ),
-                            //         empty:  Icon(
-                            //           Icons.star_outline,
-                            //           color: Colors.orange,
-                            //         )),
-                            //     onRatingUpdate: (value) {
-                            //       setState(() {
-                            //         //_ratingValue = value;
-                            //       });
-                            //     }),
                             child:RatingBarIndicator(
                               rating: 3.5,
                               itemBuilder: (context, index) => Icon(
@@ -414,7 +426,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       progressColor: AppColors.dropAppLogo,
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -445,7 +457,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       progressColor: AppColors.dropAppLogo,
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -476,7 +488,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       progressColor: AppColors.dropAppLogo,
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -507,7 +519,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       progressColor: AppColors.dropAppLogo,
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -554,122 +566,240 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             ),
             //color: Colors.green,
           ), //상품 평
-          Container(
-            height: MediaQuery.of(context).size.height * 0.6,
-            child: Column(
-              children: [
-                Flexible(
-                    child: Container(
-                      //color: Colors.blueGrey,
-                    ),
-                ),
-                Flexible(
-                    child: Container(
-                      child: Column(
-                        children: [
-                          Flexible(
-                            flex:1,
-                            child: Row(
-                              children: [
-                                SizedBox(width: MediaQuery.of(context).size.width * 0.04,),
-                                Container(
-                                  child: Text("최근 본 제품",
-                                    style: TextStyle(
-                                        fontSize: MediaQuery.of(context).size.height * 0.026,
-                                        fontWeight: FontWeight.w600
-                                    ),
+          Padding(
+            padding: EdgeInsets.only(
+              right: MediaQuery.of(context).size.width * 0.04,
+              left: MediaQuery.of(context).size.width * 0.04,
+            ),
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.65,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height *0.01,
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height *0.3,
+                    child: Column(
+                      children: [
+                        Flexible(
+                          flex:1,
+                          child: Row(
+                            children: [
+                              SizedBox(width: MediaQuery.of(context).size.width * 0.04,),
+                              Container(
+                                child: Text("이런 상품도 있어요",
+                                  style: TextStyle(
+                                      color: AppColors.grey500,
+                                      fontSize: MediaQuery.of(context).size.height * 0.026,
+                                      fontWeight: FontWeight.w600
                                   ),
-                                )
-                              ],
-                            ),
+                                ),
+                              ),
+                            ],
                           ),
-                          Flexible(
-                            flex: 3,
-                            child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: _currentpage.length,
-                              itemBuilder: (context, index){
-                                return GestureDetector(
-                                  onTap: (){
-                                    //currentPage.addPage(currentPage.page);
-                                    //print(currentPage.page);
-                                  },
-                                  child: Card(
-                                      elevation: 0,
-                                      child:Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Flexible(
-                                            flex: 2,
-                                            child: Container(
-                                                height: MediaQuery.of(context).size.height*0.3,
-                                                width: MediaQuery.of(context).size.width*0.35,
-                                                child: Padding(
-                                                  padding:EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
-                                                  child: ClipRRect(
-                                                    borderRadius: BorderRadius.circular(20),
-                                                    child: Image(
-                                                      fit: BoxFit.fill,
-                                                      image: NetworkImage(
-                                                          imagePath+_currentpage[index]['initialImgUrl'][1].toString()
+                        ),
+                        Flexible(
+                          flex: 3,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: Data['data']['recommendedProducts'].length,
+                            itemBuilder: (context, index){
+                              return GestureDetector(
+                                onTap: () async {
+                                  print(_currentpage[index]);
+                                  currentPage.addPage(Data['data']['recommendedProducts'][index]);
+                                  if(0 == await Api().productDetail(Data['data']['recommendedProducts'][index]["productSeq"])){
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => ProductDetailScreen()),
+                                    );
+                                  }
+                                },
+                                child: Card(
+                                    elevation: 0,
+                                    child:Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Flexible(
+                                          flex: 2,
+                                          child: Container(
+                                            height: MediaQuery.of(context).size.height*0.3,
+                                            width: MediaQuery.of(context).size.width*0.4,
+                                            child: Padding(
+                                              padding:EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.circular(15),
+                                                child: Image(
+                                                  fit: BoxFit.fill,
+                                                  image: NetworkImage(
+                                                      imagePath+Data['data']['recommendedProducts'][index]["initialImgUrl"][1].toString()
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Flexible(
+                                          flex: 1,
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Flexible(
+                                                child: Container(
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
+                                                    child: Center(
+                                                      child: Text(_currentpage[index]['title'].toString(),
+                                                        style: TextStyle(
+                                                          color: Colors.grey,
+                                                          fontSize: MediaQuery.of(context).size.height*0.02,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                )
+                                                ),
+                                              ),
+                                              Flexible(
+                                                child: Container(
+                                                    child: Padding(
+                                                      padding:EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
+                                                      child:  Text(
+                                                        (percentage(_currentpage[index]['funding']['currentAmount'],
+                                                            _currentpage[index]['funding']['finalAmount'])*100.0).toString()+"%",
+                                                        style: TextStyle(
+                                                            fontWeight: FontWeight.w500,
+                                                            fontSize: MediaQuery.of(context).size.height*0.018,
+                                                            color:Colors.green),
+                                                      ),
+                                                    )
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height *0.3,
+                    child: Column(
+                      children: [
+                        Flexible(
+                          flex:1,
+                          child: Row(
+                            children: [
+                              SizedBox(width: MediaQuery.of(context).size.width * 0.04,),
+                              Container(
+                                child: Text("최근 본 제품",
+                                  style: TextStyle(
+                                      color: AppColors.grey500,
+                                      fontSize: MediaQuery.of(context).size.height * 0.026,
+                                      fontWeight: FontWeight.w600
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Flexible(
+                          flex: 3,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: _currentpage.length,
+                            itemBuilder: (context, index){
+                              return GestureDetector(
+                                onTap: () async {
+                                  print(_currentpage[index]);
+                                  currentPage.addPage(_currentpage[index]);
+                                  if(0 == await Api().productDetail(_currentpage[index]["productSeq"])){
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => ProductDetailScreen()),
+                                    );
+                                  }
+                                },
+                                child: Card(
+                                    elevation: 0,
+                                    child:Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Flexible(
+                                          flex: 2,
+                                          child: Container(
+                                            height: MediaQuery.of(context).size.height*0.3,
+                                            width: MediaQuery.of(context).size.width*0.4,
+                                            child: Padding(
+                                              padding:EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.circular(15),
+                                                child: Image(
+                                                  fit: BoxFit.fill,
+                                                  image: NetworkImage(
+                                                      imagePath+_currentpage[index]['initialImgUrl'][1].toString()
+                                                  ),
+                                                ),
+                                              ),
                                             ),
                                           ),
-                                          Flexible(
-                                              flex: 1,
-                                              child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: [
-                                                  Flexible(
-                                                    child: Container(
-                                                        child: Padding(
-                                                          padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
-                                                          child: Center(
-                                                            child: Text(_currentpage[index]['title'].toString(),
-                                                              style: TextStyle(
-                                                                color: Colors.grey,
-                                                                fontSize: MediaQuery.of(context).size.height*0.02,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        )
+                                        ),
+                                        Flexible(
+                                          flex: 1,
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Flexible(
+                                                child: Container(
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
+                                                    child: Center(
+                                                      child: Text(_currentpage[index]['title'].toString(),
+                                                        style: TextStyle(
+                                                          color: Colors.grey,
+                                                          fontSize: MediaQuery.of(context).size.height*0.02,
+                                                        ),
+                                                      ),
                                                     ),
                                                   ),
-                                                  // SizedBox(
-                                                  //   height: 30,
-                                                  // ),
-                                                  Flexible(
-                                                    child: Container(
-                                                        child: Padding(
-                                                          padding:EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
-                                                          child:  Text(
-                                                            (percentage(_currentpage[index]['funding']['currentAmount'],
-                                                                _currentpage[index]['funding']['finalAmount'])*100.0).toString()+"%",
-                                                            style: TextStyle(
-                                                                fontWeight: FontWeight.w500,
-                                                                fontSize: MediaQuery.of(context).size.height*0.018,
-                                                                color:Colors.green),
-                                                          ),
-                                                        )
-                                                    ),
-                                                  ),
-                                                ],
-                                              )),
-                                        ],
-                                      )
-                                  ),
-                                );
-                              },
-                            ),
+                                                ),
+                                              ),
+                                              Flexible(
+                                                child: Container(
+                                                    child: Padding(
+                                                      padding:EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
+                                                      child:  Text(
+                                                        (percentage(_currentpage[index]['funding']['currentAmount'],
+                                                            _currentpage[index]['funding']['finalAmount'])*100.0).toString()+"%",
+                                                        style: TextStyle(
+                                                            fontWeight: FontWeight.w500,
+                                                            fontSize: MediaQuery.of(context).size.height*0.018,
+                                                            color:Colors.green),
+                                                      ),
+                                                    )
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                ),
+                              );
+                            },
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
           ), //최근 본 상품
         ],
@@ -679,28 +809,30 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               itemSize: MediaQuery.of(context).size.height * 0.04,
               initialRating: 0,
               direction: Axis.horizontal,
-              allowHalfRating: true,
+              //allowHalfRating: true,
               itemCount: 1,
               ratingWidget: RatingWidget(
-                  full:  Icon(
-                      Icons.local_hospital,
-                      color: Colors.orange),
-                  half:  Icon(
-                    Icons.local_hospital_outlined,
-                    color: Colors.orange,
+                  full:  ClipRRect(
+                    child: SvgPicture.asset("assets/img/H.svg"),
                   ),
-                  empty:  Icon(
-                    Icons.local_hospital_outlined,
-                    color: Colors.orange,
-                  )),
+                  half: ClipRRect(
+                    child: SvgPicture.asset("assets/img/EmptyH.svg"),
+                  ),
+                  empty:  ClipRRect(
+                    child: SvgPicture.asset("assets/img/EmptyH.svg"),
+                    ),
+
+              ),
               onRatingUpdate: (value) {
                 setState(() {
                   wish = value.toInt();
-                });
+                },);
                 print(value);
-              }),
+              },
+          ),
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.03),
+            width: MediaQuery.of(context).size.width * 0.03,
+          ),
           Container(
           height: MediaQuery.of(context).size.height * 0.05,
           width: MediaQuery.of(context).size.width * 0.74,
@@ -757,7 +889,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 fontWeight: FontWeight.w500,
                 fontSize: MediaQuery.of(context).size.width * 0.04,
                 color: Colors.white
-              ),), ),
+              ),
+              ),
+            ),
           ),
         ),
         ]

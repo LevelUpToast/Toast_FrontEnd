@@ -123,8 +123,11 @@ class _MainScreenState extends State<MainScreen> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: MediaQuery.of(context!).size.height * 0.01,
+                ),
                 Container(
-                    height: MediaQuery.of(context!).size.height *0.3,
+                    height: MediaQuery.of(context).size.height *0.28,
                     child: Container(
                       child: Column(
                         children: [
@@ -134,34 +137,31 @@ class _MainScreenState extends State<MainScreen> {
                                 width: MediaQuery.of(context).size.width,
                                 child: Row(
                                   children: [
-                                    Flexible(
-                                        flex: 6,
-                                        child: Padding(
-                                          padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.05),
-                                          child: Container(
-                                            child: Text(' 이런상품도 있어요!',
-                                              style: TextStyle(
-                                                fontSize: MediaQuery.of(context).size.height * 0.025,
-                                                color: Colors.grey
-                                                ,
-                                              ),),
-                                          ),
-                                        )),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width * 0.27,
-                                    ),
-                                    Flexible(
-                                      flex: 2,
+                                    Padding(
+                                      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.05),
                                       child: Container(
-                                        child: TextButton(
-                                          onPressed: (){
-                                            print('클릭함');
-                                          },
-                                          child: Text('전체 보기',
-                                            style: TextStyle(
-                                                color: Colors.black
-                                            ),),
+                                        width: MediaQuery.of(context).size.width * 0.43,
+                                        child: Text(' 이런상품도 있어요!',
+                                          style: TextStyle(
+                                            fontSize: MediaQuery.of(context).size.height * 0.025,
+                                            color: Colors.grey,
+                                          ),
                                         ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width * 0.32,
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width * 0.2,
+                                      child: TextButton(
+                                        onPressed: (){
+                                          print('클릭함');
+                                        },
+                                        child: Text('전체 보기',
+                                          style: TextStyle(
+                                              color: Colors.black
+                                          ),),
                                       ),
                                     ),
                                   ],
@@ -199,7 +199,7 @@ class _MainScreenState extends State<MainScreen> {
                                                       height: MediaQuery.of(context).size.height*0.2,
                                                       width: MediaQuery.of(context).size.width*0.376,
                                                       child: ClipRRect(
-                                                        borderRadius: BorderRadius.circular(20),
+                                                        borderRadius: BorderRadius.circular(15),
                                                         child: Image(
                                                           fit: BoxFit.fill ,
                                                           image: NetworkImage(
@@ -219,11 +219,13 @@ class _MainScreenState extends State<MainScreen> {
                                                               child: Center(
                                                                 child: Text(snapshot.data!['data']['recommendedProducts'][index]['title'].toString(),
                                                                   style: TextStyle(
-                                                                    fontSize: MediaQuery.of(context).size.height*0.025,
-                                                                    color: Colors.grey
-                                                                  ),),
+                                                                      fontSize: MediaQuery.of(context).size.height*0.025,
+                                                                      color: Colors.grey
+                                                                  ),
+                                                                ),
                                                               ),
-                                                            )),
+                                                            ),
+                                                        ),
                                                         // SizedBox(
                                                         //   height: 30,
                                                         // ),
@@ -252,168 +254,264 @@ class _MainScreenState extends State<MainScreen> {
                           ),
                         ],
                       ),
-                    )),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.01,
+                    ),
                 ),
                 Container(
                   //flex: 2,
-                    height: MediaQuery.of(context).size.height *0.3,
+                    height: MediaQuery.of(context).size.height *0.26,
                     child: Container(
                       //color: Colors.lightGreen,
                       child: Column(
                         children: [
-                          Flexible(
-                              flex: 1,
-                              child: Container(
-                                child: Row(
-                                  children: [
-                                    Flexible(
-                                        flex: 7,
-                                        child: Padding(
-                                          padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.05),
-                                          child: Container(
-                                            child: Text(' 이런상품은 어떠신가요?',
-                                              style: TextStyle(
-                                                fontSize: MediaQuery.of(context).size.height * 0.025,
-                                                color: Colors.grey,
-                                              ),),
-                                          ),
-                                        )),
-                                    Flexible(
-                                      flex: 3,
-                                      child: DropdownButtonHideUnderline(
-                                        child: DropdownButton2(
-                                          hint: Text(
-                                            'Select Item',
-                                            style: TextStyle(
-                                                fontSize: MediaQuery.of(context).size.height * 0.002,
-                                                color: Colors.black
-                                            ),
-                                          ),
-                                          items: items
-                                              .map((item) =>
-                                              DropdownMenuItem<String>(
-                                                value: item,
-                                                child: Text(
-                                                  item,
-                                                  style: TextStyle(
-                                                    fontSize: MediaQuery.of(context).size.height * 0.015,
-                                                  ),
-                                                ),
-                                              ))
-                                              .toList(),
-                                          value: selectedValue,
-                                          onChanged: (value) {
-                                            setState(() {
-                                              selectedValue = value as String;
-                                              print(selectedValue);
-                                            });
-                                          },
-                                          buttonHeight: MediaQuery.of(context).size.height * 0.03,
-                                          buttonWidth: MediaQuery.of(context).size.width * 0.3,
-                                          itemHeight: MediaQuery.of(context).size.height * 0.03,
-                                        ),
-                                      ),),//TODO
-                                    Flexible(
-                                      flex: 2,
-                                      child: Container(
-                                        child: TextButton(
-                                          onPressed: (){
-                                            print('클릭함');
-                                          },
-                                          child: Text('전체 보기',
-                                            style: TextStyle(
-                                                color: Colors.black
-                                            ),),
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.04,
+                            child: Row(
+                              children: [
+                                Flexible(
+                                  flex: 7,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.05),
+                                    child: Container(
+                                      child: Text(' 과일상품은 어떠신가요?',
+                                        style: TextStyle(
+                                          fontSize: MediaQuery.of(context).size.height * 0.025,
+                                          color: Colors.grey,
                                         ),
                                       ),
                                     ),
-                                  ],
+                                  ),
                                 ),
-                              )),
-                          Flexible(
-                              flex: 3,
-                              child: Container(
-                                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.05),
-                                child: ListView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: 1,
-                                  itemBuilder: (context, int index){
-                                    return GestureDetector(
-                                      onTap: () async{
-                                        currentPage.addPage(snapshot.data!['data'][selectedValue.toString()+'Products'][index]);
-                                        print(snapshot.data!['data'][selectedValue.toString()+'Products'][index]);
-                                        if(0 == await Api().productDetail(snapshot.data!['data']['recommendedProducts'][index]["productSeq"])){
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(builder: (context) => ProductDetailScreen()),
-                                          );
-                                        }
+                                Flexible(
+                                  flex: 3,
+                                  child: Container(),),//TODO
+                                Flexible(
+                                  flex: 2,
+                                  child: Container(
+                                    child: TextButton(
+                                      onPressed: (){
+                                        print('클릭함');
                                       },
-                                      child: Padding(
-                                        padding:EdgeInsets.only(left: 10),
-                                        child: Card(
-                                            elevation: 0,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius: const BorderRadius.all(Radius.circular(12)),
+                                      child: Text('전체 보기',
+                                        style: TextStyle(
+                                            color: Colors.black
+                                        ),),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.21,
+                            padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.05),
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 1,
+                              itemBuilder: (context, int index){
+                                return GestureDetector(
+                                  onTap: () async{
+                                    currentPage.addPage(snapshot.data!['data']["fruitProducts"][index]);
+                                    print(snapshot.data!['data']["fruitProducts"][index]);
+                                    if(0 == await Api().productDetail(snapshot.data!['data']['fruitProducts'][index]["productSeq"])){
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => ProductDetailScreen()),
+                                      );
+                                    }
+                                  },
+                                  child: Padding(
+                                    padding:EdgeInsets.only(left: 0),
+                                    child: Card(
+                                        elevation: 0,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: const BorderRadius.all(Radius.circular(15)),
+                                        ),
+                                        child:Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Flexible(
+                                              flex: 2,
+                                              child: Container(
+                                                  height: MediaQuery.of(context).size.height*0.2,
+                                                  width: MediaQuery.of(context).size.width*0.376,
+                                                  child: ClipRRect(
+                                                    borderRadius: BorderRadius.circular(20),
+                                                    child: Image(
+                                                      fit: BoxFit.fill,
+                                                      image: NetworkImage(
+                                                          imagePath+snapshot.data!['data']["fruitProducts"][index]['initialImgUrl'][1]),
+                                                    ),
+                                                  )
+                                              ),
                                             ),
-                                            child:Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Flexible(
-                                                  flex: 2,
-                                                  child: Container(
-                                                      height: 150,
-                                                      width: 150,
-                                                      child: ClipRRect(
-                                                        borderRadius: BorderRadius.circular(20),
-                                                        child: Image(
-                                                          fit: BoxFit.fill,
-                                                          image: NetworkImage(
-                                                              imagePath+snapshot.data!['data'][selectedValue.toString()+'Products'][index]['initialImgUrl'][1]),
-                                                        ),
-                                                      )
+                                            Flexible(
+                                              flex: 1,
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Flexible(
+                                                      child: Container(
+                                                        child: Text(snapshot.data!['data']["fruitProducts"][index]['title'].toString(),
+                                                          style: TextStyle(
+                                                              fontSize: MediaQuery.of(context).size.height*0.025,
+                                                              color: Colors.grey
+                                                          ),),
+                                                      )),
+                                                  // SizedBox(
+                                                  //   height: 30,
+                                                  // ),
+                                                  Flexible(
+                                                    child: Container(
+                                                      child: Text(
+                                                        percentage(snapshot.data!['data']["fruitProducts"][index]['funding']['currentAmount'],
+                                                            snapshot.data!['data']["fruitProducts"][index]['funding']['finalAmount']),
+                                                        style: TextStyle(
+                                                            fontWeight: FontWeight.w500,
+                                                            fontSize: MediaQuery.of(context).size.height * 0.018,
+                                                            color:Colors.green),
+                                                      ),
+                                                    ),
                                                   ),
-                                                ),
-                                                Flexible(
-                                                    flex: 1,
-                                                    child: Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        Flexible(
-                                                            child: Container(
-                                                              child: Text(snapshot.data!['data'][selectedValue!+'Products'][index]['title'].toString(),
-                                                                style: TextStyle(
-                                                                  color: Colors.grey,
-                                                                  fontSize: 20,
-                                                                ),),
-                                                            )),
-                                                        // SizedBox(
-                                                        //   height: 30,
-                                                        // ),
-                                                        Flexible(
-                                                          child: Container(
-                                                            child: Text(
-                                                              percentage(snapshot.data!['data'][selectedValue!+"Products"][index]['funding']['currentAmount'],
-                                                                  snapshot.data!['data'][selectedValue!+"Products"][index]['funding']['finalAmount']),
-                                                              style: TextStyle(
-                                                                  fontWeight: FontWeight.w500,
-                                                                  fontSize: 15,
-                                                                  color:Colors.green),
-                                                            ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                ),
+                Container(
+                  //flex: 2,
+                    height: MediaQuery.of(context).size.height *0.26,
+                    child: Container(
+                      //color: Colors.lightGreen,
+                      child: Column(
+                        children: [
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.04,
+                            child: Row(
+                              children: [
+                                Flexible(
+                                    flex: 7,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.05),
+                                      child: Container(
+                                        child: Text(' 채소상품은 어떠신가요?',
+                                          style: TextStyle(
+                                            fontSize: MediaQuery.of(context).size.height * 0.025,
+                                            color: Colors.grey,
+                                          ),),
+                                      ),
+                                    )),
+                                Flexible(
+                                  flex: 3,
+                                  child: Container(),),//TODO
+                                Flexible(
+                                  flex: 2,
+                                  child: Container(
+                                    child: TextButton(
+                                      onPressed: (){
+                                        print('클릭함');
+                                      },
+                                      child: Text('전체 보기',
+                                        style: TextStyle(
+                                            color: Colors.black
+                                        ),),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.21,
+                            padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.05),
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 1,
+                              itemBuilder: (context, int index){
+                                return GestureDetector(
+                                  onTap: () async{
+                                    currentPage.addPage(snapshot.data!['data']["vegetableProducts"][index]);
+                                    print(snapshot.data!['data']["vegetableProducts"][index]);
+                                    if(0 == await Api().productDetail(snapshot.data!['data']['recommendedProducts'][index]["productSeq"])){
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => ProductDetailScreen()),
+                                      );
+                                    }
+                                  },
+                                  child: Padding(
+                                    padding:EdgeInsets.only(left: 0),
+                                    child: Card(
+                                        elevation: 0,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: const BorderRadius.all(Radius.circular(15)),
+                                        ),
+                                        child:Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Flexible(
+                                              flex: 2,
+                                              child: Container(
+                                                  height: MediaQuery.of(context).size.height*0.2,
+                                                  width: MediaQuery.of(context).size.width*0.376,
+                                                  child: ClipRRect(
+                                                    borderRadius: BorderRadius.circular(20),
+                                                    child: Image(
+                                                      fit: BoxFit.fill,
+                                                      image: NetworkImage(
+                                                          imagePath+snapshot.data!['data']["vegetableProducts"][index]['initialImgUrl'][1]),
+                                                    ),
+                                                  )
+                                              ),
+                                            ),
+                                            Flexible(
+                                                flex: 1,
+                                                child: Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Flexible(
+                                                      child: Container(
+                                                        child: Text(snapshot.data!['data']["vegetableProducts"][index]['title'].toString(),
+                                                          style: TextStyle(
+                                                              fontSize: MediaQuery.of(context).size.height*0.025,
+                                                              color: Colors.grey
                                                           ),
                                                         ),
-                                                      ],
-                                                    )),
-                                              ],
-                                            )
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
+                                                      ),
+                                                    ),
+                                                    // SizedBox(
+                                                    //   height: 30,
+                                                    // ),
+                                                    Flexible(
+                                                      child: Container(
+                                                        child: Text(
+                                                          percentage(snapshot.data!['data']["vegetableProducts"][index]['funding']['currentAmount'],
+                                                              snapshot.data!['data']["vegetableProducts"][index]['funding']['finalAmount']),
+                                                          style: TextStyle(
+                                                              fontWeight: FontWeight.w500,
+                                                              fontSize: MediaQuery.of(context).size.height * 0.018,
+                                                              color:Colors.green),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )),
+                                          ],
+                                        )
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
                           ),
                         ],
                       ),
