@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lever_up_toast/app_theme.dart';
 import 'package:lever_up_toast/screens/Login/loginScreen.dart';
 import 'package:lever_up_toast/screens/Login/membershipScreen.dart';
+import 'package:lever_up_toast/screens/Pay/toastPay.dart';
 import 'package:lever_up_toast/screens/appBarScreen/homeScreen.dart';
 import 'package:lever_up_toast/screens/bodyScreen/productDetailScreen.dart';
 import 'package:lever_up_toast/screens/bodyScreen/searchScreen.dart';
@@ -38,6 +39,7 @@ class LUP extends StatelessWidget {
           '/Membership': (context) => MembershipScreen(),
           '/search' : (context) => const searchScreen(),
           '/detail' : (context) => ProductDetailScreen(),
+          '/pay' : (context) => const ToastPayScreen(),
 
           //'/findSearch' : (context) =>findSearchScreen(),
         },
