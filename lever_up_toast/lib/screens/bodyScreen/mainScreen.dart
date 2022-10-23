@@ -168,7 +168,7 @@ class _MainScreenState extends State<MainScreen> {
                                 ),
                               )),
                           Flexible(
-                              flex: 3,
+                              flex: 4,
                               child: Container(
                                 padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.02),
                                 child: ListView.builder(
@@ -194,10 +194,10 @@ class _MainScreenState extends State<MainScreen> {
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
                                                 Flexible(
-                                                    flex: 2,
+                                                    flex: 6,
                                                     child: Container(
                                                       height: MediaQuery.of(context).size.height*0.2,
-                                                      width: MediaQuery.of(context).size.width*0.376,
+                                                      width: MediaQuery.of(context).size.width*0.41,
                                                       child: ClipRRect(
                                                         borderRadius: BorderRadius.circular(15),
                                                         child: Image(
@@ -207,21 +207,21 @@ class _MainScreenState extends State<MainScreen> {
                                                           ),
                                                         ),
                                                       ),
-                                                    )
+                                                    ),
                                                 ),
                                                 Flexible(
-                                                    flex: 1,
+                                                    flex: 4,
                                                     child: Column(
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
                                                         Flexible(
                                                             child: Container(
-                                                              child: Center(
-                                                                child: Text(snapshot.data!['data']['recommendedProducts'][index]['title'].toString(),
-                                                                  style: TextStyle(
-                                                                      fontSize: MediaQuery.of(context).size.height*0.025,
-                                                                      color: Colors.grey
-                                                                  ),
+                                                              //height:MediaQuery.of(context).size.height * 0.2,
+                                                              width : MediaQuery.of(context).size.width * 0.4,
+                                                              child: Text(snapshot.data!['data']['recommendedProducts'][index]['title'].toString(),
+                                                                style: TextStyle(
+                                                                    fontSize: MediaQuery.of(context).size.height*0.019,
+                                                                    color: Colors.grey
                                                                 ),
                                                               ),
                                                             ),
@@ -330,10 +330,10 @@ class _MainScreenState extends State<MainScreen> {
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Flexible(
-                                              flex: 2,
+                                              flex: 6,
                                               child: Container(
                                                   height: MediaQuery.of(context).size.height*0.2,
-                                                  width: MediaQuery.of(context).size.width*0.376,
+                                                  width: MediaQuery.of(context).size.width*0.4,
                                                   child: ClipRRect(
                                                     borderRadius: BorderRadius.circular(20),
                                                     child: Image(
@@ -345,7 +345,7 @@ class _MainScreenState extends State<MainScreen> {
                                               ),
                                             ),
                                             Flexible(
-                                              flex: 1,
+                                              flex: 3,
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
@@ -362,6 +362,7 @@ class _MainScreenState extends State<MainScreen> {
                                                   // ),
                                                   Flexible(
                                                     child: Container(
+
                                                       child: Text(
                                                         percentage(snapshot.data!['data']["fruitProducts"][index]['funding']['currentAmount'],
                                                             snapshot.data!['data']["fruitProducts"][index]['funding']['finalAmount']),
@@ -438,10 +439,10 @@ class _MainScreenState extends State<MainScreen> {
                               itemCount: 1,
                               itemBuilder: (context, int index){
                                 return GestureDetector(
-                                  onTap: () async{
-                                    currentPage.addPage(snapshot.data!['data']["vegetableProducts"][index]);
+                                  onTap: () async {
                                     print(snapshot.data!['data']["vegetableProducts"][index]);
-                                    if(0 == await Api().productDetail(snapshot.data!['data']['recommendedProducts'][index]["productSeq"])){
+                                    currentPage.addPage(snapshot.data!['data']["vegetableProducts"][index]);
+                                    if(0 == await Api().productDetail(snapshot.data!['data']["vegetableProducts"][index]["productSeq"])){
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(builder: (context) => ProductDetailScreen()),
@@ -462,7 +463,7 @@ class _MainScreenState extends State<MainScreen> {
                                               flex: 2,
                                               child: Container(
                                                   height: MediaQuery.of(context).size.height*0.2,
-                                                  width: MediaQuery.of(context).size.width*0.376,
+                                                  width: MediaQuery.of(context).size.width*0.4,
                                                   child: ClipRRect(
                                                     borderRadius: BorderRadius.circular(20),
                                                     child: Image(

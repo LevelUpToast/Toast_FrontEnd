@@ -7,6 +7,7 @@ import 'package:lever_up_toast/API/apiInfo.dart';
 import 'package:lever_up_toast/values/values.dart';
 import 'package:lever_up_toast/values/currentPage.dart';
 import 'package:lever_up_toast/API/api.dart';
+import 'package:lever_up_toast/values/wishData.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
@@ -145,7 +146,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   ),
                                 ),
                                 SizedBox(
-                                  width: MediaQuery.of(context).size.width * 0.5,
+                                  width: MediaQuery.of(context).size.width * 0.6,
                                 ),
                                 Text("종료까지"+((DateTime.now().difference(DateTime.parse(Data['data']['Product']['funding']['deadline'])).inDays) * -1).toString()+"일",
                                   style: TextStyle(
@@ -191,7 +192,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   fontSize: MediaQuery.of(context).size.height * 0.018
                               ),),
                             SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.5),
+                                width: MediaQuery.of(context).size.width * 0.45),
                             Text(Data['data']['Product']['funding']['finalAmount'].toString()+"원",
                               style: TextStyle(
                                 fontSize: MediaQuery.of(context).size.height * 0.018,
@@ -292,13 +293,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 physics: NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index){
                 List<String> image = images.toString().substring(1,images.toString().length -1).split(",");
-                  return Padding(
+                //print(image);
+                return Padding(
                       padding: EdgeInsets.only(
                         left: MediaQuery.of(context).size.width * 0.02,
                         right: MediaQuery.of(context).size.width * 0.02,
                       ),
                     child: Container(
-                      //height: MediaQuery.of(context).size.height * 0.1,
                         child:(parse[index].contains("<img"))?
                         ClipRRect(
                           borderRadius: BorderRadius.circular(0),
@@ -809,7 +810,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               itemSize: MediaQuery.of(context).size.height * 0.04,
               initialRating: 0,
               direction: Axis.horizontal,
-              //allowHalfRating: true,
               itemCount: 1,
               ratingWidget: RatingWidget(
                   full:  ClipRRect(
@@ -821,12 +821,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   empty:  ClipRRect(
                     child: SvgPicture.asset("assets/img/EmptyH.svg"),
                     ),
-
               ),
               onRatingUpdate: (value) {
                 setState(() {
                   wish = value.toInt();
-                },);
+                  if (wish == 1){
+                    print(_currentpage[_currentpage.length-1]);
+                    wishData.addPage(_currentpage[_currentpage.length-1]);
+                  }
+                },
+                );
                 print(value);
               },
           ),
