@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,7 +18,7 @@ class MyPageScreen extends StatelessWidget {
     return result.toString()+"%";
   }
 
-  @override
+  @override.
   Widget build(BuildContext context) {
     List<Map<String,dynamic>> _currentpage = currentPage.getPage();
     String imagePath = ApiInfo.testUrl+ApiInfo.imageUrl;
@@ -24,7 +26,7 @@ class MyPageScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        actions : [
+        actions : const [
           Padding(
             padding: EdgeInsets.all(16.0),
             child: Icon(Icons.notifications,color: Colors.black,),
