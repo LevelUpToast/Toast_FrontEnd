@@ -317,7 +317,6 @@ class _searchScreenState extends State<searchScreen> {
   }
 
   Widget findPro(BuildContext context, searchResult){
-    //List<Map<String,dynamic>> _currentpage = currentPage.getPage();
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(

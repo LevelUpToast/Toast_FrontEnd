@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:lever_up_toast/API/apiInfo.dart';
+import 'package:lever_up_toast/screens/bodyScreen/purchaseScreen.dart';
 import 'package:lever_up_toast/values/values.dart';
 import 'package:lever_up_toast/values/currentPage.dart';
 import 'package:lever_up_toast/API/api.dart';
@@ -11,6 +12,7 @@ import 'package:lever_up_toast/values/wishData.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
+import 'package:lever_up_toast/values/purchaseData.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   @override
@@ -27,16 +29,28 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   String pop(images){
     return images;
   }
+  int sum(){
+    int total = 0;
+    for(var index in [1,2,3,4,5] ){
+      total+=int.parse(Data['data']['Product']['review']["star$index"].toString());
+    }
+    return total;
+  }
 
   String imagePath = ApiInfo.testUrl+ApiInfo.imageUrl;
   Map<String,dynamic> Data = Api.productData;
   var images = Api.productData['data']['Product']['productInfo']['productImgUrl'];
   List<Map<String,dynamic>> _currentpage = currentPage.getPage();
   List<String> parse = Api.productData['data']['Product']['productInfo']['text'].toString().trim().split("\n");
+  int total = 0;
+
+
+
   @override
   Widget build(BuildContext context) {
     int wish = 0;
     int imageCount = 0;
+    total = sum();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -293,7 +307,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 physics: NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index){
                 List<String> image = images.toString().substring(1,images.toString().length -1).split(",");
-                //print(image);
                 return Padding(
                       padding: EdgeInsets.only(
                         left: MediaQuery.of(context).size.width * 0.02,
@@ -365,7 +378,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.03,
                           ),
-                          Text("3.5/5",
+                          Text(Data['data']['Product']['review']['totalRating'].toString()+"/5",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: MediaQuery.of(context).size.height * 0.034
@@ -379,7 +392,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           ),
                           Container(
                             child:RatingBarIndicator(
-                              rating: 3.5,
+                              rating: double.parse(Data['data']['Product']['review']['totalRating'].toString()),
                               itemBuilder: (context, index) => Icon(
                                 Icons.star,
                                 color: Colors.amber,
@@ -422,8 +435,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       backgroundColor: AppColors.white,
                                       width: MediaQuery.of(context).size.width * 0.29,
                                       lineHeight: MediaQuery.of(context).size.height * 0.02,
-                                      percent: percentage(Data['data']['Product']['funding']['currentAmount'],
-                                          Data['data']['Product']['funding']['finalAmount']),
+                                      percent: percentage(Data['data']['Product']['review']['star5'],
+                                          total),
                                       progressColor: AppColors.dropAppLogo,
                                     ),
                                   ),
@@ -453,8 +466,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       backgroundColor: AppColors.white,
                                       width: MediaQuery.of(context).size.width * 0.29,
                                       lineHeight: MediaQuery.of(context).size.height * 0.02,
-                                      percent: percentage(Data['data']['Product']['funding']['currentAmount'],
-                                          Data['data']['Product']['funding']['finalAmount']),
+                                      percent: percentage(Data['data']['Product']['review']['star4'],
+                                          total),
                                       progressColor: AppColors.dropAppLogo,
                                     ),
                                   ),
@@ -484,8 +497,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       backgroundColor: AppColors.white,
                                       width: MediaQuery.of(context).size.width * 0.29,
                                       lineHeight: MediaQuery.of(context).size.height * 0.02,
-                                      percent: percentage(Data['data']['Product']['funding']['currentAmount'],
-                                          Data['data']['Product']['funding']['finalAmount']),
+                                      percent: percentage(Data['data']['Product']['review']['star3'],
+                                          total),
                                       progressColor: AppColors.dropAppLogo,
                                     ),
                                   ),
@@ -515,8 +528,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       backgroundColor: AppColors.white,
                                       width: MediaQuery.of(context).size.width * 0.29,
                                       lineHeight: MediaQuery.of(context).size.height * 0.02,
-                                      percent: percentage(Data['data']['Product']['funding']['currentAmount'],
-                                          Data['data']['Product']['funding']['finalAmount']),
+                                      percent: percentage(Data['data']['Product']['review']['star2'],
+                                          total),
                                       progressColor: AppColors.dropAppLogo,
                                     ),
                                   ),
@@ -546,8 +559,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       backgroundColor: AppColors.white,
                                       width: MediaQuery.of(context).size.width * 0.29,
                                       lineHeight: MediaQuery.of(context).size.height * 0.02,
-                                      percent: percentage(Data['data']['Product']['funding']['currentAmount'],
-                                          Data['data']['Product']['funding']['finalAmount']),
+                                      percent: percentage(Data['data']['Product']['review']['star1'],
+                                          total),
                                       progressColor: AppColors.dropAppLogo,
                                     ),
                                   ),
@@ -608,7 +621,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             itemBuilder: (context, index){
                               return GestureDetector(
                                 onTap: () async {
-                                  print(_currentpage[index]);
+                                  //print(_currentpage[index]);
                                   currentPage.addPage(Data['data']['recommendedProducts'][index]);
                                   if(0 == await Api().productDetail(Data['data']['recommendedProducts'][index]["productSeq"])){
                                     Navigator.push(
@@ -718,7 +731,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             itemBuilder: (context, index){
                               return GestureDetector(
                                 onTap: () async {
-                                  print(_currentpage[index]);
+                                  //print(_currentpage[index]);
                                   currentPage.addPage(_currentpage[index]);
                                   if(0 == await Api().productDetail(_currentpage[index]["productSeq"])){
                                     Navigator.push(
@@ -790,7 +803,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                           ),
                                         ),
                                       ],
-                                    )
+                                    ),
                                 ),
                               );
                             },
@@ -826,12 +839,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 setState(() {
                   wish = value.toInt();
                   if (wish == 1){
-                    print(_currentpage[_currentpage.length-1]);
-                    wishData.addPage(_currentpage[_currentpage.length-1]);
+                    //print(_currentpage[_currentpage.length-1]);
+                    wishData.addPage(_currentpage[_currentpage.length-1]['productSeq'].toString(),_currentpage[_currentpage.length-1]);
                   }
                 },
                 );
-                print(value);
+                //print(value);
               },
           ),
           SizedBox(
@@ -853,38 +866,26 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 showModalBottomSheet(
                     context: context,
                     builder: (context) {
-                      return Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          ListTile(
-                            leading: new Icon(Icons.photo),
-                            title: new Text('1'),
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                          ListTile(
-                            leading: new Icon(Icons.music_note),
-                            title: new Text('2'),
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                          ListTile(
-                            leading: new Icon(Icons.videocam),
-                            title: new Text('3'),
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                          ListTile(
-                            leading: new Icon(Icons.share),
-                            title: new Text('4'),
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ],
+                      return Container(
+                        height: MediaQuery.of(context).size.height* 0.07 * Data['data']['Product']['buyOption'].length,
+                        child: ListView.builder(
+                            itemCount: Data['data']['Product']['buyOption'].length,
+                            itemBuilder: (BuildContext context, int index){
+                              return ListTile(
+                                title: Text("옵션"+(index+1).toString()+" : "+Data['data']['Product']['buyOption'][index]['optionInfo'].toString()),
+                                onTap: (){
+                                  //print(Data['data']['Product']);
+                                  purchaseData.setPurchaseData("pay",Data['data']['Product']['buyOption'][index]['optionPrice']);
+                                  purchaseData.setPurchaseData("title",Data['data']['Product']['title']);
+                                  purchaseData.setPurchaseData("Image",Data['data']['Product']['initialImgUrl'][0]);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => purchaseScreen()),
+                                  );
+                                },
+                              );
+                            }
+                        ),
                       );
                     });
               },

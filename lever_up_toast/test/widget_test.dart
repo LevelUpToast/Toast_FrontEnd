@@ -35,6 +35,7 @@ void main() {
     print("\n");
     print(result);
     });
+
     test("search", ()async{
       result =await api.searchApi("망고");
       print("\n" );

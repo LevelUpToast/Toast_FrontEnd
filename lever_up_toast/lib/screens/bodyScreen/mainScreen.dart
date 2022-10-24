@@ -178,7 +178,7 @@ class _MainScreenState extends State<MainScreen> {
                                     return GestureDetector(
                                       onTap: () async{
                                         currentPage.addPage(snapshot.data!['data']['recommendedProducts'][index]);
-                                        print(snapshot.data!['data']['recommendedProducts'][index]);
+                                        //print(context);
                                         if(0 == await Api().productDetail(snapshot.data!['data']['recommendedProducts'][index]["productSeq"])){
                                           Navigator.push(
                                             context,
@@ -311,7 +311,6 @@ class _MainScreenState extends State<MainScreen> {
                                 return GestureDetector(
                                   onTap: () async{
                                     currentPage.addPage(snapshot.data!['data']["fruitProducts"][index]);
-                                    print(snapshot.data!['data']["fruitProducts"][index]);
                                     if(0 == await Api().productDetail(snapshot.data!['data']['fruitProducts'][index]["productSeq"])){
                                       Navigator.push(
                                         context,
@@ -440,7 +439,7 @@ class _MainScreenState extends State<MainScreen> {
                               itemBuilder: (context, int index){
                                 return GestureDetector(
                                   onTap: () async {
-                                    print(snapshot.data!['data']["vegetableProducts"][index]);
+                                    //(snapshot.data!['data']["vegetableProducts"][index]);
                                     currentPage.addPage(snapshot.data!['data']["vegetableProducts"][index]);
                                     if(0 == await Api().productDetail(snapshot.data!['data']["vegetableProducts"][index]["productSeq"])){
                                       Navigator.push(
