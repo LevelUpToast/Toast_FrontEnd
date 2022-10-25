@@ -22,7 +22,6 @@ class _purchaseScreenState extends State<purchaseScreen> {
   final myController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    //print(data);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

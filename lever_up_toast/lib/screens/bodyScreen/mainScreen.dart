@@ -216,7 +216,6 @@ class _MainScreenState extends State<MainScreen> {
                                                       children: [
                                                         Flexible(
                                                             child: Container(
-                                                              //height:MediaQuery.of(context).size.height * 0.2,
                                                               width : MediaQuery.of(context).size.width * 0.4,
                                                               child: Text(snapshot.data!['data']['recommendedProducts'][index]['title'].toString(),
                                                                 style: TextStyle(
@@ -226,9 +225,6 @@ class _MainScreenState extends State<MainScreen> {
                                                               ),
                                                             ),
                                                         ),
-                                                        // SizedBox(
-                                                        //   height: 30,
-                                                        // ),
                                                         Flexible(
                                                           child: Container(
                                                             child: Text(
@@ -376,7 +372,7 @@ class _MainScreenState extends State<MainScreen> {
                                               ),
                                             ),
                                           ],
-                                        )
+                                        ),
                                     ),
                                   ),
                                 );

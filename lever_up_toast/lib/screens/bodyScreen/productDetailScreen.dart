@@ -129,9 +129,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                   ),
                   Container(
+                    height: MediaQuery.of(context).size.height* 0.03,
+                    width: MediaQuery.of(context).size.width* 0.9,
                     child: Text(Data['data']["Product"]['title'],
                       style:TextStyle(
-                        fontSize: MediaQuery.of(context).size.width * 0.06,
+                        //fontSize: MediaQuery.of(context).size.height * 0.00034 * Data['data']["Product"]['title'].length,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -301,7 +303,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             height: MediaQuery.of(context).size.height * 0.02,
           ),
           Container(
-            height: MediaQuery.of(context).size.height * 0.7,
+            height: MediaQuery.of(context).size.height * 0.13 *parse.length,
             child: ListView.builder(
               itemCount: parse.length,
                 physics: NeverScrollableScrollPhysics(),
@@ -586,7 +588,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               left: MediaQuery.of(context).size.width * 0.04,
             ),
             child: Container(
-              height: MediaQuery.of(context).size.height * 0.65,
+              height: MediaQuery.of(context).size.height * 0.61,
               child: Column(
                 children: [
                   SizedBox(
@@ -619,9 +621,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             scrollDirection: Axis.horizontal,
                             itemCount: Data['data']['recommendedProducts'].length,
                             itemBuilder: (context, index){
+                              //print(Data['data']['recommendedProducts'].length);
                               return GestureDetector(
                                 onTap: () async {
-                                  //print(_currentpage[index]);
                                   currentPage.addPage(Data['data']['recommendedProducts'][index]);
                                   if(0 == await Api().productDetail(Data['data']['recommendedProducts'][index]["productSeq"])){
                                     Navigator.push(
@@ -660,27 +662,29 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
                                               Flexible(
+                                                flex:3,
                                                 child: Container(
+                                                  //height : MediaQuery.of(context).size.height * 0.1,
+                                                  width : MediaQuery.of(context).size.width * 0.4,
                                                   child: Padding(
                                                     padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
-                                                    child: Center(
-                                                      child: Text(_currentpage[index]['title'].toString(),
-                                                        style: TextStyle(
-                                                          color: Colors.grey,
-                                                          fontSize: MediaQuery.of(context).size.height*0.02,
-                                                        ),
+                                                    child: Text(Data['data']['recommendedProducts'][index]['title'].toString(),
+                                                      style: TextStyle(
+                                                        color: Colors.grey,
+                                                        fontSize: MediaQuery.of(context).size.height*0.015,
                                                       ),
                                                     ),
                                                   ),
                                                 ),
                                               ),
                                               Flexible(
+                                                flex:1,
                                                 child: Container(
                                                     child: Padding(
                                                       padding:EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
                                                       child:  Text(
-                                                        (percentage(_currentpage[index]['funding']['currentAmount'],
-                                                            _currentpage[index]['funding']['finalAmount'])*100.0).toString()+"%",
+                                                        (percentage(Data['data']['recommendedProducts'][index]['funding']['currentAmount'],
+                                                            Data['data']['recommendedProducts'][index]['funding']['finalAmount'])*100.0).toString()+"%",
                                                         style: TextStyle(
                                                             fontWeight: FontWeight.w500,
                                                             fontSize: MediaQuery.of(context).size.height*0.018,
@@ -765,26 +769,27 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                           ),
                                         ),
                                         Flexible(
-                                          flex: 1,
+                                          flex: 2,
                                           child: Column(
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
                                               Flexible(
+                                                flex:3,
                                                 child: Container(
+                                                  width : MediaQuery.of(context).size.width * 0.4,
                                                   child: Padding(
                                                     padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
-                                                    child: Center(
-                                                      child: Text(_currentpage[index]['title'].toString(),
-                                                        style: TextStyle(
-                                                          color: Colors.grey,
-                                                          fontSize: MediaQuery.of(context).size.height*0.02,
-                                                        ),
+                                                    child: Text(_currentpage[index]['title'].toString(),
+                                                      style: TextStyle(
+                                                        color: Colors.grey,
+                                                        //fontSize: MediaQuery.of(context).size.height*0.02,
                                                       ),
                                                     ),
                                                   ),
                                                 ),
                                               ),
                                               Flexible(
+                                                flex:1,
                                                 child: Container(
                                                     child: Padding(
                                                       padding:EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),

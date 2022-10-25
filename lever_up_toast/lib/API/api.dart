@@ -151,6 +151,7 @@ class Api with ChangeNotifier {
     } else {
       print("실패");
     }
+    print(uri);
     setToken(temp['data']['token']);
     return result;
   }

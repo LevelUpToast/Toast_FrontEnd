@@ -218,7 +218,7 @@ class MyPageScreen extends StatelessWidget {
                   ),
                 ),
                 Flexible(
-                  flex: 3,
+                  flex: 5,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: _currentpage.length,
@@ -264,24 +264,23 @@ class MyPageScreen extends StatelessWidget {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Flexible(
+                                          flex:3,
                                           child: Container(
+                                              height: MediaQuery.of(context).size.height*0.2,
+                                              width: MediaQuery.of(context).size.width*0.35,
                                               child: Padding(
                                                 padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
-                                                child: Center(
-                                                  child: Text(_currentpage[index]['title'].toString(),
-                                                    style: TextStyle(
-                                                      color: Colors.grey,
-                                                      fontSize: MediaQuery.of(context).size.height*0.02,
-                                                    ),
+                                                child: Text(_currentpage[index]['title'].toString(),
+                                                  style: TextStyle(
+                                                    color: Colors.grey,
+                                                    fontSize: MediaQuery.of(context).size.width*0.03,
                                                   ),
                                                 ),
                                               )
                                           ),
                                         ),
-                                        // SizedBox(
-                                        //   height: 30,
-                                        // ),
                                         Flexible(
+                                          flex:1,
                                           child: Container(
                                               child: Padding(
                                                 padding:EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
