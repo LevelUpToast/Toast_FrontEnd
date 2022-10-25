@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -136,7 +138,7 @@ class MyPageScreen extends StatelessWidget {
                                     child: Container(
                                       child: GestureDetector(
                                         onTap: (){
-                                          print("asd");
+                                          Navigator.pushReplacementNamed(context, '/pay');
                                         },
                                         child: SvgPicture.asset("assets/img/toastpay.svg"),
                                       ),

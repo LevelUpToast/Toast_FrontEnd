@@ -25,13 +25,15 @@ void main() {
 
     test("login", ()async{
       Map<String, dynamic> data = {
-        'id': 'saac',
-        'pw': 'saac'
+        'id': 'ji',
+        'pw': 'ji'
       };
       result = await api.loginAPI(data);
-      if (result == 1){
-        print(api.getToken());
-      };
+      // if (result == 1){
+      //   // print(api.getToken());
+      // };
+      print(result);
+
     });
 
     test("main page", ()async{
