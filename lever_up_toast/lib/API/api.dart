@@ -11,12 +11,13 @@ import 'package:lever_up_toast/screens/Login/membershipScreen.dart';
 import 'package:lever_up_toast/values/values.dart';
 
 class Api with ChangeNotifier {
-  String? token = null;
+  static String token = '';
   static String email = '';
   bool checkmembership = false;
   bool checklog = false;
   Uri uri = null as Uri;
   Map<String, dynamic> result = {};
+  Map<String, dynamic> card = {};
   static Map<String, dynamic> productData = {};
   late HttpClientResponse response;
 
@@ -149,6 +150,7 @@ class Api with ChangeNotifier {
         result = 1; // succes
       });
     } else {
+      print(_response.statusCode);
       print("실패");
     }
     setToken(temp['data']['token']);
@@ -291,6 +293,38 @@ class Api with ChangeNotifier {
       print("실패");
     }
     return 0;
+  }
+
+  // Pay 기능
+  Future<Map<String, dynamic>> payGet() async {
+    uri = Uri.parse(ApiInfo.testUrl + ApiInfo.payUrl + token);
+    // print(uri);
+    HttpClientResponse _response;
+    HttpClient httpClient = HttpClient();
+    Map<String, dynamic> temp = {};
+
+    HttpClientRequest request = await httpClient.getUrl(uri);
+    request.headers.set(HttpHeaders.contentTypeHeader, "application/json");
+    request.headers.set(
+      HttpHeaders.acceptHeader,
+      'application/json',
+    );
+    request.headers.set(
+      HttpHeaders.acceptCharsetHeader,
+      'utf-8',
+    );
+    _response = await request.close().timeout(const Duration(seconds: 5));
+    if (_response.statusCode == 200) {
+      await _response.listen((event) {
+        temp = json.decode(utf8.decode(String.fromCharCodes(event).codeUnits));
+        card = temp;
+        print(card);
+      });
+    } else {
+      print("실패");
+    }
+
+    return card;
   }
 
 }
